@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Dra. Amanda — Cirurgiã Bucomaxilofacial em São Paulo",
+  description = "Dra. Amanda, especialista em Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Cirurgia ortognática, implantes, extração de sisos e trauma facial. Agende sua avaliação.",
+  image = "/images/hero.jpg",
+} = Astro.props;
+
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : undefined;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={image} />
+    {canonical && <meta property="og:url" content={canonical} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="/fonts/NeuKaine-Variable.ttf"
+      as="font"
+      type="font/truetype"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/GeistMono-Variable.ttf"
+      as="font"
+      type="font/truetype"
+      crossorigin
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
