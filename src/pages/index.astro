@@ -43,8 +43,7 @@ import Layout from "../layouts/Layout.astro";
       <span class="sub-full">Dra. Amanda atua em Cirurgia e Traumatologia Bucomaxilofacial em São Paulo,
       com formação hospitalar pelo Conjunto Hospitalar do Mandaqui.
       Diagnóstico criterioso e resultados previsíveis para quem mais precisa.</span>
-      <span class="sub-short">Cirurgia e Traumatologia Bucomaxilofacial em São Paulo, com formação
-      hospitalar pelo Mandaqui. Diagnóstico criterioso e resultados previsíveis.</span>
+      <span class="sub-short">Bucomaxilofacial em São Paulo. Formação hospitalar pelo Mandaqui. Diagnóstico criterioso, resultados previsíveis.</span>
     </p>
     <div class="hero-ctas">
       <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
@@ -1065,7 +1064,10 @@ details[open] .faq-q::after { content: '−'; }
     padding-top: 0;
   }
 
-  /* Adaptações de cor: texto branco sobre o fundo escuro */
+  /* Texto enxuto + cores brancas sobre o fundo escuro */
+  .hero-sub .sub-full  { display: none; }
+  .hero-sub .sub-short { display: inline; }
+
   .hero .label {
     color: rgba(255,255,255,0.55);
     opacity: 1;
@@ -1075,7 +1077,7 @@ details[open] .faq-q::after { content: '−'; }
     font-size: clamp(2rem, 6.5vw, 3rem);
   }
   .hero-sub {
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.92);
   }
   .hero .btn-ghost {
     color: rgba(255,255,255,0.88);
@@ -1103,10 +1105,6 @@ details[open] .faq-q::after { content: '−'; }
 
 /* Mobile */
 @media (max-width: 768px) {
-  /* Subhead enxuta só no mobile */
-  .hero-sub .sub-full  { display: none; }
-  .hero-sub .sub-short { display: inline; }
-
   /* Tipografia de corpo aumentada p/ leitura confortável no celular
      (mín. ~16px / 1rem — diretriz de legibilidade mobile) */
   .hero-sub        { font-size: 1rem;      line-height: 1.65; }
