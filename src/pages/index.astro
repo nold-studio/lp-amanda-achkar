@@ -40,13 +40,14 @@ import Layout from "../layouts/Layout.astro";
       <span class="label-mobile">Dra. Amanda Achkar · CRO-SP 141836</span>
     </span>
     <h1 class="hero-headline">
-      Quando o caso é complexo, você precisa do especialista certo.
+      <span class="headline-desktop">Quando o caso é complexo, você precisa do especialista certo.</span>
+      <span class="headline-mobile">Bucomaxilofacial em São Paulo.</span>
     </h1>
     <p class="hero-sub">
       <span class="sub-full">Dra. Amanda atua em Cirurgia e Traumatologia Bucomaxilofacial em São Paulo,
       com formação hospitalar pelo Conjunto Hospitalar do Mandaqui.
       Diagnóstico criterioso e resultados previsíveis para quem mais precisa.</span>
-      <span class="sub-short">Cirurgiã Bucomaxilofacial em São Paulo. Formação hospitalar pelo Mandaqui. Diagnóstico criterioso, resultados previsíveis.</span>
+      <span class="sub-short">Formação hospitalar pelo Conjunto Hospitalar do Mandaqui. Diagnóstico criterioso, resultados previsíveis para quem mais precisa.</span>
     </p>
     <div class="hero-ctas">
       <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
@@ -589,6 +590,7 @@ import Layout from "../layouts/Layout.astro";
 /* No desktop mostra a versão completa; no mobile, a enxuta */
 .hero-sub .sub-short { display: none; }
 .label .label-mobile { display: none; }
+.hero-headline .headline-mobile { display: none; }
 
 .hero-ctas {
   display: flex;
@@ -1072,6 +1074,8 @@ details[open] .faq-q::after { content: '−'; }
   .hero-sub .sub-short { display: inline; }
   .label .label-desktop { display: none; }
   .label .label-mobile  { display: inline; }
+  .hero-headline .headline-desktop { display: none; }
+  .hero-headline .headline-mobile  { display: inline; }
 
   .hero .label {
     color: rgba(255,255,255,0.55);
