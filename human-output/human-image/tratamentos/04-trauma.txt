@@ -1,12 +1,12 @@
-CAMERA: IMAX MK IV 65mm, ISO 250, camera low and slightly oblique, angled up across the profile.
-LENS: Zeiss Otus 85mm T2.5, 1.1m distance, focus locked on the cheekbone and orbital ridge.
-LIGHT: directional raking sidelight at 5600K skimming from frame left, sculpting cheekbone, orbital ridge and brow, controlled shadow on the far cheek, still a pale high-key field near 80 IRE.
-SUBJECT: woman early thirties in clean side profile, composed and still, sculptural light revealing facial bone architecture, jaw set, gaze level. Intercepted.
-FOREGROUND: out-of-focus bare shoulder edge, skin grain dissolving at the frame base.
-MIDGROUND: cheekbone, orbital ridge and brow rendered crisp.
-BACKGROUND: seamless pale warm-white sweep, smooth falloff, no detail.
-WARDROBE TONAL BEHAVIOR: bare shoulder with simple matte off-white drape, light-absorbing, soft folds.
-MAKEUP SURFACE PHYSICS: real untouched skin, visible pores, faint sheen along the cheekbone, natural oil on the brow, no heavy product.
-POST BEHAVIOR: Kodak 2383 print, visible organic tactile grain, gentle halation on highlights, neutral curve, restrained saturation, midtone priority on skin.
-COMPOSITIONAL GEOMETRY: profile weighted to the left third, generous negative white space at right, deliberate asymmetry, broken thirds.
-MOOD & ART DIRECTION: Composition and art direction inspired in the work of award-winning directors; quiet clinical restraint, editorial stillness.
+CAMERA: ARRI Alexa 35, ISO 800, camera low behind the surgeon at hip height, oblique to the table.
+LENS: Canon K35 35mm T1.5, 2.2m, focus on the gloved hands and instruments over the table.
+LIGHT: overhead surgical lamp 5000K hard key pooling on the draped table, strong rim backlight tracing the surgeon's profile and cap, deep shadow filling the room, ambient near 20 IRE.
+SUBJECT: female surgeon in scrubs and cap seen from behind in foreground, head turned slightly into profile silhouette, gloved hand reaching to take a scalpel passed by an assistant's hand entering frame. Intercepted mid-handoff.
+FOREGROUND: surgeon's shoulder and upper back, dark, slightly soft.
+MIDGROUND: gloved hands and scalpel handoff above the lit table, crisp.
+BACKGROUND: dim operating room, draped patient with only feet faintly visible, equipment lost in shadow, soft bokeh.
+WARDROBE TONAL BEHAVIOR: gown desaturated blue-grey, matte, light-absorbing, edge catching the rim.
+MAKEUP SURFACE PHYSICS: skin barely visible, faint sheen on the cheekbone in the rim light, dark hair at the nape under the cap.
+POST BEHAVIOR: Kodak Vision3 500T 5219, visible organic heavy grain, halation on the lamp, cool shadows, restrained saturation.
+COMPOSITIONAL GEOMETRY: back weighted to left foreground, lit table right, heavy shadow at top, asymmetry, broken thirds.
+MOOD & ART DIRECTION: Composition and art direction inspired in the work of award-winning directors; restrained surgical focus, contre-jour silhouette.
