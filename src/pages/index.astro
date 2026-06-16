@@ -172,27 +172,47 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="cards-grid">
       <article class="card">
-        <span class="card-number" aria-hidden="true">01</span>
-        <h3 class="card-title">Cirurgia Ortognática</h3>
-        <p class="card-desc">Indicada quando os ossos da mandíbula ou da maxila estão fora do alinhamento ideal, por questões estéticas, funcionais ou respiratórias. Corrige dificuldades de mastigação, fala, sono e assimetrias faciais, com planejamento integrado à ortodontia.</p>
+        <div class="card-media">
+          <img src="/images/tratamentos/ortognatica.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">01</span>
+          <h3 class="card-title">Cirurgia Ortognática</h3>
+          <p class="card-desc">Corrige o desalinhamento dos ossos da mandíbula e da maxila — estética, mastigação, fala e sono — com planejamento integrado à ortodontia.</p>
+        </div>
       </article>
 
       <article class="card">
-        <span class="card-number" aria-hidden="true">02</span>
-        <h3 class="card-title">Implantes e Reconstrução Óssea</h3>
-        <p class="card-desc">Reabilitação oral para casos de perda dental, com instalação de implantes de titânio e, quando necessário, enxertos ósseos para garantir base adequada à prótese. Do planejamento à instalação.</p>
+        <div class="card-media">
+          <img src="/images/tratamentos/implantes.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">02</span>
+          <h3 class="card-title">Implantes e Reconstrução Óssea</h3>
+          <p class="card-desc">Reabilitação de dentes perdidos com implantes de titânio e, quando necessário, enxerto ósseo. Do planejamento à instalação da prótese.</p>
+        </div>
       </article>
 
       <article class="card">
-        <span class="card-number" aria-hidden="true">03</span>
-        <h3 class="card-title">Extração de Sisos</h3>
-        <p class="card-desc">Extração de terceiros molares inclusos, semi-inclusos ou mal posicionados que causam dor, pressão, risco de infecção ou comprometem dentes vizinhos. Em consultório ou ambiente hospitalar, conforme a complexidade.</p>
+        <div class="card-media">
+          <img src="/images/tratamentos/sisos.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">03</span>
+          <h3 class="card-title">Extração de Sisos</h3>
+          <p class="card-desc">Remoção de terceiros molares inclusos ou mal posicionados que causam dor, pressão ou risco de infecção. Em consultório ou ambiente hospitalar.</p>
+        </div>
       </article>
 
       <article class="card">
-        <span class="card-number" aria-hidden="true">04</span>
-        <h3 class="card-title">Trauma Facial e Fraturas</h3>
-        <p class="card-desc">Atendimento a pacientes que sofreram acidentes, quedas ou impactos com comprometimento dos ossos da face: maxilar, mandíbula, órbita e estruturas adjacentes. Atuação hospitalar e acompanhamento do pós.</p>
+        <div class="card-media">
+          <img src="/images/tratamentos/trauma.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">04</span>
+          <h3 class="card-title">Trauma Facial e Fraturas</h3>
+          <p class="card-desc">Atendimento a fraturas dos ossos da face — maxilar, mandíbula e órbita — por acidentes ou impactos, com atuação hospitalar e acompanhamento.</p>
+        </div>
       </article>
     </div>
 
@@ -771,10 +791,27 @@ import Layout from "../layouts/Layout.astro";
 
 .card {
   background: #F2F2F2;
-  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
   transition: background 0.25s var(--ease);
 }
 .card:hover { background: #fff; }
+
+.card-media {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #E4E4E4;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.card:hover .card-media img { transform: scale(1.035); }
+
+.card-body { padding: clamp(1.75rem, 3.5vw, 2.5rem); }
 
 .card-number {
   display: block;
