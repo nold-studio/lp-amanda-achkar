@@ -1,0 +1,622 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Central de Páginas | MaxFocos"
+  description="Central de links e mapa mental de páginas do ecossistema MaxFocos. Acesse as LPs da Dra. Amanda, Dr. Eliézer e o Protocolo R1."
+>
+
+<div class="links-layout">
+  <!-- ═══ PAINEL ESQUERDO: BENTO GRID ═══ -->
+  <aside class="bento-panel">
+    <div class="bento-header">
+      <img src="/images/r1/logo-maxfocos.png" alt="MaxFocos Logo" height="32" class="bento-logo" />
+      <h1>Central de Páginas</h1>
+      <p>Acesse e gerencie as landing pages ativas da MaxFocos e seus fundadores.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card Amanda -->
+      <a href="/" class="bento-card card-amanda" data-node="amanda">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">Dra. Amanda Coli</span>
+          <h2>Cirurgia Ortognática & Estética</h2>
+          <p>Página de atração de pacientes particulares focada em ortognática, implantes e reabilitação facial.</p>
+          <div class="card-footer">
+            <span class="card-link">Acessar página</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card Eliezer -->
+      <a href="/eliezer" class="bento-card card-eliezer" data-node="eliezer">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">Dr. Eliézer Andrade</span>
+          <h2>CTBMF & Implantes Dentários</h2>
+          <p>Página profissional de conversão clínica focada em cirurgia oral maior, implantes e sisos complexos.</p>
+          <div class="card-footer">
+            <span class="card-link">Acessar página</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card Protocolo R1 -->
+      <a href="/r1" class="bento-card card-r1" data-node="r1">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">Mentoria ENARE 2026</span>
+          <h2>Protocolo R1</h2>
+          <p>Landing page estratégica do preparatório e mentoria para residência de Bucomaxilo.</p>
+          <div class="card-footer">
+            <span class="card-link">Acessar página</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Stats Card -->
+      <div class="bento-card card-stats">
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-val">3</span>
+            <span class="stat-lbl">LPs Ativas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">100%</span>
+            <span class="stat-lbl">Astro SSG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ PAINEL DIREITO: MAPA OBSIDIAN (GRAFO INTERATIVO) ═══ -->
+  <main class="map-panel" id="mapPanel">
+    <div class="map-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <span>Clique nos nós para navegar ou arraste para reposicionar.</span>
+    </div>
+    
+    <svg class="nodes-graph" id="graphSvg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+      <!-- Grid de fundo estilo Obsidian -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+
+      <!-- Linhas de Conexão -->
+      <g class="graph-edges" id="edgesGroup"></g>
+
+      <!-- Nós interativos -->
+      <g class="graph-nodes" id="nodesGroup"></g>
+    </svg>
+  </main>
+</div>
+
+</Layout>
+
+<style>
+/* ═══════════════════════════════════════════
+   CENTRAL DE PÁGINAS — OBSIDIAN & BENTO STYLE
+   ═══════════════════════════════════════════ */
+
+:root {
+  --links-bg: #0D0D0D;
+  --links-surface: #141414;
+  --links-card: #1C1C1E;
+  --links-card-hover: #2C2C2E;
+  --links-yellow: #FDE112;
+  --links-white: #FFFFFF;
+  --links-gray: #8E8E93;
+  --links-border: #2C2C2E;
+  --links-mono: 'Geist Mono', monospace;
+  --links-title: 'Neue Kaine', sans-serif;
+  --links-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background-color: var(--links-bg);
+  color: var(--links-white);
+  font-family: var(--links-mono);
+  margin: 0;
+  overflow: hidden;
+  height: 100svh;
+}
+
+.links-layout {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  height: 100svh;
+  width: 100vw;
+}
+
+/* ── BENTO PANEL (LEFT) ── */
+.bento-panel {
+  background: var(--links-surface);
+  border-right: 1px solid var(--links-border);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.bento-header h1 {
+  font-family: var(--links-title);
+  font-size: 2.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 1rem 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.bento-header p {
+  color: var(--links-gray);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bento-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Bento Card Style */
+.bento-card {
+  position: relative;
+  background: var(--links-card);
+  border: 1px solid var(--links-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--links-white);
+  transition: transform 0.3s var(--links-ease), border-color 0.3s, background 0.3s;
+  overflow: hidden;
+  display: block;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--links-yellow);
+  background: rgba(253, 225, 18, 0.02);
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(253, 225, 18, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.bento-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-tag {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--links-yellow);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.bento-card h2 {
+  font-family: var(--links-title);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.bento-card p {
+  color: var(--links-gray);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--links-white);
+}
+
+.card-link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.bento-card:hover .card-link {
+  border-color: var(--links-white);
+}
+
+/* stats card */
+.card-stats {
+  background: rgba(255, 255, 255, 0.01);
+  border-style: dashed;
+}
+.card-stats:hover {
+  border-color: var(--links-border);
+  background: rgba(255, 255, 255, 0.01);
+  transform: none;
+}
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.stat-val {
+  font-family: var(--links-title);
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--links-yellow);
+}
+.stat-lbl {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  color: var(--links-gray);
+  letter-spacing: 0.1em;
+}
+
+/* Active Highlight state when hovering node */
+.bento-card.active-node {
+  border-color: var(--links-yellow);
+  background: rgba(253, 225, 18, 0.04);
+}
+
+/* ── MAP PANEL (RIGHT - OBSIDIAN GRAPH) ── */
+.map-panel {
+  position: relative;
+  background-color: var(--links-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-hint {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid var(--links-border);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  color: var(--links-gray);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+.nodes-graph {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.nodes-graph:active {
+  cursor: grabbing;
+}
+
+/* SVG Graph Elements Style */
+:global(.graph-edge) {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1.5px;
+  transition: stroke 0.3s, stroke-width 0.3s;
+}
+
+:global(.graph-edge.active) {
+  stroke: var(--links-yellow);
+  stroke-width: 2.5px;
+}
+
+:global(.graph-node-circle) {
+  fill: var(--links-bg);
+  stroke: var(--links-gray);
+  stroke-width: 2.5px;
+  transition: stroke 0.3s, fill 0.3s, r 0.3s;
+  cursor: pointer;
+}
+
+:global(.graph-node-circle.center-node) {
+  fill: var(--links-yellow);
+  stroke: var(--links-yellow);
+}
+
+:global(.graph-node:hover .graph-node-circle) {
+  stroke: var(--links-yellow);
+  fill: rgba(253, 225, 18, 0.2);
+}
+
+:global(.graph-node.active .graph-node-circle) {
+  stroke: var(--links-yellow);
+  fill: var(--links-yellow);
+  r: 10;
+}
+
+:global(.graph-node-text) {
+  fill: var(--links-gray);
+  font-family: var(--links-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  transition: fill 0.3s, font-weight 0.3s;
+}
+
+:global(.graph-node:hover .graph-node-text, .graph-node.active .graph-node-text) {
+  fill: var(--links-white);
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .links-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 400px;
+    overflow-y: auto;
+    height: auto;
+  }
+  .bento-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--links-border);
+    height: auto;
+    overflow-y: visible;
+  }
+  .map-panel {
+    height: 400px;
+  }
+}
+</style>
+
+<script>
+  // Interface Node para o Grafo
+  interface NodeData {
+    id: string;
+    label: string;
+    url: string;
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    fx: number | null;
+    fy: number | null;
+    isCenter?: boolean;
+    r: number;
+  }
+
+  interface EdgeData {
+    source: string;
+    target: string;
+  }
+
+  // Definição dos nós (estilo Obsidian)
+  const nodes: NodeData[] = [
+    { id: 'maxfocos', label: 'MAXFOCOS', url: '#', x: 400, y: 300, vx: 0, vy: 0, fx: null, fy: null, isCenter: true, r: 12 },
+    { id: 'amanda', label: 'LP AMANDA (ORTOGNÁTICA)', url: '/', x: 300, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'eliezer', label: 'LP ELIEZER (CTBMF)', url: '/eliezer', x: 500, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'r1', label: 'PROTOCOLO R1', url: '/r1', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
+  ];
+
+  const edges: EdgeData[] = [
+    { source: 'maxfocos', target: 'amanda' },
+    { source: 'maxfocos', target: 'eliezer' },
+    { source: 'maxfocos', target: 'r1' }
+  ];
+
+  const svg = document.getElementById('graphSvg') as unknown as SVGSVGElement;
+  const edgesGroup = document.getElementById('edgesGroup') as SVGGElement;
+  const nodesGroup = document.getElementById('nodesGroup') as SVGGElement;
+
+  if (svg && edgesGroup && nodesGroup) {
+    
+    // Renderizar Linhas (Edges)
+    const edgeElements = edges.map(edge => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('class', 'graph-edge');
+      line.setAttribute('data-source', edge.source);
+      line.setAttribute('data-target', edge.target);
+      edgesGroup.appendChild(line);
+      return { data: edge, element: line };
+    });
+
+    // Renderizar Nós (Nodes)
+    const nodeElements = nodes.map(node => {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class', `graph-node ${node.id}`);
+      g.setAttribute('data-id', node.id);
+
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('class', `graph-node-circle ${node.isCenter ? 'center-node' : ''}`);
+      circle.setAttribute('r', String(node.r));
+      g.appendChild(circle);
+
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('class', 'graph-node-text');
+      text.setAttribute('dx', String(node.r + 6));
+      text.setAttribute('dy', '4');
+      text.textContent = node.label;
+      g.appendChild(text);
+
+      nodesGroup.appendChild(g);
+
+      // Eventos de clique para ir para a LP correspondente
+      if (!node.isCenter) {
+        g.addEventListener('click', () => {
+          window.location.href = node.url;
+        });
+      }
+
+      // Eventos de Hover para destacar o Bento Card à esquerda
+      g.addEventListener('mouseenter', () => {
+        highlightNode(node.id);
+      });
+      g.addEventListener('mouseleave', () => {
+        clearHighlights();
+      });
+
+      return { data: node, element: g };
+    });
+
+    // Drag-and-drop nos nós
+    let activeDragNode: NodeData | null = null;
+    
+    nodeElements.forEach(ne => {
+      ne.element.addEventListener('mousedown', (e) => {
+        activeDragNode = ne.data;
+        ne.data.fx = ne.data.x;
+        ne.data.fy = ne.data.y;
+      });
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (activeDragNode && svg) {
+        const rect = svg.getBoundingClientRect();
+        // Converter coordenadas do mouse para coordenadas do SVG (viewBox 800x600)
+        const scaleX = 800 / rect.width;
+        const scaleY = 600 / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+        
+        activeDragNode.fx = Math.max(20, Math.min(780, x));
+        activeDragNode.fy = Math.max(20, Math.min(580, y));
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (activeDragNode) {
+        activeDragNode.fx = null;
+        activeDragNode.fy = null;
+        activeDragNode = null;
+      }
+    });
+
+    // Simulação física simples (Forças estilo Obsidian)
+    const tick = () => {
+      // Repulsão entre nós
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const n1 = nodes[i];
+          const n2 = nodes[j];
+          const dx = n2.x - n1.x;
+          const dy = n2.y - n1.y;
+          const dist = Math.hypot(dx, dy) || 1;
+          if (dist < 180) {
+            const force = (180 - dist) * 0.08;
+            const fx = (dx / dist) * force;
+            const fy = (dy / dist) * force;
+            
+            if (n1.fx === null) { n1.vx -= fx; n1.vy -= fy; }
+            if (n2.fx === null) { n2.vx += fx; n2.vy += fy; }
+          }
+        }
+      }
+
+      // Atração ao centro
+      nodes.forEach(node => {
+        if (node.isCenter) {
+          // Fixa o centro
+          node.x = 400;
+          node.y = 300;
+          return;
+        }
+        
+        // Atração para o nó maxfocos
+        const center = nodes[0];
+        const dx = center.x - node.x;
+        const dy = center.y - node.y;
+        const dist = Math.hypot(dx, dy) || 1;
+        const force = dist * 0.015;
+        node.vx += (dx / dist) * force;
+        node.vy += (dy / dist) * force;
+      });
+
+      // Atualizar velocidades e posições
+      nodes.forEach(node => {
+        if (node.fx !== null) {
+          node.x = node.fx;
+          node.y = node.fy;
+          node.vx = 0;
+          node.vy = 0;
+        } else {
+          node.vx *= 0.85; // atrito
+          node.vy *= 0.85;
+          node.x += node.vx;
+          node.y += node.vy;
+        }
+      });
+
+      // Atualizar posições dos elementos SVG
+      edgeElements.forEach(ee => {
+        const sourceNode = nodes.find(n => n.id === ee.data.source)!;
+        const targetNode = nodes.find(n => n.id === ee.data.target)!;
+        ee.element.setAttribute('x1', String(sourceNode.x));
+        ee.element.setAttribute('y1', String(sourceNode.y));
+        ee.element.setAttribute('x2', String(targetNode.x));
+        ee.element.setAttribute('y2', String(targetNode.y));
+      });
+
+      nodeElements.forEach(ne => {
+        ne.element.setAttribute('transform', `translate(${ne.data.x}, ${ne.data.y})`);
+      });
+
+      requestAnimationFrame(tick);
+    };
+
+    tick();
+  }
+
+  // Lógica de Sincronização Hover
+  const highlightNode = (nodeId: string) => {
+    // Adiciona classe de ativação no nó correspondente
+    const nodeEl = document.querySelector(`.graph-node.${nodeId}`);
+    if (nodeEl) nodeEl.classList.add('active');
+
+    // Destaca a linha
+    const edgeEl = document.querySelector(`.graph-edge[data-target="${nodeId}"]`);
+    if (edgeEl) edgeEl.classList.add('active');
+
+    // Destaca o Bento Card
+    const cardEl = document.querySelector(`.bento-card[data-node="${nodeId}"]`);
+    if (cardEl) cardEl.classList.add('active-node');
+  };
+
+  const clearHighlights = () => {
+    document.querySelectorAll('.graph-node').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.graph-edge').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.bento-card').forEach(el => el.classList.remove('active-node'));
+  };
+
+  // Hover nos Bento Cards ativa os nós correspondentes
+  document.querySelectorAll('.bento-card').forEach(card => {
+    const node = card.getAttribute('data-node');
+    if (node) {
+      card.addEventListener('mouseenter', () => highlightNode(node));
+      card.addEventListener('mouseleave', () => clearHighlights());
+    }
+  });
+</script>
