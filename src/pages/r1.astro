@@ -34,9 +34,14 @@ import Layout from "../layouts/Layout.astro";
 
 <!-- ═══ HERO ═══ -->
 <section class="r1-hero" id="inicio" aria-label="Apresentação">
+  <svg class="r1-hero-deco" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <polygon points="360,40 490,115 490,265 360,340 230,265 230,115" fill="none" stroke="rgba(253,225,18,0.10)" stroke-width="1.5"/>
+    <polygon points="410,190 505,245 505,355 410,410 315,355 315,245" fill="none" stroke="rgba(253,225,18,0.07)" stroke-width="1.5"/>
+    <polygon points="150,300 235,349 235,447 150,496 65,447 65,349" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+  </svg>
   <div class="r1-hero-wrap">
     <div class="r1-hero-content">
-      <span class="r1-kicker-tag">Protocolo R1 · Mentoria ENARE</span>
+      <span class="r1-kicker-tag"><span class="r1-tag-dot" aria-hidden="true"></span>Protocolo R1 · Mentoria ENARE</span>
       <h1 class="r1-hero-h1">
         Sua aprovação na <span class="r1-y">residência em CTBMF</span> no ENARE 2026.
       </h1>
@@ -44,16 +49,21 @@ import Layout from "../layouts/Layout.astro";
         Mentoria com <strong>acompanhamento individual</strong>: plano de estudos e materiais personalizados, direto com cirurgiões que já passaram pela residência. Menos conteúdo genérico, mais foco <strong>no que realmente cai na prova</strong>.
       </p>
       <div class="r1-hero-ctas">
-        <a href="#cta" class="r1-btn r1-btn-y">Matricule-se</a>
-        <a href="#metodo" class="r1-btn r1-btn-ghost">Ver método</a>
+        <a href="#cta" class="r1-cta-arrow">
+          <span class="r1-cta-arrow-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+          Matricule-se
+        </a>
+        <a href="#metodo" class="r1-cta-text">Ver método</a>
       </div>
     </div>
     <div class="r1-hero-media" aria-hidden="true">
       <img
-        src="/images/r1/founders-2.jpg"
+        src="/images/r1/founders-cutout.webp"
         alt=""
-        width="2048"
-        height="1543"
+        width="1500"
+        height="1007"
         fetchpriority="high"
       />
     </div>
@@ -598,54 +608,68 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   transition: all 0.3s;
 }
 
-/* ── HERO (SPLIT: texto à esquerda, mentores à direita) ── */
+/* ── HERO (SPLIT: texto à esquerda, mentores recortados à direita) ── */
 .r1-hero {
   position: relative;
   background-color: var(--r1-bg);
   background-image:
-    radial-gradient(52% 55% at 76% 44%, rgba(253,225,18,0.07), transparent 70%),
-    repeating-linear-gradient(to right, transparent 0 47px, rgba(255,255,255,0.025) 47px 48px),
-    repeating-linear-gradient(to bottom, transparent 0 47px, rgba(255,255,255,0.025) 47px 48px);
+    radial-gradient(50% 55% at 72% 50%, rgba(253,225,18,0.08), transparent 70%),
+    repeating-linear-gradient(to right, transparent 0 55px, rgba(255,255,255,0.022) 55px 56px),
+    repeating-linear-gradient(to bottom, transparent 0 55px, rgba(255,255,255,0.022) 55px 56px);
   overflow: hidden;
 }
+.r1-hero-deco {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: min(52vw, 760px);
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 .r1-hero-wrap {
+  position: relative;
+  z-index: 1;
   max-width: var(--r1-container);
   margin: 0 auto;
-  min-height: 100svh;
+  min-height: min(86vh, 800px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.02fr 0.98fr;
   align-items: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(6rem, 12vh, 8rem) var(--r1-gutter) clamp(3rem, 6vh, 5rem);
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(7rem, 13vh, 9rem) var(--r1-gutter) 0;
 }
 .r1-hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-bottom: clamp(3rem, 6vh, 5rem);
 }
 .r1-hero-media {
   position: relative;
-  width: 100%;
-  /* respeita a proporção real da foto (2048×1543) em vez de esticar pela altura da secao */
-  aspect-ratio: 2048 / 1543;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 70px -25px rgba(0,0,0,0.6);
+  align-self: end;
+  height: 100%;
+  min-height: 460px;
 }
 .r1-hero-media img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 22%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(132%, 730px);
+  height: auto;
+  filter: drop-shadow(0 24px 45px rgba(0,0,0,0.55));
+  /* leve fade na base para "aterrar" os mentores no fundo */
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 7%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 7%);
 }
 .r1-hero-h1 {
   font-family: var(--r1-title);
   font-weight: 700;
   font-size: clamp(2rem, 3.4vw, 3.4rem);
-  line-height: 1.0;
+  line-height: 1.02;
   letter-spacing: -0.035em;
   text-transform: uppercase;
   color: var(--r1-white);
@@ -654,16 +678,94 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
 }
 .r1-hero-sub {
   font-family: var(--r1-mono);
-  font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
   color: var(--r1-offwhite);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-  max-width: 520px;
-  margin-bottom: 1.5rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  max-width: 500px;
+  margin-bottom: 2rem;
 }
 .r1-hero-sub strong {
   color: var(--r1-yellow);
   font-weight: 500;
+}
+/* tag escura com bolinha (estilo referência) */
+.r1-kicker-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--r1-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--r1-offwhite);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(253,225,18,0.28);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.r1-tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--r1-yellow);
+  box-shadow: 0 0 10px rgba(253,225,18,0.7);
+}
+/* CTA principal: pill amarela com seta em círculo preto */
+.r1-hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.r1-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--r1-yellow);
+  color: #111;
+  font-family: var(--r1-title);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.45rem 1.6rem 0.45rem 0.45rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.25s var(--r1-ease), box-shadow 0.25s var(--r1-ease);
+}
+.r1-cta-arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #111;
+  color: var(--r1-yellow);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--r1-ease);
+}
+.r1-cta-arrow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(253,225,18,0.28);
+}
+.r1-cta-arrow:hover .r1-cta-arrow-icon {
+  transform: translateX(3px);
+}
+.r1-cta-text {
+  font-family: var(--r1-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--r1-gray);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.r1-cta-text:hover {
+  color: var(--r1-white);
+  border-color: rgba(255,255,255,0.4);
 }
 .r1-hero-meta {
   display: flex;
@@ -1244,31 +1346,38 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
    RESPONSIVE
    ════════════════════════════ */
 @media (max-width: 960px) {
-  /* Hero: empilha (imagem em cima, texto embaixo) */
+  /* Hero: empilha (texto em cima, mentores recortados embaixo) */
   .r1-hero-wrap {
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 0;
-    padding: 0 0 3.5rem;
-  }
-  .r1-hero-media {
-    order: -1;
-    aspect-ratio: auto;
-    min-height: 46vh;
-    align-self: stretch;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .r1-hero-media img {
-    object-position: 50% 20%;
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 24%);
-    mask-image: linear-gradient(to top, transparent 0%, #000 24%);
+    padding: clamp(6rem, 16vh, 8rem) var(--r1-gutter) 0;
   }
   .r1-hero-content {
     justify-content: flex-start;
-    padding: 1.75rem var(--r1-gutter) 0;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2.5rem;
   }
+  .r1-hero-content .r1-hero-ctas { justify-content: center; }
   .r1-hero-h1, .r1-hero-sub { max-width: 100%; }
+  .r1-hero-media {
+    align-self: center;
+    min-height: 0;
+    height: auto;
+    margin-top: 1rem;
+  }
+  .r1-hero-media img {
+    position: static;
+    transform: none;
+    width: min(100%, 460px);
+    margin: 0 auto;
+    display: block;
+    filter: none;
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 6%);
+    mask-image: linear-gradient(to top, transparent 0%, #000 6%);
+  }
+  .r1-hero-deco { width: 90%; opacity: 0.7; }
 
   .r1-armadilhas { grid-template-columns: 1fr; }
   .r1-pilares-grid { grid-template-columns: 1fr 1fr; }
