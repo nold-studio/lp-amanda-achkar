@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
     <div class="bento-header">
       <img src="/images/r1/logo-maxfocos.png" alt="MaxFocos Logo" height="32" class="bento-logo" />
       <h1>Central de Páginas</h1>
-      <p>Acesse e gerencie as landing pages ativas da MaxFocos e seus fundadores.</p>
+      <p>Landing pages ativas da MaxFocos e seus fundadores.</p>
     </div>
 
     <div class="bento-grid">
@@ -23,7 +23,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="card-content">
           <span class="card-tag">Dra. Amanda Coli</span>
           <h2>Cirurgia Ortognática & Estética</h2>
-          <p>Página de atração de pacientes particulares focada em ortognática, implantes e reabilitação facial.</p>
+          <p>Atração de pacientes particulares para ortognática, implantes e reabilitação facial.</p>
           <div class="card-footer">
             <span class="card-link">Acessar página</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -37,7 +37,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="card-content">
           <span class="card-tag">Dr. Eliézer Andrade</span>
           <h2>CTBMF & Implantes Dentários</h2>
-          <p>Página profissional de conversão clínica focada em cirurgia oral maior, implantes e sisos complexos.</p>
+          <p>Atração de pacientes particulares para CTBMF, implantes e sisos complexos.</p>
           <div class="card-footer">
             <span class="card-link">Acessar página</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -51,7 +51,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="card-content">
           <span class="card-tag">Mentoria ENARE 2026</span>
           <h2>Protocolo R1</h2>
-          <p>Landing page estratégica do preparatório e mentoria para residência de Bucomaxilo.</p>
+          <p>Preparatório e mentoria para residência em Bucomaxilo.</p>
           <div class="card-footer">
             <span class="card-link">Acessar página</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -168,7 +168,7 @@ body {
 .bento-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 /* Bento Card Style */
@@ -177,7 +177,7 @@ body {
   background: var(--links-card);
   border: 1px solid var(--links-border);
   border-radius: 14px;
-  padding: 1.5rem;
+  padding: 1.125rem 1.25rem;
   text-decoration: none;
   color: var(--links-white);
   transition: transform 0.3s var(--links-ease), border-color 0.3s, background 0.3s;
@@ -209,13 +209,13 @@ body {
   letter-spacing: 0.15em;
   color: var(--links-yellow);
   display: inline-block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .bento-card h2 {
   font-family: var(--links-title);
-  font-size: 1.25rem;
-  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  margin: 0 0 0.375rem;
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
@@ -223,8 +223,8 @@ body {
 .bento-card p {
   color: var(--links-gray);
   font-size: 0.75rem;
-  line-height: 1.6;
-  margin: 0 0 1.25rem;
+  line-height: 1.5;
+  margin: 0 0 0.875rem;
 }
 
 .card-footer {
