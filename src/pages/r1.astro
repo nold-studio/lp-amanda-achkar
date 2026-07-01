@@ -36,20 +36,20 @@ import Layout from "../layouts/Layout.astro";
 <section class="r1-hero" id="inicio" aria-label="Apresentação">
   <div class="r1-hero-bg" aria-hidden="true">
     <img
-      src="/images/r1/hero-eliezer.jpg"
+      src="/images/r1/founders-2.jpg"
       alt=""
-      width="1200"
-      height="1600"
+      width="2048"
+      height="1543"
       fetchpriority="high"
     />
   </div>
   <div class="r1-hero-content">
-    <span class="r1-kicker-tag">Mentoria ENARE 2026</span>
+    <span class="r1-kicker-tag">Protocolo R1 · Vagas abertas</span>
     <h1 class="r1-hero-h1">
-      O ACOMPANHAMENTO QUE VOCÊ PRECISA PARA PASSAR NA RESIDÊNCIA.<br />
+      Pare de estudar "tudo" e comece a estudar "o que aprova".
     </h1>
     <p class="r1-hero-sub">
-      Chega de aulas genéricas e apostilas acumuladas. Um plano de estudos individualizado e o direcionamento prático direto com cirurgiões que estão operando todos os dias. 
+      Chega de aulas genéricas e apostilas acumuladas. Um plano de estudos individualizado e o direcionamento prático direto com cirurgiões que estão operando todos os dias.
     </p>
     <div class="r1-hero-meta">
       <span class="r1-badge-date">Inscrições até <strong>15 de Julho</strong></span>
@@ -57,7 +57,7 @@ import Layout from "../layouts/Layout.astro";
       <span class="r1-badge-date">Prova em <strong>13 de Setembro de 2026</strong></span>
     </div>
     <div class="r1-hero-ctas">
-      <a href="#cta" class="r1-btn r1-btn-y">Entrar para a Mentoria</a>
+      <a href="#cta" class="r1-btn r1-btn-y">Matricule-se</a>
       <a href="#metodo" class="r1-btn r1-btn-ghost">Ver método</a>
     </div>
   </div>
@@ -291,35 +291,59 @@ import Layout from "../layouts/Layout.astro";
   </div>
 </section>
 
+<!-- ═══ DEPOIMENTOS DE WHATSAPP ═══ -->
+<section class="r1-wa-depoimentos" aria-labelledby="wa-heading">
+  <div class="r1-wrap">
+    <span class="r1-kicker">Prova social</span>
+    <h2 id="wa-heading" class="r1-h2">
+      Direto do WhatsApp.<br />Sem <span class="r1-y">roteiro, sem atuação.</span>
+    </h2>
+    <p class="r1-lead">Mensagens reais enviadas por alunos do MaxFocos, sem edição de conteúdo.</p>
+
+    <div class="r1-wa-grid">
+      <div class="r1-wa-card">
+        <img src="/images/r1/wa-real-laura.jpg" alt="Depoimento de Laura Godoy sobre o MaxFocos no WhatsApp" width="720" height="1350" loading="lazy" />
+      </div>
+      <div class="r1-wa-card">
+        <img src="/images/r1/wa-real-alessandro.jpg" alt="Depoimento de aluno aprovado em 1º lugar no HUWC-UFC sobre o MaxFocos no WhatsApp" width="720" height="956" loading="lazy" />
+      </div>
+      <div class="r1-wa-card">
+        <img src="/images/r1/wa-real-murillo.jpg" alt="Depoimento de Murillo Henrique, aprovado em 1º lugar na residência do HC-UFG, sobre o MaxFocos no WhatsApp" width="720" height="1350" loading="lazy" />
+      </div>
+      <div class="r1-wa-card">
+        <img src="/images/r1/wa-real-mariam.jpg" alt="Depoimento de Mariam Rocio sobre o MaxFocos no WhatsApp" width="720" height="1350" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ MENTORES ═══ -->
 <section class="r1-mentores" id="mentores" aria-labelledby="mentores-heading">
   <div class="r1-wrap">
-    <span class="r1-kicker">Quem vai te acompanhar</span>
-    <h2 id="mentores-heading" class="r1-h2">
-      Cirurgiões em prática.<br />Não <span class="r1-y">professores distantes.</span>
-    </h2>
-    <p class="r1-lead">Amanda e Eliézer são bucomaxilofaciais especialistas, atuantes em hospitais de São Paulo, que vivem a rotina real e já guiaram dezenas de aprovações.</p>
+    <div class="r1-mentores-split">
+      <div class="r1-mentores-text">
+        <span class="r1-kicker">Quem vai te acompanhar</span>
+        <h2 id="mentores-heading" class="r1-h2">
+          Cirurgiões em prática.<br />Não <span class="r1-y">professores distantes.</span>
+        </h2>
+        <p class="r1-lead">Amanda e Eliézer são bucomaxilofaciais especialistas, atuantes em hospitais de São Paulo, que vivem a rotina real e já guiaram dezenas de aprovações.</p>
 
-    <div class="r1-mentores-grid">
-      <div class="r1-mentor-card">
-        <div class="r1-mentor-photo">
-          <img src="/images/r1/founders-together.jpg" alt="Dra. Amanda Coli" width="600" height="800" loading="lazy" />
-        </div>
-        <div class="r1-mentor-info">
-          <h3>Dra. Amanda Coli</h3>
-          <span class="r1-mentor-cro">CRO-SP 141836</span>
-          <p>Graduada pela Unicamp. Especialista em CTBMF pelo Conjunto Hospitalar do Mandaqui. Especialista em Implantodontia (ABO). Cirurgiã atuante em São Paulo.</p>
+        <div class="r1-mentor-info-list">
+          <div class="r1-mentor-info-item">
+            <h3>Dra. Amanda Coli</h3>
+            <span class="r1-mentor-cro">CRO-SP 141836</span>
+            <p>Graduada pela Unicamp. Especialista em CTBMF pelo Conjunto Hospitalar do Mandaqui. Especialista em Implantodontia (ABO). Cirurgiã atuante em São Paulo.</p>
+          </div>
+          <div class="r1-mentor-info-item">
+            <h3>Dr. Eliézer Andrade</h3>
+            <span class="r1-mentor-cro">CRO-SP 139423</span>
+            <p>Graduado pela Faculdade do Amazonas. Especialista em CTBMF pelo Conjunto Hospitalar do Mandaqui. Especialista em Implantodontia. Professor e cirurgião em prática ativa.</p>
+          </div>
         </div>
       </div>
-      <div class="r1-mentor-card">
-        <div class="r1-mentor-photo">
-          <img src="/images/r1/eliezer-pro.jpg" alt="Dr. Eliézer Andrade" width="600" height="800" loading="lazy" />
-        </div>
-        <div class="r1-mentor-info">
-          <h3>Dr. Eliézer Andrade</h3>
-          <span class="r1-mentor-cro">CRO-SP 139423</span>
-          <p>Graduado pela Faculdade do Amazonas. Especialista em CTBMF pelo Conjunto Hospitalar do Mandaqui. Especialista em Implantodontia. Professor e cirurgião em prática ativa.</p>
-        </div>
+
+      <div class="r1-mentores-photo">
+        <img src="/images/r1/mentores-juntos.jpg" alt="Dr. Eliézer e Dra. Amanda" width="1400" height="1054" loading="lazy" />
       </div>
     </div>
   </div>
@@ -989,41 +1013,52 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   color: var(--r1-gray);
 }
 
+/* ── DEPOIMENTOS DE WHATSAPP ── */
+.r1-wa-depoimentos {
+  padding: clamp(5rem, 12vw, 8rem) 0;
+  background: var(--r1-bg);
+}
+.r1-wa-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.75rem;
+}
+.r1-wa-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--r1-darkgray);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+}
+.r1-wa-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--r1-ease);
+}
+.r1-wa-card:hover img {
+  transform: scale(1.03);
+}
+
 /* ── MENTORES ── */
 .r1-mentores {
   padding: clamp(5rem, 12vw, 8rem) 0;
   background: var(--r1-surface);
 }
-.r1-mentores-grid {
+.r1-mentores-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-top: 2.75rem;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
 }
-.r1-mentor-card {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--r1-darkgray);
-  background: var(--r1-bg);
+.r1-mentor-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
 }
-.r1-mentor-photo {
-  height: 360px;
-  overflow: hidden;
-}
-.r1-mentor-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
-  transition: transform 0.6s var(--r1-ease);
-}
-.r1-mentor-card:hover .r1-mentor-photo img {
-  transform: scale(1.04);
-}
-.r1-mentor-info {
-  padding: 1.5rem 1.75rem 1.75rem;
-}
-.r1-mentor-info h3 {
+.r1-mentor-info-item h3 {
   font-family: var(--r1-title);
   font-size: 1.25rem;
   font-weight: 800;
@@ -1040,12 +1075,24 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   color: var(--r1-yellow);
   margin-bottom: 0.875rem;
 }
-.r1-mentor-info p {
+.r1-mentor-info-item p {
   font-family: var(--r1-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--r1-gray);
-  line-height: 1.6;
+  line-height: 1.65;
   letter-spacing: 0.02em;
+  max-width: 460px;
+}
+.r1-mentores-photo {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
+.r1-mentores-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ── FOTO DESTAQUE ── */
@@ -1203,10 +1250,12 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   .r1-pilar:nth-child(odd) { border-right: 1px solid var(--r1-darkgray); }
   .r1-pilar:nth-last-child(-n+2) { border-bottom: none; }
   .r1-comp-table { grid-template-columns: 1fr; }
-  .r1-mentores-grid { grid-template-columns: 1fr; }
+  .r1-mentores-split { grid-template-columns: 1fr; }
+  .r1-mentores-photo { order: -1; max-width: 480px; margin: 0 auto; }
   .r1-depoimento-card { grid-template-columns: 1fr; }
   .r1-video-container { max-width: 280px; margin: 0 auto; }
   .r1-aprovados-mosaico { grid-template-columns: repeat(2, 1fr); }
+  .r1-wa-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1241,6 +1290,7 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
 
 @media (max-width: 480px) {
   .r1-aprovados-mosaico { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .r1-wa-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .r1-hero-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
   .r1-dot { display: none; }
   .r1-destaque { max-height: 300px; }
@@ -1344,7 +1394,7 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.r1-arm, .r1-pilar, .r1-mentor-card, .r1-aprovado-card-foto, .r1-faq-item, .r1-solucao, .r1-comp-col, .r1-depoimento-card').forEach(el => {
+  document.querySelectorAll('.r1-arm, .r1-pilar, .r1-mentor-info-item, .r1-aprovado-card-foto, .r1-faq-item, .r1-solucao, .r1-comp-col, .r1-depoimento-card, .r1-wa-card').forEach(el => {
     el.classList.add('r1-reveal');
     observer.observe(el);
   });
@@ -1365,13 +1415,16 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   /* Staggered delays for grid items */
   .r1-pilar:nth-child(2).r1-reveal,
   .r1-arm:nth-child(2).r1-reveal,
-  .r1-mentor-card:nth-child(2).r1-reveal,
+  .r1-mentor-info-item:nth-child(2).r1-reveal,
+  .r1-wa-card:nth-child(2).r1-reveal,
   .r1-aprovado-card-foto:nth-child(2).r1-reveal { transition-delay: 0.08s; }
 
   .r1-pilar:nth-child(3).r1-reveal,
+  .r1-wa-card:nth-child(3).r1-reveal,
   .r1-aprovado-card-foto:nth-child(3).r1-reveal { transition-delay: 0.16s; }
 
   .r1-pilar:nth-child(4).r1-reveal,
+  .r1-wa-card:nth-child(4).r1-reveal,
   .r1-aprovado-card-foto:nth-child(4).r1-reveal { transition-delay: 0.24s; }
 
   .r1-comp-col:nth-child(2).r1-reveal { transition-delay: 0.1s; }
