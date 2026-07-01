@@ -34,32 +34,29 @@ import Layout from "../layouts/Layout.astro";
 
 <!-- ═══ HERO ═══ -->
 <section class="r1-hero" id="inicio" aria-label="Apresentação">
-  <div class="r1-hero-content">
-    <span class="r1-kicker-tag">Protocolo R1 · Mentoria ENARE</span>
-    <h1 class="r1-hero-h1">
-      Sua aprovação na <span class="r1-y">residência em CTBMF</span> no ENARE 2026.
-    </h1>
-    <p class="r1-hero-sub">
-      Mentoria com <strong>acompanhamento individual</strong>: plano de estudos e materiais personalizados, direto com cirurgiões que já passaram pela residência. Menos conteúdo genérico, mais foco <strong>no que realmente cai na prova</strong>.
-    </p>
-    <div class="r1-hero-meta">
-      <span class="r1-badge-date">Inscrições até <strong>15 de Julho</strong></span>
-      <span class="r1-dot" aria-hidden="true"></span>
-      <span class="r1-badge-date">Prova em <strong>13 de Setembro de 2026</strong></span>
+  <div class="r1-hero-wrap">
+    <div class="r1-hero-content">
+      <span class="r1-kicker-tag">Protocolo R1 · Mentoria ENARE</span>
+      <h1 class="r1-hero-h1">
+        Sua aprovação na <span class="r1-y">residência em CTBMF</span> no ENARE 2026.
+      </h1>
+      <p class="r1-hero-sub">
+        Mentoria com <strong>acompanhamento individual</strong>: plano de estudos e materiais personalizados, direto com cirurgiões que já passaram pela residência. Menos conteúdo genérico, mais foco <strong>no que realmente cai na prova</strong>.
+      </p>
+      <div class="r1-hero-ctas">
+        <a href="#cta" class="r1-btn r1-btn-y">Matricule-se</a>
+        <a href="#metodo" class="r1-btn r1-btn-ghost">Ver método</a>
+      </div>
     </div>
-    <div class="r1-hero-ctas">
-      <a href="#cta" class="r1-btn r1-btn-y">Matricule-se</a>
-      <a href="#metodo" class="r1-btn r1-btn-ghost">Ver método</a>
+    <div class="r1-hero-media" aria-hidden="true">
+      <img
+        src="/images/r1/founders-2.jpg"
+        alt=""
+        width="2048"
+        height="1543"
+        fetchpriority="high"
+      />
     </div>
-  </div>
-  <div class="r1-hero-media" aria-hidden="true">
-    <img
-      src="/images/r1/founders-2.jpg"
-      alt=""
-      width="2048"
-      height="1543"
-      fetchpriority="high"
-    />
   </div>
 </section>
 
@@ -603,22 +600,33 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
 
 /* ── HERO (SPLIT: texto à esquerda, mentores à direita) ── */
 .r1-hero {
+  position: relative;
+  background-color: var(--r1-bg);
+  background-image:
+    radial-gradient(52% 55% at 76% 44%, rgba(253,225,18,0.08), transparent 70%),
+    repeating-linear-gradient(60deg, transparent 0 43px, rgba(253,225,18,0.03) 43px 44px),
+    repeating-linear-gradient(-60deg, transparent 0 43px, rgba(253,225,18,0.03) 43px 44px);
+  overflow: hidden;
+}
+.r1-hero-wrap {
+  max-width: var(--r1-container);
+  margin: 0 auto;
   min-height: 100svh;
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  background: var(--r1-bg);
-  overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(6rem, 12vh, 8rem) var(--r1-gutter) clamp(3rem, 6vh, 5rem);
 }
 .r1-hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(6rem, 12vh, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem);
 }
 .r1-hero-media {
   position: relative;
-  overflow: hidden;
-  background: #000;
+  align-self: stretch;
+  min-height: 480px;
 }
 .r1-hero-media img {
   position: absolute;
@@ -626,15 +634,16 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
-}
-/* fade suave na borda esquerda da imagem, para integrar os dois blocos */
-.r1-hero-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0) 20%);
-  pointer-events: none;
+  object-position: 50% 12%;
+  /* mescla a foto no fundo: fade nas laterais e na base, como se emergisse do escuro */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 15%, #000 86%, transparent 100%),
+    linear-gradient(to top, transparent 0%, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 15%, #000 86%, transparent 100%),
+    linear-gradient(to top, transparent 0%, #000 14%);
+  mask-composite: intersect;
 }
 .r1-hero-h1 {
   font-family: var(--r1-title);
@@ -1240,15 +1249,25 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
    ════════════════════════════ */
 @media (max-width: 960px) {
   /* Hero: empilha (imagem em cima, texto embaixo) */
-  .r1-hero { grid-template-columns: 1fr; min-height: auto; }
-  .r1-hero-media { order: -1; min-height: 46vh; }
-  .r1-hero-media img { object-position: 50% 22%; }
-  .r1-hero-media::after {
-    background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0) 42%);
+  .r1-hero-wrap {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 0;
+    padding: 0 0 3.5rem;
+  }
+  .r1-hero-media {
+    order: -1;
+    min-height: 46vh;
+    align-self: stretch;
+  }
+  .r1-hero-media img {
+    object-position: 50% 20%;
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 24%);
+    mask-image: linear-gradient(to top, transparent 0%, #000 24%);
   }
   .r1-hero-content {
     justify-content: flex-start;
-    padding: 2.5rem var(--r1-gutter) 3.5rem;
+    padding: 1.75rem var(--r1-gutter) 0;
   }
   .r1-hero-h1, .r1-hero-sub { max-width: 100%; }
 
