@@ -202,7 +202,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="r1-depoimento-texto">
           <blockquote>
             <p>"Eu não tinha tempo de estudar por causa da rotina intensa de plantões e consultório. O cronograma adaptado da mentoria salvou minha preparação porque cabia na minha vida de verdade. Fui aprovada direto."</p>
-            <footer>Dra. Carolina M. · <span class="r1-y">Aprovada ENARE</span></footer>
+            <footer>Dra. Jéssica · <span class="r1-y">Aprovada na Residência CTBMF</span></footer>
           </blockquote>
         </div>
       </div>
@@ -235,7 +235,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="r1-depoimento-texto">
           <blockquote>
             <p>"O material direcionado e os resumos esquematizados foram fundamentais. Eu perdia semanas tentando resumir livros inteiros por conta própria. Com o R1, eu ia direto ao ponto do que cai na prova."</p>
-            <footer>Dr. Felipe R. · <span class="r1-y">Aprovado ENARE</span></footer>
+            <footer>Dra. Giovana · <span class="r1-y">Aluna do Protocolo R1</span></footer>
           </blockquote>
         </div>
       </div>
@@ -268,7 +268,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="r1-depoimento-texto">
           <blockquote>
             <p>"Ter contato no WhatsApp diretamente com os cirurgiões fez total diferença. Quando eu tinha dúvida em alguma questão ou caso clínico, eles me explicavam por áudio em minutos."</p>
-            <footer>Dra. Beatriz S. · <span class="r1-y">Aprovada ENARE</span></footer>
+            <footer>Dr. Rodrigo · <span class="r1-y">Aluno do Protocolo R1</span></footer>
           </blockquote>
         </div>
       </div>
@@ -278,20 +278,16 @@ import Layout from "../layouts/Layout.astro";
     <!-- Mosaico de Fotos de Aprovados adicionais -->
     <div class="r1-aprovados-mosaico">
       <div class="r1-aprovado-card-foto">
-        <img src="/images/r1/aprovado-1.jpg" alt="Aprovado ENARE" width="160" height="160" loading="lazy" />
-        <span>Amanda C.</span>
+        <img src="/images/r1/aprovado-1.jpg" alt="Aluno aprovado no ENARE" width="1080" height="1440" loading="lazy" />
       </div>
       <div class="r1-aprovado-card-foto">
-        <img src="/images/r1/aprovado-2.jpg" alt="Aprovado ENARE" width="160" height="160" loading="lazy" />
-        <span>Vitor H.</span>
+        <img src="/images/r1/aprovado-2.jpg" alt="Aluno aprovado no ENARE" width="1080" height="1440" loading="lazy" />
       </div>
       <div class="r1-aprovado-card-foto">
-        <img src="/images/r1/aprovado-3.jpg" alt="Aprovado ENARE" width="160" height="160" loading="lazy" />
-        <span>Camila L.</span>
+        <img src="/images/r1/aprovado-3.jpg" alt="Aluno aprovado no ENARE" width="1080" height="1440" loading="lazy" />
       </div>
       <div class="r1-aprovado-card-foto">
-        <img src="/images/r1/aprovado-4.jpg" alt="Aprovado ENARE" width="160" height="160" loading="lazy" />
-        <span>Rodrigo S.</span>
+        <img src="/images/r1/aprovado-4.jpg" alt="Aluno aprovado no ENARE" width="1080" height="1440" loading="lazy" />
       </div>
     </div>
 
@@ -303,7 +299,7 @@ import Layout from "../layouts/Layout.astro";
   <div class="r1-wrap">
     <span class="r1-kicker">Prova social</span>
     <h2 id="wa-heading" class="r1-h2">
-      Direto do WhatsApp.<br />Sem <span class="r1-y">roteiro, sem atuação.</span>
+      O que nossos alunos<br />estão <span class="r1-y">dizendo.</span>
     </h2>
     <p class="r1-lead">Mensagens reais enviadas por alunos do MaxFocos, sem edição de conteúdo.</p>
 
@@ -358,7 +354,7 @@ import Layout from "../layouts/Layout.astro";
 
 <!-- ═══ FOTO DESTAQUE ═══ -->
 <section class="r1-destaque" aria-hidden="true">
-  <img src="/images/r1/studio-3.jpg" alt="Dr. Eliézer e Dra. Amanda — MaxFocos" width="1200" height="900" loading="lazy" />
+  <img src="/images/r1/studio-3.jpg" alt="Dr. Eliézer e Dra. Amanda — MaxFocos" width="1575" height="2048" loading="lazy" />
 </section>
 
 <!-- ═══ FAQ ═══ -->
@@ -1099,22 +1095,14 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   border-top: 1px solid var(--r1-darkgray);
   padding-top: 3rem;
 }
-.r1-aprovado-card-foto {
-  text-align: center;
-}
 .r1-aprovado-card-foto img {
   width: 100%;
-  aspect-ratio: 1;
+  height: auto;
+  aspect-ratio: 1080 / 1440;
   border-radius: 10px;
   object-fit: cover;
   border: 1px solid var(--r1-darkgray);
-  margin-bottom: 0.5rem;
-}
-.r1-aprovado-card-foto span {
   display: block;
-  font-family: var(--r1-mono);
-  font-size: 0.6875rem;
-  color: var(--r1-gray);
 }
 
 /* ── DEPOIMENTOS DE WHATSAPP ── */
@@ -1201,15 +1189,19 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
 
 /* ── FOTO DESTAQUE ── */
 .r1-destaque {
-  width: 100%;
-  overflow: hidden;
-  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 5rem) var(--r1-gutter);
+  background: var(--r1-bg);
 }
 .r1-destaque img {
-  width: 100%;
-  height: 100%;
+  /* aspect-ratio igual à foto original (1575×2048): cover nunca corta, só encaixa */
+  width: min(100%, 420px);
+  height: auto;
+  aspect-ratio: 1575 / 2048;
   object-fit: cover;
-  object-position: center 35%;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
   display: block;
 }
 
@@ -1430,7 +1422,7 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   .r1-wa-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .r1-hero-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
   .r1-dot { display: none; }
-  .r1-destaque { max-height: 300px; }
+  .r1-destaque img { width: min(100%, 300px); }
 }
 </style>
 
