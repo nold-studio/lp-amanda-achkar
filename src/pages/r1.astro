@@ -626,8 +626,12 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
 }
 .r1-hero-media {
   position: relative;
-  align-self: stretch;
-  min-height: 480px;
+  width: 100%;
+  /* respeita a proporção real da foto (2048×1543) em vez de esticar pela altura da secao */
+  aspect-ratio: 2048 / 1543;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -25px rgba(0,0,0,0.6);
 }
 .r1-hero-media img {
   position: absolute;
@@ -635,20 +639,7 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 12%;
-  /* fade suave só na base, pra costurar com o fundo abaixo */
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 12%);
-  mask-image: linear-gradient(to top, transparent 0%, #000 12%);
-}
-/* vinheta: escurece gradualmente as bordas (tinta, não corta pixels) para mesclar com o fundo sem criar linha dura sobre os rostos */
-.r1-hero-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, rgba(13,13,13,0.85) 0%, transparent 22%, transparent 100%),
-    radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(13,13,13,0.55) 100%);
-  pointer-events: none;
+  object-position: 50% 22%;
 }
 .r1-hero-h1 {
   font-family: var(--r1-title);
@@ -1262,16 +1253,16 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   }
   .r1-hero-media {
     order: -1;
+    aspect-ratio: auto;
     min-height: 46vh;
     align-self: stretch;
+    border-radius: 0;
+    box-shadow: none;
   }
   .r1-hero-media img {
     object-position: 50% 20%;
     -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 24%);
     mask-image: linear-gradient(to top, transparent 0%, #000 24%);
-  }
-  .r1-hero-media::after {
-    background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(13,13,13,0.6) 100%);
   }
   .r1-hero-content {
     justify-content: flex-start;
