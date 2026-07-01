@@ -603,9 +603,9 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   position: relative;
   background-color: var(--r1-bg);
   background-image:
-    radial-gradient(52% 55% at 76% 44%, rgba(253,225,18,0.08), transparent 70%),
-    repeating-linear-gradient(60deg, transparent 0 43px, rgba(253,225,18,0.03) 43px 44px),
-    repeating-linear-gradient(-60deg, transparent 0 43px, rgba(253,225,18,0.03) 43px 44px);
+    radial-gradient(52% 55% at 76% 44%, rgba(253,225,18,0.07), transparent 70%),
+    repeating-linear-gradient(to right, transparent 0 47px, rgba(255,255,255,0.025) 47px 48px),
+    repeating-linear-gradient(to bottom, transparent 0 47px, rgba(255,255,255,0.025) 47px 48px);
   overflow: hidden;
 }
 .r1-hero-wrap {
@@ -622,6 +622,7 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 .r1-hero-media {
   position: relative;
@@ -635,19 +636,23 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   height: 100%;
   object-fit: cover;
   object-position: 50% 12%;
-  /* mescla a foto no fundo: fade nas laterais e na base, como se emergisse do escuro */
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 15%, #000 86%, transparent 100%),
-    linear-gradient(to top, transparent 0%, #000 14%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 15%, #000 86%, transparent 100%),
-    linear-gradient(to top, transparent 0%, #000 14%);
-  mask-composite: intersect;
+  /* fade suave só na base, pra costurar com o fundo abaixo */
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 12%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 12%);
+}
+/* vinheta: escurece gradualmente as bordas (tinta, não corta pixels) para mesclar com o fundo sem criar linha dura sobre os rostos */
+.r1-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(13,13,13,0.85) 0%, transparent 22%, transparent 100%),
+    radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(13,13,13,0.55) 100%);
+  pointer-events: none;
 }
 .r1-hero-h1 {
   font-family: var(--r1-title);
-  font-weight: 900;
+  font-weight: 700;
   font-size: clamp(2rem, 3.4vw, 3.4rem);
   line-height: 1.0;
   letter-spacing: -0.035em;
@@ -1264,6 +1269,9 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
     object-position: 50% 20%;
     -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 24%);
     mask-image: linear-gradient(to top, transparent 0%, #000 24%);
+  }
+  .r1-hero-media::after {
+    background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(13,13,13,0.6) 100%);
   }
   .r1-hero-content {
     justify-content: flex-start;
