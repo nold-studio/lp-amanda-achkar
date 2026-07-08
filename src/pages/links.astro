@@ -18,7 +18,7 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="bento-grid">
       <!-- Card Amanda -->
-      <a href="/" class="bento-card card-amanda" data-node="amanda">
+      <a href="/dra-amanda" class="bento-card card-amanda" data-node="amanda">
         <div class="card-glow"></div>
         <div class="card-content">
           <span class="card-tag">Dra. Amanda Coli</span>
@@ -32,7 +32,7 @@ import Layout from "../layouts/Layout.astro";
       </a>
 
       <!-- Card Eliezer -->
-      <a href="/eliezer" class="bento-card card-eliezer" data-node="eliezer">
+      <a href="/dr-eliezer" class="bento-card card-eliezer" data-node="eliezer">
         <div class="card-glow"></div>
         <div class="card-content">
           <span class="card-tag">Dr. Eliézer Andrade</span>
@@ -46,7 +46,7 @@ import Layout from "../layouts/Layout.astro";
       </a>
 
       <!-- Card Protocolo R1 -->
-      <a href="/r1" class="bento-card card-r1" data-node="r1">
+      <a href="/" class="bento-card card-r1" data-node="r1">
         <div class="card-glow"></div>
         <div class="card-content">
           <span class="card-tag">Mentoria ENARE 2026</span>
@@ -417,9 +417,9 @@ body {
   // Definição dos nós (estilo Obsidian)
   const nodes: NodeData[] = [
     { id: 'maxfocos', label: 'MAXFOCOS', url: '#', x: 400, y: 300, vx: 0, vy: 0, fx: null, fy: null, isCenter: true, r: 12 },
-    { id: 'amanda', label: 'LP AMANDA (ORTOGNÁTICA)', url: '/', x: 300, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
-    { id: 'eliezer', label: 'LP ELIEZER (CTBMF)', url: '/eliezer', x: 500, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
-    { id: 'r1', label: 'PROTOCOLO R1', url: '/r1', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
+    { id: 'amanda', label: 'LP AMANDA (ORTOGNÁTICA)', url: '/dra-amanda', x: 300, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'eliezer', label: 'LP ELIEZER (CTBMF)', url: '/dr-eliezer', x: 500, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'r1', label: 'PROTOCOLO R1', url: '/', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
   ];
 
   const edges: EdgeData[] = [

@@ -2,5 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "astro",
   "buildCommand": "astro build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/r1", "destination": "/", "permanent": true },
+    { "source": "/eliezer", "destination": "/dr-eliezer", "permanent": true }
+  ]
 }

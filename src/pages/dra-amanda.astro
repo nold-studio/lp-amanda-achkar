@@ -1,0 +1,1236 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Dra. Amanda Coli — Cirurgiã Bucomaxilofacial em São Paulo"
+  description="Dra. Amanda Coli, especialista em Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Cirurgia ortognática, implantes, extração de sisos e trauma facial. Agende sua avaliação."
+>
+
+<!-- ═══ NAV ═══ -->
+<header class="site-nav" role="banner">
+  <div class="nav-inner">
+    <a href="/dra-amanda" class="nav-logo" aria-label="Dra. Amanda — Início">
+      <img src="/images/logo-amanda.png" alt="Dra. Amanda · Bucomaxilofacial" height="30" />
+    </a>
+
+    <nav aria-label="Navegação principal">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#tratamentos">Tratamentos</a></li>
+        <li><a href="#pilares">Pilares</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </nav>
+
+    <a href="#contato" class="btn btn-primary btn-sm nav-cta">Agendar avaliação</a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="inicio" aria-label="Apresentação">
+  <div class="hero-content">
+    <span class="label">
+      <span class="label-desktop">Cirurgiã Bucomaxilofacial · CRO-SP 141836</span>
+      <span class="label-mobile">Dra. Amanda Coli · CRO-SP 141836</span>
+    </span>
+    <h1 class="hero-headline">
+      <span class="headline-desktop">Quando o caso é complexo, você precisa do especialista certo.</span>
+      <span class="headline-mobile">Bucomaxilofacial em São Paulo.</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="sub-full">A Dra. Amanda Coli possui formação em ambiente hospitalar e enfoque tanto na prática clínica quanto acadêmica. Busca precisão em cada diagnóstico e humanização do atendimento, do início ao fim.</span>
+      <span class="sub-short">Formação em ambiente hospitalar, enfoque clínico e acadêmico. Busca precisão no diagnóstico e atendimento humanizado do início ao fim.</span>
+    </p>
+    <div class="hero-ctas">
+      <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
+      <a href="#sobre" class="btn btn-ghost">Conhecer a trajetória</a>
+    </div>
+  </div>
+
+  <div class="hero-image" aria-hidden="true">
+    <img
+      src="/images/portrait.jpg"
+      alt=""
+      width="768"
+      height="1024"
+      fetchpriority="high"
+    />
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<section class="stats-bar" aria-label="Destaque">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="currentColor">
+          <polygon points="24,11 45,20 24,29 3,20"/>
+          <path d="M13 24.5 24 29.2 35 24.5 35 31c0 2.9-4.9 5.2-11 5.2S13 33.9 13 31z"/>
+          <path d="M42 21.2v8.3" stroke="currentColor" stroke-width="1.6" fill="none"/>
+          <circle cx="42" cy="31.4" r="2.2"/>
+        </svg>
+      </span>
+      <span class="stat-label">Formação</span>
+      <span class="stat-desc">Graduada pela Unicamp, com especializações em Implantodontia (ABO) e Cirurgia Bucomaxilofacial.</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="currentColor">
+          <rect x="8" y="9" width="32" height="5" rx="1"/>
+          <rect x="11" y="33" width="26" height="4.5" rx="1"/>
+          <rect x="6" y="38" width="36" height="5" rx="1"/>
+          <rect x="14" y="15.5" width="3.4" height="17"/>
+          <rect x="20" y="15.5" width="3.4" height="17"/>
+          <rect x="26" y="15.5" width="3.4" height="17"/>
+          <rect x="31.6" y="15.5" width="3.4" height="17"/>
+        </svg>
+      </span>
+      <span class="stat-label">4 áreas</span>
+      <span class="stat-desc">Ortognática, implantes, sisos e trauma facial.</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="currentColor">
+          <path d="M24 4C15.7 4 9 10.7 9 19c0 10.5 13.1 23.4 13.7 24a1.9 1.9 0 0 0 2.6 0C25.9 42.4 39 29.5 39 19 39 10.7 32.3 4 24 4Zm0 21a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/>
+        </svg>
+      </span>
+      <span class="stat-label">São Paulo</span>
+      <span class="stat-desc">Atendimento ambulatorial e hospitalar na capital.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOBRE ═══ -->
+<section class="sobre" id="sobre" aria-labelledby="sobre-heading">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <span class="label">Sobre a Dra. Amanda</span>
+      <h2 id="sobre-heading" class="section-heading">
+        Uma trajetória construída com formação sólida e dedicação contínua.
+      </h2>
+      <p>
+        A Dra. Amanda é especialista em Cirurgia e Traumatologia Bucomaxilofacial pelo
+        Conjunto Hospitalar do Mandaqui, em São Paulo, uma das escolas mais tradicionais
+        do país. É a área da odontologia que cuida dos casos mais complexos: quando a
+        estrutura do rosto, a função da mastigação ou a integridade facial estão em jogo.
+      </p>
+      <p>
+        Autora de artigos científicos e apaixonada pelo ensino, construiu uma prática
+        que une profundidade técnica e didática clara. Para quem está diante de uma
+        cirurgia ortognática, de um trauma facial ou de uma extração complexa, segurança
+        e clareza não são diferenciais — são o mínimo.
+      </p>
+
+      <ul class="formation-list" aria-label="Formação">
+        <li>
+          <span class="formation-title">Graduação — Unicamp</span>
+          <span class="formation-desc">Cirurgiã-dentista formada pela Universidade Estadual de Campinas</span>
+        </li>
+        <li>
+          <span class="formation-title">Especialização em CTBMF — Conjunto Hospitalar do Mandaqui</span>
+          <span class="formation-desc">São Paulo · Especialização em Cirurgia e Traumatologia Bucomaxilofacial</span>
+        </li>
+        <li>
+          <span class="formation-title">Especialização em Implantodontia — ABO</span>
+          <span class="formation-desc">Associação Brasileira de Odontologia · Reabilitação oral e planejamento cirúrgico protético avançado</span>
+        </li>
+        <li>
+          <span class="formation-title">Atuação hospitalar em São Paulo</span>
+          <span class="formation-desc">Credenciada para procedimentos em ambiente hospitalar, de casos ambulatoriais a cirurgias de maior complexidade</span>
+        </li>
+      </ul>
+
+      <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
+    </div>
+
+    <div class="sobre-image" aria-hidden="true">
+      <img
+        src="/images/sobre-amanda.jpg"
+        alt=""
+        width="600"
+        height="800"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRATAMENTOS ═══ -->
+<section class="tratamentos" id="tratamentos" aria-labelledby="tratamentos-heading">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="label">Tratamentos</span>
+      <h2 id="tratamentos-heading" class="section-heading">Tratamentos oferecidos.</h2>
+      <p class="section-sub">Atuação completa em cirurgia bucomaxilofacial, do diagnóstico ao acompanhamento pós-operatório.</p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="card">
+        <div class="card-media">
+          <img src="/images/tratamentos/ortognatica.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">01</span>
+          <h3 class="card-title">Cirurgia Ortognática</h3>
+          <p class="card-desc">Corrige o mal posicionamento dos ossos da mandíbula ou maxila. Garantindo benefícios estéticos, funcionais e mastigatórios, além da melhora da qualidade do sono.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="/images/tratamentos/implantes.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">02</span>
+          <h3 class="card-title">Implantes e Reconstrução Óssea</h3>
+          <p class="card-desc">Reabilitação de dentes perdidos com implantes de titânio e, quando necessário, enxerto ósseo. Do planejamento à instalação da prótese.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="/images/tratamentos/sisos.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">03</span>
+          <h3 class="card-title">Extração de Sisos</h3>
+          <p class="card-desc">Remoção de terceiros molares inclusos ou mal posicionados que causam dor, pressão ou risco de infecção. Em consultório ou ambiente hospitalar.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="/images/tratamentos/trauma.jpg" alt="" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <span class="card-number" aria-hidden="true">04</span>
+          <h3 class="card-title">Trauma Facial e Fraturas</h3>
+          <p class="card-desc">Atendimento a fraturas dos ossos da face — maxilar, mandíbula e órbita — por acidentes ou impactos, com atuação hospitalar e acompanhamento.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-cta">
+      <a href="#contato" class="btn btn-primary">Agendar avaliação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILARES ═══ -->
+<section class="pilares" id="pilares" aria-labelledby="pilares-heading">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="label label-light">Por que a Dra. Amanda</span>
+      <h2 id="pilares-heading" class="section-heading heading-light">O que orienta cada decisão clínica.</h2>
+      <p class="section-sub sub-light">Três princípios que definem como cada caso é conduzido, do primeiro contato ao pós-operatório.</p>
+    </div>
+
+    <div class="pilares-grid">
+      <div class="pilar">
+        <span class="pilar-number">01</span>
+        <h3 class="pilar-title">Diagnóstico antes de tudo</h3>
+        <p class="pilar-desc">Antes de falar em procedimento, a consulta existe para entender seu caso com profundidade. O planejamento correto evita surpresas e define resultados.</p>
+      </div>
+
+      <div class="pilar">
+        <span class="pilar-number">02</span>
+        <h3 class="pilar-title">Clareza em cada etapa</h3>
+        <p class="pilar-desc">Cirurgia bucomaxilofacial exige que o paciente entenda o que está acontecendo. Nenhuma dúvida fica sem resposta, antes, durante e depois do procedimento.</p>
+      </div>
+
+      <div class="pilar">
+        <span class="pilar-number">03</span>
+        <h3 class="pilar-title">Formação para os casos difíceis</h3>
+        <p class="pilar-desc">Especialização e atuação hospitalar não são credenciais de vitrine. São a garantia de que, independente da complexidade, você está em boas mãos.</p>
+      </div>
+    </div>
+
+    <div class="section-cta">
+      <a href="#contato" class="btn btn-yellow-inv">Agendar avaliação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEPOIMENTOS ═══ -->
+<section class="depoimentos" id="depoimentos" aria-labelledby="dep-heading">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="label">Pacientes</span>
+      <h2 id="dep-heading" class="section-heading">O que diz quem já passou por aqui.</h2>
+      <p class="section-sub">Histórias reais de pacientes que recuperaram função, segurança e qualidade de vida.</p>
+    </div>
+ 
+    <div class="testimonials-grid">
+      <blockquote class="testimonial">
+        <p class="testimonial-text">“Não poderia deixar de expressar minha satisfação e gratidão pelo excelente trabalho realizado. Desde a primeira consulta, o que mais me chamou a atenção foi a segurança e a confiança transmitida pelo Dr Eliezer e Dra Amanda. Eu sempre tive o sonho de recuperar meu sorriso mas tinha muito medo do procedimento em si, e em todos os momentos, desde o planejamento do procedimento até a finalização, fui tratada com atenção, respeito e total transparência, o que me deixou muito tranquila durante todo o processo. Hoje posso dizer que o resultado superou minhas expectativas. Mais do que recuperar meu sorriso, ganhei confiança e a certeza de ter escolhido profissionais extremamente capacitados. Recomendo de olhos fechados seu trabalho a qualquer pessoa.”</p>
+        <footer class="testimonial-footer">
+          <span class="testimonial-name">Maria</span>
+          <span class="testimonial-type">Cirurgia Ortognática</span>
+        </footer>
+      </blockquote>
+
+      <blockquote class="testimonial">
+        <p class="testimonial-text">“Gostaria de expressar minha profunda gratidão pelo seu trabalho maravilhoso! Os meus implantes ficaram perfeitos e com uma aparência natural. Você me devolveu a confiança e a alegria de sorrir sem inseguranças. Muito obrigada pelo carinho, paciência e toda sua competência!”</p>
+        <footer class="testimonial-footer">
+          <span class="testimonial-name">Isa Moron</span>
+          <span class="testimonial-type">Implante Dental</span>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq" id="duvidas" aria-labelledby="faq-heading">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="label">Dúvidas frequentes</span>
+      <h2 id="faq-heading" class="section-heading">Perguntas que todo paciente faz.</h2>
+      <p class="section-sub">As dúvidas mais comuns de quem está prestes a marcar uma avaliação.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">O que é um cirurgião bucomaxilofacial e quando devo procurar um?</summary>
+        <div class="faq-a"><p>É o especialista responsável por cirurgias que envolvem boca, mandíbula, maxilar e face. Você deve procurar essa especialidade quando há necessidade de extração de sisos inclusos, dentes que não erupcionaram corretamente, problemas de alinhamento dos ossos faciais, implantes em casos complexos, fraturas por trauma, ou qualquer condição que exija intervenção cirúrgica além da odontologia clínica convencional.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Preciso de aparelho antes de fazer cirurgia ortognática?</summary>
+        <div class="faq-a"><p>Na maioria dos casos, sim. O tratamento ortodôntico pré-cirúrgico, geralmente de 12 a 18 meses, prepara a posição dos dentes para que, após a cirurgia, tudo se encaixe corretamente. Existe a modalidade "surgery first" para casos selecionados, mas ela exige critérios específicos. Isso é definido em conjunto com o ortodontista durante o planejamento.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">A cirurgia ortognática é coberta por plano de saúde?</summary>
+        <div class="faq-a"><p>Depende do plano e da indicação. Quando a cirurgia é indicada por razões funcionais como dificuldade de mastigação, respiração, apneia do sono ou comprometimento articular, há maior probabilidade de cobertura. Casos puramente estéticos geralmente não são cobertos. Durante a avaliação, orientamos sobre o processo de autorização e a documentação necessária.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Como é o pós-operatório da cirurgia ortognática?</summary>
+        <div class="faq-a"><p>A recuperação inicial leva de 7 a 14 dias, com inchaço e dieta líquida ou pastosa. O retorno a atividades leves acontece em torno de 2 a 3 semanas. A estabilização completa do resultado leva de 6 a 12 meses. Cada etapa é acompanhada de retornos planejados.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">A extração de siso dói muito? E se ele estiver incluso?</summary>
+        <div class="faq-a"><p>O procedimento é realizado sob anestesia local, então durante a extração não há dor, apenas sensação de pressão. O desconforto começa nas primeiras 48 horas do pós e é controlado com medicação. Sisos inclusos exigem procedimento mais elaborado, mas o protocolo de analgesia é ajustado. A maioria dos pacientes retoma a rotina em 3 a 5 dias.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Como funciona a primeira consulta?</summary>
+        <div class="faq-a"><p>A avaliação não é um procedimento. É o momento de entender seu caso com profundidade: conversamos sobre histórico, queixas e rotina, analisamos as condições bucais e, quando necessário, indicamos exames de imagem. Ao final, você sai com clareza sobre o diagnóstico e os possíveis caminhos de tratamento.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Implante dentário pode ser feito em qualquer caso?</summary>
+        <div class="faq-a"><p>Não. A indicação depende de avaliação clínica, exames de imagem e análise da estrutura óssea disponível. Em alguns casos é necessário enxerto ósseo antes da instalação. Todo esse planejamento é feito antes de qualquer procedimento, para garantir previsibilidade e resultado durável.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section class="cta-final" id="contato" aria-label="Agendar avaliação">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-headline">Pronto para agendar sua avaliação?</h2>
+    <p class="cta-sub">A primeira consulta é o começo de tudo. Um espaço para entender seu caso, tirar dúvidas e, se houver indicação, traçar o melhor caminho.</p>
+    <a
+      href="https://wa.me/5515997718867"
+      class="btn btn-primary btn-lg"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Agendar via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="/dra-amanda" class="footer-logo" aria-label="Dra. Amanda — Início">
+        <img
+          src="/images/logo-amanda.png"
+          alt="Dra. Amanda"
+          height="26"
+          loading="lazy"
+          style="filter: brightness(0) invert(1); opacity: 0.85;"
+        />
+      </a>
+      <p class="footer-disclaimer">
+        Este site tem caráter informativo e não substitui avaliação clínica presencial.
+      </p>
+    </div>
+
+    <div class="footer-info">
+      <div class="footer-col">
+        <span class="footer-label">Profissional</span>
+        <p>Dra. Amanda Coli<br />Cirurgiã Bucomaxilofacial<br />CRO-SP 141836</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-label">Localização</span>
+        <p>Av. Ver. José Diniz, 3457<br />Campo Belo, São Paulo — SP</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-label">Atendimento</span>
+        <p>De segunda a sexta, sob agendamento prévio</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>São Paulo, SP</span>
+      <span>© 2025 Dra. Amanda Coli</span>
+    </div>
+  </div>
+</footer>
+
+</Layout>
+
+<!-- ═══ NAV TOGGLE SCRIPT ═══ -->
+<script>
+  const burger = document.getElementById('nav-burger');
+  const links = document.getElementById('nav-links');
+  if (burger && links) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      links.classList.toggle('nav-open', !open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        links.classList.remove('nav-open');
+      });
+    });
+  }
+</script>
+
+<style is:global>
+/* ═══════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════ */
+.label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.5;
+  margin-bottom: 1.125rem;
+}
+.label-light { color: var(--bg); }
+
+.section-heading {
+  font-family: var(--title);
+  font-weight: 800;
+  font-size: clamp(1.875rem, 3.5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.125rem;
+}
+.heading-light { color: var(--bg); }
+
+.section-sub {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  max-width: 520px;
+  opacity: 0.6;
+}
+.sub-light { color: var(--bg); }
+
+.section-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: clamp(4.5rem, 9vw, 7.5rem);
+}
+
+.section-header { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.section-cta { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    transform 0.15s var(--ease);
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-sm   { padding: 0.625rem 1.25rem; font-size: 0.75rem; }
+.btn-lg   { padding: 1.125rem 2.5rem; font-size: 0.9375rem; }
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--yellow);
+}
+.btn-primary:hover { background: #f5d900; border-color: #f5d900; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(26,26,26,0.28);
+}
+.btn-ghost:hover { border-color: var(--ink); }
+
+.btn-dark {
+  background: var(--dark);
+  color: var(--bg);
+  border-color: var(--dark);
+}
+.btn-dark:hover { background: #000; }
+
+.btn-yellow-inv {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--yellow);
+}
+.btn-yellow-inv:hover { background: #f5d900; }
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--mid);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: var(--container);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo img {
+  height: 28px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  margin-left: auto;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.25s var(--ease);
+}
+.nav-cta { flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  min-height: calc(100svh - var(--nav-h));
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  padding-inline-start: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+  padding-inline-end: clamp(2rem, 4vw, 4rem);
+}
+
+.hero-headline {
+  font-family: var(--title);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 3.75vw, 4rem);
+  line-height: 1.07;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-sub {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  max-width: 460px;
+  opacity: 0.65;
+  margin-bottom: 2.5rem;
+}
+/* No desktop mostra a versão completa; no mobile, a enxuta */
+.hero-sub .sub-short { display: none; }
+.label .label-mobile { display: none; }
+.hero-headline .headline-mobile { display: none; }
+
+.hero-ctas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+  background: #080808;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.92;
+}
+
+/* ═══════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════ */
+.stats-bar {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.stats-inner {
+  display: flex;
+  align-items: stretch;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.stat {
+  flex: 1;
+  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-inline: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+.stat:first-child { padding-inline-start: 0; }
+.stat:last-child  { padding-inline-end: 0; }
+
+.stat-icon {
+  display: block;
+  color: var(--yellow);
+  margin-bottom: 1.125rem;
+}
+.stat-icon svg {
+  width: 42px;
+  height: 42px;
+  display: block;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--title);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--bg);
+  margin-bottom: 0.55rem;
+}
+
+.stat-desc {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--bg);
+  opacity: 0.6;
+  max-width: 260px;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(242, 242, 242, 0.15);
+  margin-block: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+/* ═══════════════════════════════════════════
+   SOBRE
+═══════════════════════════════════════════ */
+.sobre { background: var(--bg); }
+
+.sobre-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: start;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+
+.sobre-text p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.7;
+  margin-bottom: 1.125rem;
+}
+
+.formation-list {
+  list-style: none;
+  padding: 0;
+  margin: 2.25rem 0 2.5rem;
+  border-top: 1px solid var(--mid);
+}
+.formation-list li {
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--mid);
+}
+
+.formation-title {
+  display: block;
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin-bottom: 0.25rem;
+}
+
+.formation-desc {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.55;
+  line-height: 1.6;
+}
+
+.sobre-image {
+  border-radius: 2px;
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+.sobre-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  min-height: 520px;
+}
+
+/* ═══════════════════════════════════════════
+   TRATAMENTOS
+═══════════════════════════════════════════ */
+.tratamentos { background: #E8E8E8; }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(26,26,26,0.12);
+  border: 1px solid rgba(26,26,26,0.12);
+}
+
+.card {
+  background: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s var(--ease);
+}
+.card:hover { background: #fff; }
+
+.card-media {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #E4E4E4;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.card:hover .card-media img { transform: scale(1.035); }
+
+.card-body { padding: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+.card-number {
+  display: block;
+  font-family: var(--title);
+  font-weight: 900;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: rgba(26, 26, 26, 0.15);
+  line-height: 1;
+  margin-bottom: 1.125rem;
+  letter-spacing: -0.03em;
+}
+
+.card-title {
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.875rem;
+}
+
+.card-desc {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════
+   PILARES
+═══════════════════════════════════════════ */
+.pilares { background: var(--ink); }
+
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.pilar {
+  padding: clamp(2rem, 4vw, 3rem);
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.pilar:last-child { border-right: none; }
+
+.pilar-number {
+  display: block;
+  font-family: var(--title);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  margin-bottom: 1.375rem;
+  letter-spacing: -0.03em;
+}
+
+.pilar-title {
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--bg);
+  margin-bottom: 0.875rem;
+  letter-spacing: -0.01em;
+}
+
+.pilar-desc {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--bg);
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════
+   DEPOIMENTOS
+═══════════════════════════════════════════ */
+.depoimentos { background: var(--bg); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--mid);
+  border: 1px solid var(--mid);
+}
+
+.testimonial {
+  margin: 0;
+  background: var(--bg);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.testimonial-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.7;
+  flex: 1;
+  font-style: italic;
+}
+
+.testimonial-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.testimonial-name {
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.testimonial-type {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(26, 26, 26, 0.08);
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  width: fit-content;
+}
+
+/* ═══════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════ */
+.faq {
+  background: var(--bg);
+  border-top: 1px solid var(--mid);
+}
+
+.faq-list { max-width: 720px; }
+
+.faq-item { border-bottom: 1px solid var(--mid); }
+.faq-item:first-child { border-top: 1px solid var(--mid); }
+
+.faq-q {
+  font-family: var(--title);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1.375rem 2rem 1.375rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  position: relative;
+  letter-spacing: -0.01em;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+';
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ink);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform 0.2s var(--ease);
+}
+details[open] .faq-q::after { content: '−'; }
+
+.faq-a {
+  padding-bottom: 1.5rem;
+  max-width: 640px;
+}
+.faq-a p {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  opacity: 0.65;
+}
+
+/* ═══════════════════════════════════════════
+   CTA FINAL
+═══════════════════════════════════════════ */
+.cta-final { background: var(--ink); }
+
+.cta-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cta-headline {
+  font-family: var(--title);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1.07;
+  letter-spacing: -0.03em;
+  color: var(--bg);
+  max-width: 680px;
+}
+
+.cta-sub {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--bg);
+  opacity: 0.6;
+  max-width: 460px;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.site-footer {
+  background: var(--dark);
+  color: var(--bg);
+}
+
+.footer-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2rem);
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(242,242,242,0.1);
+}
+
+.footer-logo { text-decoration: none; }
+.footer-logo img { height: 24px; width: auto; }
+
+.footer-disclaimer {
+  font-size: 0.75rem;
+  opacity: 0.35;
+  max-width: 340px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid rgba(242,242,242,0.1);
+}
+
+.footer-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 0.625rem;
+}
+
+.footer-col p {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  opacity: 0.55;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  opacity: 0.25;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+
+/* Tablet / Mobile hero — overlay editorial */
+@media (max-width: 1024px) {
+  /* Hero vira capa de revista: foto cobre tudo, copy sobreposta na parte inferior */
+  .hero {
+    position: relative;
+    display: block;
+    min-height: calc(100svh - var(--nav-h));
+    overflow: hidden;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    z-index: 0;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 2%;
+  }
+  /* Gradiente: base mais sólida para legibilidade, topo transparente para o rosto */
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.90) 18%,
+      rgba(0,0,0,0.78) 35%,
+      rgba(0,0,0,0.55) 52%,
+      rgba(0,0,0,0.28) 68%,
+      rgba(0,0,0,0.08) 84%,
+      rgba(0,0,0,0) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Copy ancorada na base — espaço livre no topo para o rosto */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: calc(100svh - var(--nav-h));
+    padding-inline: var(--gutter);
+    padding-bottom: clamp(3rem, 10svh, 5rem);
+    padding-top: 0;
+  }
+
+  /* Texto enxuto + cores brancas sobre o fundo escuro */
+  .hero-sub .sub-full  { display: none; }
+  .hero-sub .sub-short { display: inline; }
+  .label .label-desktop { display: none; }
+  .label .label-mobile  { display: inline; }
+  .hero-headline .headline-desktop { display: none; }
+  .hero-headline .headline-mobile  { display: inline; }
+
+  .hero .label {
+    color: rgba(255,255,255,0.55);
+    opacity: 1;
+  }
+  .hero-headline {
+    color: #fff;
+    font-size: clamp(2rem, 6.5vw, 3rem);
+  }
+  .hero-sub {
+    color: #fff;
+  }
+  .hero .btn-ghost {
+    color: rgba(255,255,255,0.88);
+    border-color: rgba(255,255,255,0.3);
+  }
+  .hero .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.8);
+  }
+
+  /* Demais seções tablet */
+  .sobre-inner { grid-template-columns: 1fr; }
+  .sobre-image {
+    order: -1;
+    position: static;
+  }
+  .sobre-image img { min-height: 50vw; }
+
+  .pilares-grid { grid-template-columns: 1fr; }
+  .pilar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .pilar:last-child { border-bottom: none; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Tipografia de corpo aumentada p/ leitura confortável no celular
+     (mín. ~16px / 1rem — diretriz de legibilidade mobile) */
+  .hero-sub        { font-size: 1rem;      line-height: 1.65; }
+  .section-sub     { font-size: 1rem;      line-height: 1.7; }
+  .sobre-text p    { font-size: 1rem;      line-height: 1.75; }
+  .formation-desc  { font-size: 0.875rem;  line-height: 1.6; }
+  .card-desc       { font-size: 0.9375rem; line-height: 1.75; }
+  .pilar-desc      { font-size: 0.9375rem; line-height: 1.75; }
+  .testimonial-text{ font-size: 1rem;      line-height: 1.75; }
+  .faq-q           { font-size: 1.0625rem; }
+  .faq-a p         { font-size: 0.9375rem; line-height: 1.75; }
+  .cta-sub         { font-size: 1rem;      line-height: 1.7; }
+
+  .nav-cta  { display: none; }
+  .nav-burger { display: flex; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    inset: var(--nav-h) 0 0;
+    background: var(--bg);
+    padding: 2.5rem var(--gutter);
+    gap: 1.75rem;
+    z-index: 99;
+    overflow-y: auto;
+  }
+  .nav-links.nav-open { display: flex; }
+  .nav-links a { font-size: 1.25rem; opacity: 0.8; }
+
+  .cards-grid { grid-template-columns: 1fr; }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .stats-inner { flex-direction: column; }
+  .stat { padding-inline: 0; }
+  .stat-desc { max-width: none; font-size: 0.9375rem; line-height: 1.7; }
+  .stat-divider { width: 100%; height: 1px; margin-block: 0; }
+
+  .footer-top { flex-direction: column; }
+  .footer-disclaimer { text-align: left; }
+  .footer-info { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 0.4rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; text-align: center; }
+  .cta-inner .btn { width: 100%; justify-content: center; }
+}
+</style>
