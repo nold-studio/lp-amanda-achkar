@@ -397,19 +397,56 @@ import Layout from "../layouts/Layout.astro";
   </div>
 </section>
 
-<!-- ═══ CTA FINAL ═══ -->
+<!-- ═══ CTA FINAL / FORMULÁRIO ═══ -->
 <section class="r1-cta-final" id="cta" aria-labelledby="cta-heading">
   <div class="r1-wrap r1-cta-inner">
     <img src="/images/r1/logo-maxfocos.png" alt="MaxFocos" class="r1-cta-logo" height="36" />
     <h2 id="cta-heading" class="r1-h2 r1-cta-h2">
       Garanta sua vaga na<br /><span class="r1-y">Mentoria ENARE.</span>
     </h2>
-    <p class="r1-cta-sub">A prova ocorre em 13 de setembro. Os prazos de inscrição encerram em 15 de julho. Venha estudar com quem está na rotina hospitalar todos os dias.</p>
-    <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais%20sobre%20a%20Mentoria%20R1" class="r1-btn r1-btn-y r1-btn-lg" target="_blank" rel="noopener">
-      Falar com os Mentores no WhatsApp
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <span class="r1-cta-disclaimer">Fale conosco e entenda como funciona seu planejamento individualizado.</span>
+    <p class="r1-cta-sub">A prova ocorre em 13 de setembro. Os prazos de inscrição encerram em 15 de julho. Preencha o formulário e fale direto com os mentores.</p>
+
+    <form id="r1-lead-form" class="r1-lead-form" novalidate>
+      <div class="r1-field">
+        <label for="r1-nome">Nome completo</label>
+        <input id="r1-nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required />
+      </div>
+
+      <div class="r1-field">
+        <label for="r1-telefone">Qual é o seu melhor número de WhatsApp?</label>
+        <input id="r1-telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(DDD) 9 0000-0000" required />
+      </div>
+
+      <div class="r1-field">
+        <label for="r1-preparacao">Você já começou a se preparar para a residência em Cirurgia e Traumatologia Bucomaxilofacial?</label>
+        <select id="r1-preparacao" name="preparacao_residencia" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Sim, já estou estudando para a residência">Sim, já estou estudando para a residência</option>
+          <option value="Ainda não comecei, mas pretendo iniciar em breve">Ainda não comecei, mas pretendo iniciar em breve</option>
+          <option value="Ainda estou avaliando se quero seguir essa especialidade">Ainda estou avaliando se quero seguir essa especialidade</option>
+        </select>
+      </div>
+
+      <div class="r1-field">
+        <label for="r1-curso">Você utiliza ou já utilizou algum curso preparatório para residência?</label>
+        <select id="r1-curso" name="curso_preparatorio" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Sim, atualmente faço outro curso preparatório">Sim, atualmente faço outro curso preparatório</option>
+          <option value="Já fiz um curso preparatório, mas não faço mais">Já fiz um curso preparatório, mas não faço mais</option>
+          <option value="Não, nunca fiz um curso preparatório">Não, nunca fiz um curso preparatório</option>
+          <option value="Estudo por conta própria, sem um curso preparatório">Estudo por conta própria, sem um curso preparatório</option>
+        </select>
+      </div>
+
+      <p id="r1-form-error" class="r1-form-error" role="alert" hidden></p>
+
+      <button type="submit" id="r1-form-submit" class="r1-btn r1-btn-lg r1-form-submit">
+        <span class="r1-form-submit-text">Iniciar contato</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+
+    <span class="r1-cta-disclaimer">Ao enviar, você é direcionado ao WhatsApp para falar com os mentores.</span>
   </div>
 </section>
 
@@ -1308,6 +1345,84 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   letter-spacing: 0.04em;
 }
 
+/* ── FORMULÁRIO DE LEAD (dentro do CTA final) ── */
+.r1-lead-form {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+  background: #111;
+  border-radius: 20px;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  box-shadow: 0 30px 70px -25px rgba(0,0,0,0.4);
+}
+.r1-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.r1-field label {
+  font-family: var(--r1-mono);
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.r1-field input,
+.r1-field select {
+  width: 100%;
+  min-height: 48px;
+  background: var(--r1-surface);
+  border: 1px solid var(--r1-darkgray);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: var(--r1-mono);
+  font-size: 0.9375rem;
+  color: var(--r1-white);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+}
+.r1-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.r1-field select:invalid { color: var(--r1-gray); }
+.r1-field input:focus,
+.r1-field select:focus {
+  border-color: var(--r1-yellow);
+}
+.r1-field input::placeholder {
+  color: var(--r1-gray);
+}
+.r1-form-error {
+  font-family: var(--r1-mono);
+  font-size: 0.8125rem;
+  color: #ff6b6b;
+  margin: 0;
+}
+.r1-form-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.25rem;
+  background: var(--r1-yellow);
+  color: #111;
+  border-color: var(--r1-yellow);
+}
+.r1-form-submit:hover:not(:disabled) {
+  background: #e6cc00;
+  border-color: #e6cc00;
+}
+.r1-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ── FOOTER ── */
 .r1-footer {
   padding: 2.5rem 0;
@@ -1527,6 +1642,272 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
     el.classList.add('r1-reveal');
     observer.observe(el);
   });
+
+  // ═══ FORMULÁRIO DE LEAD (captura + atribuição + CRM + GTM + WhatsApp) ═══
+  declare global {
+    interface Window { dataLayer?: Record<string, any>[] }
+  }
+
+  // TODO: trocar pelo número real de WhatsApp da Amanda/Eliézer assim que definido
+  const R1_WHATSAPP_NUMBER = '5511999999999';
+  const R1_WEBHOOK_URL = 'https://webhook.kaju.dev.br/webhook/lp-enare';
+  const R1_ORIGEM = 'Landing Page - Protocolo R1';
+  const R1_PROJETO = 'MaxFocos - Mentoria ENARE';
+  const R1_MENSAGEM_BASE = 'Olá! Gostaria de conhecer melhor a Mentoria Protocolo R1 (ENARE).';
+
+  function r1GetCookie(name: string): string {
+    if (typeof document === 'undefined') return '';
+    for (const cookie of document.cookie.split(';')) {
+      const [cookieName, ...cookieValue] = cookie.trim().split('=');
+      if (cookieName === name) return decodeURIComponent(cookieValue.join('='));
+    }
+    return '';
+  }
+
+  function r1GetGaClientId(): string {
+    const gaCookie = r1GetCookie('_ga');
+    if (!gaCookie) return '';
+    const parts = gaCookie.split('.');
+    if (parts.length < 4) return '';
+    return `${parts[parts.length - 2]}.${parts[parts.length - 1]}`;
+  }
+
+  function r1GetCurrentUrlParams(): Record<string, string> {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_content: params.get('utm_content') || '',
+      utm_term: params.get('utm_term') || '',
+      gclid: params.get('gclid') || '',
+      gbraid: params.get('gbraid') || '',
+      wbraid: params.get('wbraid') || '',
+      fbclid: params.get('fbclid') || '',
+    };
+  }
+
+  function r1SaveAttributionData(): void {
+    const currentParams = r1GetCurrentUrlParams();
+    const hasAttribution = Object.values(currentParams).some((v) => v !== '');
+    if (!hasAttribution) return;
+    try {
+      const payload = { ...currentParams, landing_page: window.location.href, captured_at: new Date().toISOString() };
+      if (!localStorage.getItem('mf_first_touch_attribution')) {
+        localStorage.setItem('mf_first_touch_attribution', JSON.stringify(payload));
+      }
+      localStorage.setItem('mf_last_touch_attribution', JSON.stringify(payload));
+    } catch (error) {
+      console.warn('Não foi possível salvar a atribuição:', error);
+    }
+  }
+
+  function r1GetStoredAttribution(storageKey: string): Record<string, string> {
+    try {
+      const stored = localStorage.getItem(storageKey);
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function r1GetAttributionData() {
+    const currentParams = r1GetCurrentUrlParams();
+    const lastTouch = r1GetStoredAttribution('mf_last_touch_attribution');
+    const firstTouch = r1GetStoredAttribution('mf_first_touch_attribution');
+    const fbclid = currentParams.fbclid || lastTouch.fbclid || firstTouch.fbclid || '';
+    const storedFbc = r1GetCookie('_fbc');
+    const generatedFbc = !storedFbc && fbclid ? `fb.1.${Date.now()}.${fbclid}` : '';
+
+    return {
+      utm_source: currentParams.utm_source || lastTouch.utm_source || firstTouch.utm_source || '',
+      utm_medium: currentParams.utm_medium || lastTouch.utm_medium || firstTouch.utm_medium || '',
+      utm_campaign: currentParams.utm_campaign || lastTouch.utm_campaign || firstTouch.utm_campaign || '',
+      utm_content: currentParams.utm_content || lastTouch.utm_content || firstTouch.utm_content || '',
+      utm_term: currentParams.utm_term || lastTouch.utm_term || firstTouch.utm_term || '',
+      gclid: currentParams.gclid || lastTouch.gclid || firstTouch.gclid || '',
+      gbraid: currentParams.gbraid || lastTouch.gbraid || firstTouch.gbraid || '',
+      wbraid: currentParams.wbraid || lastTouch.wbraid || firstTouch.wbraid || '',
+      fbclid,
+      fbp: r1GetCookie('_fbp'),
+      fbc: storedFbc || generatedFbc,
+      ga_client_id: r1GetGaClientId(),
+    };
+  }
+
+  function r1CreateEventId(): string {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return `lead_${crypto.randomUUID()}`;
+    }
+    return `lead_${Date.now()}_${Math.random().toString(36).substring(2, 12)}`;
+  }
+
+  function r1FormatPhone(value: string): string {
+    const cleaned = value.replace(/\D/g, '').slice(0, 11);
+    if (cleaned.length <= 2) return cleaned;
+    if (cleaned.length <= 6) return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2)}`;
+    if (cleaned.length <= 10) return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 6)}-${cleaned.slice(6)}`;
+    return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`;
+  }
+
+  function r1GetDeviceType(): string {
+    const ua = navigator.userAgent;
+    if (/tablet|ipad|playbook|silk/i.test(ua)) return 'Tablet';
+    if (/Mobi|Android|iPhone|iPod/i.test(ua)) return 'Mobile';
+    return 'Desktop';
+  }
+
+  async function r1SendToCrm(payload: Record<string, any>): Promise<void> {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 5000);
+    try {
+      const response = await fetch(R1_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+        keepalive: true,
+      });
+      if (!response.ok) throw new Error(`Webhook respondeu com status ${response.status}`);
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  r1SaveAttributionData();
+
+  const leadForm = document.getElementById('r1-lead-form') as HTMLFormElement | null;
+  const phoneInput = document.getElementById('r1-telefone') as HTMLInputElement | null;
+  const submitBtn = document.getElementById('r1-form-submit') as HTMLButtonElement | null;
+  const submitBtnText = submitBtn?.querySelector('.r1-form-submit-text') as HTMLElement | null;
+  const errorEl = document.getElementById('r1-form-error') as HTMLElement | null;
+
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = r1FormatPhone(phoneInput.value);
+    });
+  }
+
+  if (leadForm && phoneInput && submitBtn && submitBtnText && errorEl) {
+    leadForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (submitBtn.disabled) return;
+
+      errorEl.hidden = true;
+      errorEl.textContent = '';
+
+      const formData = new FormData(leadForm);
+      const nome = String(formData.get('nome') || '').trim();
+      const telefone = String(formData.get('telefone') || '');
+      const telefoneLimpo = telefone.replace(/\D/g, '');
+      const preparacaoResidencia = String(formData.get('preparacao_residencia') || '');
+      const cursoPreparatorio = String(formData.get('curso_preparatorio') || '');
+
+      if (!nome || !telefoneLimpo || !preparacaoResidencia || !cursoPreparatorio) {
+        errorEl.textContent = 'Por favor, preencha todos os campos.';
+        errorEl.hidden = false;
+        return;
+      }
+      if (telefoneLimpo.length < 10) {
+        errorEl.textContent = 'Digite um número de WhatsApp válido, incluindo o DDD.';
+        errorEl.hidden = false;
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtnText.textContent = 'Enviando...';
+
+      const attribution = r1GetAttributionData();
+      const eventId = r1CreateEventId();
+      const eventTime = Math.floor(Date.now() / 1000);
+      const submittedAt = new Date().toISOString();
+
+      const mensagem = `${R1_MENSAGEM_BASE}
+
+Nome: ${nome}
+WhatsApp: ${telefone}
+Preparação para a residência: ${preparacaoResidencia}
+Uso de curso preparatório: ${cursoPreparatorio}`;
+
+      const pageData = {
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+        page_title: document.title,
+        referrer: document.referrer || '',
+      };
+      const technicalData = {
+        dispositivo: r1GetDeviceType(),
+        navegador: navigator.userAgent,
+        idioma: navigator.language || '',
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+      };
+
+      const crmPayload = {
+        event_name: 'Lead',
+        event_id: eventId,
+        event_time: eventTime,
+        data_envio: submittedAt,
+        formulario: 'FormMentoriaR1',
+        origem: R1_ORIGEM,
+        projeto: R1_PROJETO,
+        nome,
+        telefone,
+        telefone_limpo: telefoneLimpo,
+        preparacao_residencia: preparacaoResidencia,
+        curso_preparatorio: cursoPreparatorio,
+        mensagem_whatsapp: mensagem,
+        ...pageData,
+        ...technicalData,
+        ...attribution,
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'formulario_mentoria_r1_enviado',
+        event_name: 'Lead',
+        event_id: eventId,
+        event_time: eventTime,
+        form_id: 'FormMentoriaR1',
+        form_name: 'Formulário Mentoria Protocolo R1',
+        form_origem: R1_ORIGEM,
+        form_projeto: R1_PROJETO,
+        form_nome: nome,
+        form_telefone: telefone,
+        form_telefone_limpo: telefoneLimpo,
+        form_preparacao_residencia: preparacaoResidencia,
+        form_curso_preparatorio: cursoPreparatorio,
+        user_data: { full_name: nome, phone_number: telefoneLimpo },
+        attribution,
+        page_location: pageData.page_location,
+        page_path: pageData.page_path,
+        page_title: pageData.page_title,
+        referrer: pageData.referrer,
+        dispositivo: technicalData.dispositivo,
+        navegador: technicalData.navegador,
+        idioma: technicalData.idioma,
+        timezone: technicalData.timezone,
+      });
+
+      try {
+        await r1SendToCrm(crmPayload);
+      } catch (error) {
+        console.error('Não foi possível enviar o lead ao CRM:', error);
+        window.dataLayer.push({
+          event: 'formulario_mentoria_r1_erro_crm',
+          event_id: eventId,
+          form_id: 'FormMentoriaR1',
+          form_origem: R1_ORIGEM,
+        });
+      }
+
+      const numeroLimpo = R1_WHATSAPP_NUMBER.replace(/\D/g, '');
+      const whatsappUrl = `https://wa.me/${numeroLimpo}?text=${encodeURIComponent(mensagem)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+      submitBtn.disabled = false;
+      submitBtnText.textContent = 'Iniciar contato';
+    });
+  }
 </script>
 
 <style>
