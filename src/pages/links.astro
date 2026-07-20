@@ -375,10 +375,18 @@ body {
 
 /* Responsive */
 @media (max-width: 960px) {
+  /* Libera o scroll da página no mobile: no desktop o body fica travado em
+     100svh (layout de painéis fixos), mas no mobile o conteúdo empilha e
+     precisa rolar normalmente. */
+  body {
+    overflow: auto;
+    height: auto;
+    min-height: 100svh;
+  }
   .links-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto 400px;
-    overflow-y: auto;
+    overflow-y: visible;
     height: auto;
   }
   .bento-panel {
