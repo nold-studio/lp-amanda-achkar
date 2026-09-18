@@ -153,9 +153,8 @@ const clinicSchema = {
         </h1>
 
         <p class="sx-hero-sub">
-          Tomografia, planejamento e cirurgia com dois especialistas em Cirurgia e Traumatologia
-          Bucomaxilofacial formados em ambiente hospitalar. Você entende exatamente o seu caso
-          antes de marcar qualquer coisa.
+          Extração de siso planejada por tomografia, com dois cirurgiões bucomaxilofaciais
+          formados em ambiente hospitalar.
         </p>
 
         <div class="sx-hero-ctas">
@@ -254,7 +253,7 @@ const clinicSchema = {
     <div class="sx-wrap">
       <div class="sx-head">
         <span class="sx-kicker"><i aria-hidden="true"></i>Leia seu próprio raio-x</span>
-        <h2 id="pos-h" class="sx-h2">Qual desses é o seu siso?</h2>
+        <h2 id="pos-h" class="sx-h2">Siso incluso, deitado ou nascido: qual é o seu?</h2>
         <p class="sx-lead">
           A posição do terceiro molar define a dificuldade da cirurgia, o tempo de mesa e o tempo
           de recuperação. Pegue sua radiografia panorâmica e compare. Nos desenhos, o dente amarelo
@@ -389,7 +388,7 @@ const clinicSchema = {
     <div class="sx-wrap">
       <div class="sx-head">
         <span class="sx-kicker"><i aria-hidden="true"></i>A conversa honesta</span>
-        <h2 id="criterio-h" class="sx-h2">Nem todo siso precisa sair.</h2>
+        <h2 id="criterio-h" class="sx-h2">Preciso tirar o siso mesmo sem dor?</h2>
         <p class="sx-lead">
           Existe revisão sistemática Cochrane que não encontrou evidência suficiente para apoiar a
           remoção preventiva de sisos inclusos sem sintoma e sem sinal de doença. A diretriz
@@ -521,7 +520,7 @@ const clinicSchema = {
     <div class="sx-wrap">
       <div class="sx-head">
         <span class="sx-kicker"><i aria-hidden="true"></i>O protocolo</span>
-        <h2 id="proto-h" class="sx-h2">Quatro etapas, nessa ordem, sempre.</h2>
+        <h2 id="proto-h" class="sx-h2">Como funciona a extração de siso, em quatro etapas.</h2>
         <p class="sx-lead">
           A ordem importa. Data de cirurgia marcada antes da leitura do exame é chute com agenda.
         </p>
@@ -598,7 +597,7 @@ const clinicSchema = {
     <div class="sx-wrap">
       <div class="sx-head">
         <span class="sx-kicker"><i aria-hidden="true"></i>Para quem tem pavor</span>
-        <h2 id="conforto-h" class="sx-h2">Você escolhe o quanto quer estar presente.</h2>
+        <h2 id="conforto-h" class="sx-h2">Extração de siso com sedação: você escolhe o nível.</h2>
         <p class="sx-lead">
           Odontofobia é condição clínica e tem manejo próprio. Diga isso na avaliação e o plano já
           sai ajustado ao seu nível.
@@ -650,7 +649,7 @@ const clinicSchema = {
     <div class="sx-wrap">
       <div class="sx-head">
         <span class="sx-kicker"><i aria-hidden="true"></i>Recuperação</span>
-        <h2 id="rec-h" class="sx-h2">Quantos dias eu fico parado?</h2>
+        <h2 id="rec-h" class="sx-h2">Quantos dias eu fico parado depois de tirar o siso?</h2>
         <p class="sx-lead">
           O que se espera de uma extração de siso sem intercorrência. Seu caso pode andar mais
           rápido ou mais devagar, e você recebe o cronograma do seu antes da cirurgia.
@@ -732,7 +731,7 @@ const clinicSchema = {
     <div class="sx-wrap sx-valor-in">
       <div>
         <span class="sx-kicker sx-kicker-l"><i aria-hidden="true"></i>Quanto custa</span>
-        <h2 id="valor-h" class="sx-h2 sx-h2-l">Ninguém publica preço de siso. Então publicamos a conta.</h2>
+        <h2 id="valor-h" class="sx-h2 sx-h2-l">Quanto custa tirar o siso? Ninguém publica. Nós publicamos a conta.</h2>
         <p class="sx-lead sx-lead-l">
           O valor de uma cirurgia de siso sai de uma conta com cinco variáveis. Estas são as cinco,
           abertas. Você recebe o número fechado por escrito depois da leitura do exame, antes de
@@ -1034,8 +1033,8 @@ const clinicSchema = {
   .sx-h1 {
     font-family: var(--t);
     font-weight: 800;
-    font-size: clamp(2.125rem, 4vw, 3.625rem);
-    line-height: 1.04;
+    font-size: clamp(2.125rem, 3.6vw, 3.375rem);
+    line-height: 1.05;
     letter-spacing: -0.035em;
     color: var(--ink);
     margin-bottom: 1.5rem;
@@ -1218,16 +1217,19 @@ const clinicSchema = {
     );
     overflow: hidden;
   }
+  /* Media sangra até a borda direita da viewport: a foto cresce e some o vazio
+     que sobrava acima dela quando a coluna era limitada pelo container. */
   .sx-hero-in {
-    max-width: var(--w);
-    margin-inline: auto;
-    padding: clamp(3rem, 6vw, 5.5rem) var(--g) 0;
     display: grid;
-    grid-template-columns: 1fr 0.82fr;
-    gap: clamp(2rem, 4vw, 4rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
     align-items: end;
   }
-  .sx-hero-copy { padding-bottom: clamp(3rem, 6vw, 5.5rem); }
+  .sx-hero-copy {
+    padding-block: clamp(2.25rem, 4vw, 3.5rem);
+    padding-inline-start: max(var(--g), calc((100vw - var(--w)) / 2 + var(--g)));
+    padding-inline-end: 0;
+  }
   .sx-hero-sub {
     font-family: var(--m);
     font-size: clamp(0.875rem, 1.15vw, 1rem);
@@ -1236,7 +1238,8 @@ const clinicSchema = {
     max-width: 52ch;
     margin-bottom: 2.25rem;
   }
-  .sx-hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .sx-hero-ctas { display: flex; gap: 0.625rem; flex-wrap: wrap; }
+  .sx-hero-ctas .sx-btn { padding-inline: 1.625rem; }
 
   .sx-hero-media {
     position: relative;
@@ -2323,8 +2326,12 @@ const clinicSchema = {
   }
 
   @media (max-width: 860px) {
-    .sx-hero-in { grid-template-columns: 1fr; padding-top: clamp(2.5rem, 6vw, 4rem); }
-    .sx-hero-copy { padding-bottom: 2.5rem; }
+    .sx-hero-in { grid-template-columns: 1fr; }
+    /* empilhado: volta o padding dos dois lados, senão os botões estouram a lateral */
+    .sx-hero-copy {
+      padding-inline: var(--g);
+      padding-block: clamp(2rem, 6vw, 3.5rem) 2.5rem;
+    }
     .sx-hero-media { max-width: 460px; margin-inline: auto; width: 100%; }
     .sx-hero-tag { position: static; margin-top: -1px; }
 

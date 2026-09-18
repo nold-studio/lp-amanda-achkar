@@ -16,6 +16,10 @@ const {
 const canonical = Astro.site
   ? new URL(Astro.url.pathname, Astro.site)
   : undefined;
+
+// og:image precisa ser URL absoluta. Caminho relativo faz o preview
+// do WhatsApp, do Instagram e do Facebook vir sem imagem.
+const ogImage = Astro.site ? new URL(image, Astro.site).href : image;
 ---
 
 <!doctype html>
@@ -45,14 +49,14 @@ const canonical = Astro.site
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImage} />
     {canonical && <meta property="og:url" content={canonical} />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Preload critical fonts -->
     <link
