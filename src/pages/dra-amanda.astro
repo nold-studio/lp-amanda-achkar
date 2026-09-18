@@ -203,6 +203,7 @@ import Layout from "../layouts/Layout.astro";
           <span class="card-number" aria-hidden="true">03</span>
           <h3 class="card-title">Extração de Sisos</h3>
           <p class="card-desc">Remoção de terceiros molares inclusos ou mal posicionados que causam dor, pressão ou risco de infecção. Em consultório ou ambiente hospitalar.</p>
+          <a href="/extracao-de-siso" class="card-more">Ver a página completa sobre extração de siso</a>
         </div>
       </article>
 
@@ -834,6 +835,22 @@ import Layout from "../layouts/Layout.astro";
   line-height: 1.8;
   opacity: 0.6;
 }
+
+.card-more {
+  display: inline-block;
+  margin-top: 1.125rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--yellow);
+  padding-bottom: 2px;
+  transition: opacity 0.2s var(--ease);
+}
+.card-more:hover { opacity: 0.6; }
+
 
 /* ═══════════════════════════════════════════
    PILARES

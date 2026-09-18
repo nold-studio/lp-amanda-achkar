@@ -1,0 +1,2391 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const WA = "https://wa.me/5515997718867?text=Oi%2C%20quero%20avaliar%20a%20extra%C3%A7%C3%A3o%20do%20meu%20siso.";
+
+const faq = [
+  {
+    q: "Extração de siso dói?",
+    a: "Durante a cirurgia você não sente dor. A anestesia local bloqueia a região por completo e o que se sente é pressão e movimento. O desconforto aparece quando a anestesia passa, entre 3 e 4 horas depois, e é controlado com a medicação prescrita. O pico costuma ficar nas primeiras 48 a 72 horas e cai a partir daí.",
+  },
+  {
+    q: "Quanto tempo demora a cirurgia de siso?",
+    a: "Depende da posição do dente. Um siso já nascido pode sair em 10 minutos. Um siso incluso e deitado no osso costuma levar de 30 a 45 minutos. Na avaliação você recebe a estimativa do seu caso, calculada em cima da sua tomografia.",
+  },
+  {
+    q: "Posso tirar os 4 sisos de uma vez?",
+    a: "Na maioria dos casos sim, e costuma valer a pena: você passa por uma recuperação só e por um período de afastamento só. A decisão leva em conta a complexidade de cada dente, sua saúde geral e sua tolerância ao procedimento. Quando os quatro de uma vez não são indicados, dividimos em dois lados.",
+  },
+  {
+    q: "Existe risco de ficar com o lábio dormente?",
+    a: "Existe e não escondemos isso. A literatura registra alteração de sensibilidade do nervo alveolar inferior em algo entre 0,6% e 6% dos casos, com a maioria voltando ao normal em até 8 semanas. Um estudo brasileiro da USP encontrou 0,62% de alteração e 0,08% de permanência acima de um ano. É justamente por causa desse risco que a tomografia vem antes e que, em casos de raiz colada no canal, existe a opção da coronectomia.",
+  },
+  {
+    q: "Quantos dias de atestado preciso para tirar o siso?",
+    a: "Para trabalho de escritório, 2 a 3 dias resolvem na maior parte dos casos. Para trabalho físico, que fala muito ou com esforço, o mais seguro são 5 dias. O atestado é emitido no dia da cirurgia, com o período definido junto com você antes do procedimento.",
+  },
+  {
+    q: "Preciso tirar o siso mesmo sem sentir dor?",
+    a: "Nem sempre. Existe revisão sistemática Cochrane que não encontrou evidência suficiente para apoiar a remoção preventiva de sisos inclusos que não dão sintoma nem sinal de doença, e a diretriz do NICE recomenda reservar a extração para casos com patologia. Siso assintomático, com espaço, higienizável e longe de estruturas de risco pode ser acompanhado. Você vai ouvir isso aqui quando for o caso.",
+  },
+  {
+    q: "Plano odontológico cobre extração de siso?",
+    a: "A exodontia de terceiro molar, incluindo o incluso, consta do Rol de Procedimentos da ANS como cobertura obrigatória em nível ambulatorial nos planos odontológicos. O que varia entre planos é carência, rede credenciada e cobertura de exames e de sedação. Vale confirmar esses três pontos com a sua operadora.",
+  },
+  {
+    q: "Tenho pavor de dentista. Tem como fazer dormindo?",
+    a: "Tem. Existe uma escala de conforto que vai da anestesia local pura até a anestesia geral em centro cirúrgico, passando por ansiolítico, óxido nitroso e sedação venosa com anestesista. Casos de odontofobia são conduzidos com sedação desde a primeira conversa. Diga isso na avaliação e o plano já sai ajustado.",
+  },
+  {
+    q: "Qual a diferença entre tirar o siso com um dentista clínico e com um cirurgião bucomaxilofacial?",
+    a: "Qualquer cirurgião-dentista pode extrair siso, isso não é ato privativo. A diferença está na formação. O cirurgião bucomaxilofacial tem especialização com atuação hospitalar registrada no CFO, lê tomografia de feixe cônico e os sinais de proximidade com o canal mandibular, domina osteotomia e odontossecção, executa coronectomia quando o risco de nervo é alto e conduz o caso em centro cirúrgico quando há indicação.",
+  },
+  {
+    q: "Quanto custa tirar o siso em São Paulo?",
+    a: "O valor muda conforme o número de dentes, se o siso está nascido ou incluso no osso, a proximidade com o canal mandibular, a necessidade de tomografia e o nível de sedação escolhido. Por isso o orçamento sai depois da avaliação e da leitura do exame, com o valor fechado por escrito antes de qualquer agendamento. Não trabalhamos com valor por telefone sem ver o seu caso.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const procedureSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  name: "Extração de siso (exodontia de terceiro molar)",
+  alternateName: ["Cirurgia de siso", "Remoção de terceiro molar", "Extração de dente do siso"],
+  procedureType: "https://schema.org/SurgicalProcedure",
+  bodyLocation: "Mandíbula e maxila",
+  howPerformed:
+    "Avaliação clínica, tomografia computadorizada de feixe cônico, planejamento da odontossecção e da osteotomia, cirurgia sob anestesia local ou sedação e acompanhamento do pós-operatório.",
+  preparation:
+    "Tomografia computadorizada de feixe cônico, avaliação de saúde geral e medicação pré-operatória quando indicada.",
+  followup:
+    "Retorno para remoção de sutura entre o sétimo e o décimo dia, com acompanhamento do edema e da cicatrização.",
+  provider: [
+    {
+      "@type": "Physician",
+      name: "Dra. Amanda Coli",
+      medicalSpecialty: "Oral and Maxillofacial Surgery",
+      identifier: "CRO-SP 141836",
+    },
+    {
+      "@type": "Physician",
+      name: "Dr. Eliézer Andrade",
+      medicalSpecialty: "Oral and Maxillofacial Surgery",
+      identifier: "CRO-SP 139423",
+    },
+  ],
+};
+
+const clinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "MaxFocos · Cirurgia Bucomaxilofacial",
+  description:
+    "Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Extração de siso planejada por tomografia, com atuação ambulatorial e hospitalar.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Av. Ver. José Diniz, 3457",
+    addressLocality: "São Paulo",
+    addressRegion: "SP",
+    addressCountry: "BR",
+  },
+  areaServed: "São Paulo, SP",
+  medicalSpecialty: "Oral and Maxillofacial Surgery",
+  availableService: {
+    "@type": "MedicalProcedure",
+    name: "Extração de siso",
+  },
+};
+---
+
+<Layout
+  title="Extração de Siso em São Paulo | Cirurgiões Bucomaxilofaciais"
+  description="Extração de siso planejada por tomografia, em São Paulo. Dra. Amanda Coli e Dr. Eliézer Andrade, especialistas em Cirurgia e Traumatologia Bucomaxilofacial com formação hospitalar. Entenda seu caso antes de agendar."
+  image="/images/r1/founders-2.jpg"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(procedureSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(clinicSchema)} />
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <header class="sx-nav" role="banner">
+    <div class="sx-nav-in">
+      <a href="/extracao-de-siso" class="sx-nav-logo" aria-label="MaxFocos · Extração de siso">
+        <img src="/images/siso/logo-maxfocos-dark.png" alt="MaxFocos" width="728" height="171" />
+      </a>
+      <nav aria-label="Navegação principal">
+        <ul class="sx-nav-links" id="sx-links">
+          <li><a href="#posicoes">Seu siso</a></li>
+          <li><a href="#criterio">Quando tirar</a></li>
+          <li><a href="#nervo">O nervo</a></li>
+          <li><a href="#protocolo">Protocolo</a></li>
+          <li><a href="#recuperacao">Recuperação</a></li>
+          <li><a href="#cirurgioes">Quem opera</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
+        </ul>
+      </nav>
+      <a href={WA} class="sx-btn sx-btn-y sx-btn-sm sx-nav-cta" target="_blank" rel="noopener noreferrer">
+        Avaliar meu caso
+      </a>
+      <button class="sx-burger" id="sx-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="sx-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="sx-hero" id="inicio">
+    <div class="sx-hero-in">
+      <div class="sx-hero-copy">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Extração de siso · São Paulo</span>
+
+        <h1 class="sx-h1">
+          Seu siso é medido em <span class="sx-mark">milímetros</span> antes de ser operado.
+        </h1>
+
+        <p class="sx-hero-sub">
+          Tomografia, planejamento e cirurgia com dois especialistas em Cirurgia e Traumatologia
+          Bucomaxilofacial formados em ambiente hospitalar. Você entende exatamente o seu caso
+          antes de marcar qualquer coisa.
+        </p>
+
+        <div class="sx-hero-ctas">
+          <a href={WA} class="sx-btn sx-btn-y sx-btn-lg" target="_blank" rel="noopener noreferrer">
+            Quero avaliar meu caso
+          </a>
+          <a href="#posicoes" class="sx-btn sx-btn-ghost sx-btn-lg">Ver como é o meu siso</a>
+        </div>
+
+        <p class="sx-micro">Atendimento no WhatsApp. Avaliação sem compromisso de cirurgia.</p>
+      </div>
+
+      <div class="sx-hero-media">
+        <div class="sx-hero-block" aria-hidden="true"></div>
+        <img
+          src="/images/r1/founders-cutout.webp"
+          alt="Dr. Eliézer Andrade e Dra. Amanda Coli, cirurgiões bucomaxilofaciais em São Paulo"
+          width="1500"
+          height="1007"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <div class="sx-hero-legenda">
+      <div class="sx-wrap">
+        <span><b>Dra. Amanda Coli</b> CRO-SP 141836</span>
+        <span><b>Dr. Eliézer Andrade</b> CRO-SP 139423</span>
+        <em>Especialistas em CTBMF · Conjunto Hospitalar do Mandaqui</em>
+      </div>
+    </div>
+    <div class="sx-ruler" aria-hidden="true"></div>
+  </section>
+
+  <!-- ═══════════ DADOS ═══════════ -->
+  <section class="sx-dados" aria-label="Números do procedimento">
+    <div class="sx-wrap sx-dados-in">
+      <div class="sx-dado">
+        <span class="sx-dado-n">10<em>a</em>45<i>min</i></span>
+        <p>Tempo de cirurgia por dente, do siso já nascido ao siso deitado dentro do osso.</p>
+      </div>
+      <div class="sx-dado">
+        <span class="sx-dado-n">17<em>a</em>24<i>anos</i></span>
+        <p>Janela em que o siso normalmente nasce. É também quando a raiz ainda está curta e a cirurgia é mais simples.</p>
+      </div>
+      <div class="sx-dado">
+        <span class="sx-dado-n">36,9<i>%</i></span>
+        <p>Das pessoas têm pelo menos um siso incluso, segundo metanálise com 183.828 participantes.</p>
+      </div>
+      <div class="sx-dado">
+        <span class="sx-dado-n">100<i>%</i></span>
+        <p>Dos casos operados aqui passam por tomografia e planejamento antes da data ser marcada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ A TENSÃO ═══════════ -->
+  <section class="sx-tensao" aria-labelledby="tensao-h">
+    <div class="sx-wrap sx-tensao-in">
+      <div class="sx-tensao-img">
+        <img
+          src="/images/siso/dor.jpg"
+          alt="Paciente com a mão no ângulo da mandíbula, sentindo pressão causada pelo siso"
+          width="1200"
+          height="800"
+          loading="lazy"
+        />
+      </div>
+      <div class="sx-tensao-copy">
+        <span class="sx-kicker"><i aria-hidden="true"></i>O que trava você</span>
+        <h2 id="tensao-h" class="sx-h2">O que assusta é entrar na sala sem saber o que vai acontecer.</h2>
+
+        <p class="sx-lead">
+          Quem chega aqui já leu tudo na internet e saiu pior. As frases se repetem em todo
+          consultório do país:
+        </p>
+
+        <ul class="sx-quotes">
+          <li>“Tô muito nervosa porque vou tirar o siso.”</li>
+          <li>“E se eu ficar com o lábio dormente pra sempre?”</li>
+          <li>“Ouvi falar que o dentista quebrou o dente e deixou a raiz.”</li>
+          <li>“Trabalho de pé o dia inteiro. Quantos dias vou ficar parada?”</li>
+          <li>“Não tenho dor nenhuma. Preciso mesmo tirar?”</li>
+        </ul>
+
+        <p class="sx-body">
+          Toda pergunta dessa lista tem resposta objetiva e está respondida nesta página, com
+          número e com fonte. Você não precisa agendar nada para descobrir o que te espera.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ POSIÇÕES DO SISO ═══════════ -->
+  <section class="sx-pos" id="posicoes" aria-labelledby="pos-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Leia seu próprio raio-x</span>
+        <h2 id="pos-h" class="sx-h2">Qual desses é o seu siso?</h2>
+        <p class="sx-lead">
+          A posição do terceiro molar define a dificuldade da cirurgia, o tempo de mesa e o tempo
+          de recuperação. Pegue sua radiografia panorâmica e compare. Nos desenhos, o dente amarelo
+          é o siso, o dente branco ao lado é o segundo molar e o tubo que atravessa o osso embaixo
+          é o canal por onde passa o nervo.
+        </p>
+      </div>
+
+      <div class="sx-pos-grid">
+        <!-- VERTICAL -->
+        <article class="sx-pos-card">
+          <div class="sx-pos-fig">
+            <span class="sx-fig-n" aria-hidden="true">Fig. 01 · Vertical</span>
+            <svg viewBox="0 0 200 132" role="img" aria-label="Siso em posição vertical, alinhado como os outros dentes">
+              <path class="sx-bone" d="M0 46 Q50 40 100 44 Q150 48 200 42 L200 132 L0 132 Z" />
+              <path class="sx-crest" d="M0 46 Q50 40 100 44 Q150 48 200 42" />
+              <path class="sx-canal" d="M0 104 Q100 95 200 106" />
+              <path class="sx-canal-in" d="M0 104 Q100 95 200 106" />
+              <g class="sx-tooth-ctx" transform="translate(56 46)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+              <g class="sx-tooth-key" transform="translate(138 46) rotate(3)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+            </svg>
+          </div>
+          <div class="sx-pos-body">
+            <span class="sx-pos-n">01</span>
+            <h3>Vertical</h3>
+            <p>O siso está de pé, na mesma direção dos outros dentes. É a posição mais simples. Quando ele nasceu inteiro e dá para escovar, muitas vezes pode ficar.</p>
+          </div>
+        </article>
+
+        <!-- MESIOANGULAR -->
+        <article class="sx-pos-card">
+          <div class="sx-pos-fig">
+            <span class="sx-fig-n" aria-hidden="true">Fig. 02 · Mesioangular</span>
+            <svg viewBox="0 0 200 132" role="img" aria-label="Siso mesioangular, inclinado para a frente contra o segundo molar">
+              <path class="sx-bone" d="M0 46 Q50 40 100 44 Q150 48 200 42 L200 132 L0 132 Z" />
+              <path class="sx-crest" d="M0 46 Q50 40 100 44 Q150 48 200 42" />
+              <path class="sx-canal" d="M0 104 Q100 95 200 106" />
+              <path class="sx-canal-in" d="M0 104 Q100 95 200 106" />
+              <g class="sx-tooth-ctx" transform="translate(56 46)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+              <g class="sx-tooth-key" transform="translate(140 56) rotate(-44)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+            </svg>
+          </div>
+          <div class="sx-pos-body">
+            <span class="sx-pos-n">02</span>
+            <h3>Mesioangular</h3>
+            <p>Inclinado para a frente, empurrando o dente vizinho. É a posição mais comum e a que mais acumula comida no vão, o que gera cárie no segundo molar e gengiva inflamada por cima.</p>
+          </div>
+        </article>
+
+        <!-- HORIZONTAL -->
+        <article class="sx-pos-card">
+          <div class="sx-pos-fig">
+            <span class="sx-fig-n" aria-hidden="true">Fig. 03 · Horizontal</span>
+            <svg viewBox="0 0 200 132" role="img" aria-label="Siso horizontal, deitado dentro do osso">
+              <path class="sx-bone" d="M0 46 Q50 40 100 44 Q150 48 200 42 L200 132 L0 132 Z" />
+              <path class="sx-crest" d="M0 46 Q50 40 100 44 Q150 48 200 42" />
+              <path class="sx-canal" d="M0 104 Q100 95 200 106" />
+              <path class="sx-canal-in" d="M0 104 Q100 95 200 106" />
+              <g class="sx-tooth-ctx" transform="translate(56 46)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+              <g class="sx-tooth-key" transform="translate(146 74) rotate(-90)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+            </svg>
+          </div>
+          <div class="sx-pos-body">
+            <span class="sx-pos-n">03</span>
+            <h3>Horizontal</h3>
+            <p>Deitado dentro do osso, de lado. Exige abrir a gengiva, desgastar osso e cortar o dente em partes para tirar sem forçar o vizinho. É aqui que a formação do cirurgião aparece.</p>
+          </div>
+        </article>
+
+        <!-- DISTOANGULAR -->
+        <article class="sx-pos-card">
+          <div class="sx-pos-fig">
+            <span class="sx-fig-n" aria-hidden="true">Fig. 04 · Distoangular</span>
+            <svg viewBox="0 0 200 132" role="img" aria-label="Siso distoangular, inclinado para trás">
+              <path class="sx-bone" d="M0 46 Q50 40 100 44 Q150 48 200 42 L200 132 L0 132 Z" />
+              <path class="sx-crest" d="M0 46 Q50 40 100 44 Q150 48 200 42" />
+              <path class="sx-canal" d="M0 104 Q100 95 200 106" />
+              <path class="sx-canal-in" d="M0 104 Q100 95 200 106" />
+              <g class="sx-tooth-ctx" transform="translate(56 46)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+              <g class="sx-tooth-key" transform="translate(134 52) rotate(34)">
+                <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+                <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+                <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+              </g>
+            </svg>
+          </div>
+          <div class="sx-pos-body">
+            <span class="sx-pos-n">04</span>
+            <h3>Distoangular</h3>
+            <p>Inclinado para trás, em direção ao fundo da mandíbula. Costuma ser o mais trabalhoso, porque a saída do dente aponta para o osso mais espesso da região.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="sx-note">
+        Nenhum desenho substitui exame. A posição real do seu siso só é definida na radiografia
+        panorâmica e, quando há sinal de proximidade com o canal, na tomografia.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CRITÉRIO ═══════════ -->
+  <section class="sx-criterio" id="criterio" aria-labelledby="criterio-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>A conversa honesta</span>
+        <h2 id="criterio-h" class="sx-h2">Nem todo siso precisa sair.</h2>
+        <p class="sx-lead">
+          Existe revisão sistemática Cochrane que não encontrou evidência suficiente para apoiar a
+          remoção preventiva de sisos inclusos sem sintoma e sem sinal de doença. A diretriz
+          britânica do NICE recomenda reservar a extração para casos com patologia. Você vai ouvir
+          isso aqui quando for o seu caso, e vai sair da consulta sem cirurgia marcada.
+        </p>
+      </div>
+
+      <div class="sx-crit-grid">
+        <div class="sx-crit-col sx-crit-yes">
+          <div class="sx-crit-head">
+            <span class="sx-crit-sign" aria-hidden="true">+</span>
+            <h3>Quando a indicação existe</h3>
+          </div>
+          <ul>
+            <li>Dor, pressão ou inchaço recorrente na região do siso</li>
+            <li>Gengiva que inflama por cima do dente e volta a inflamar (pericoronarite)</li>
+            <li>Cárie no siso ou no segundo molar causada pelo vão entre os dois</li>
+            <li>Cisto ou lesão associada ao folículo do dente</li>
+            <li>Reabsorção da raiz do dente vizinho</li>
+            <li>Siso sem função mastigatória, impossível de higienizar</li>
+            <li>Preparo para ortodontia ou para cirurgia ortognática, com indicação do time</li>
+          </ul>
+        </div>
+
+        <div class="sx-crit-col sx-crit-no">
+          <div class="sx-crit-head">
+            <span class="sx-crit-sign" aria-hidden="true">−</span>
+            <h3>Quando acompanhar é o certo</h3>
+          </div>
+          <ul>
+            <li>Siso totalmente incluso, sem sintoma e sem sinal de doença no exame</li>
+            <li>Siso nascido, em posição vertical, com espaço e com higiene possível</li>
+            <li>Raiz colada no canal mandibular em paciente sem sintoma, com risco de nervo maior que o benefício</li>
+            <li>Condição de saúde que contraindica o procedimento naquele momento</li>
+          </ul>
+          <p class="sx-crit-foot">
+            Nesses casos a conduta é acompanhamento com exame periódico. Sem cirurgia, sem
+            cobrança recorrente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ O NERVO ═══════════ -->
+  <section class="sx-nervo" id="nervo" aria-labelledby="nervo-h">
+    <div class="sx-wrap sx-nervo-in">
+      <div class="sx-nervo-copy">
+        <span class="sx-kicker sx-kicker-l"><i aria-hidden="true"></i>O maior medo</span>
+        <h2 id="nervo-h" class="sx-h2 sx-h2-l">“E se eu ficar com o lábio dormente?”</h2>
+
+        <p class="sx-lead sx-lead-l">
+          Abaixo das raízes dos sisos inferiores passa o canal mandibular, e dentro dele o nervo
+          alveolar inferior, responsável pela sensibilidade do lábio e do queixo. Quando a raiz
+          encosta nesse canal, a extração deixa de ser rotina.
+        </p>
+
+        <div class="sx-nervo-nums">
+          <div>
+            <strong>0,6% a 6%</strong>
+            <span>Faixa registrada na literatura para alteração de sensibilidade após extração de siso inferior.</span>
+          </div>
+          <div>
+            <strong>~90%</strong>
+            <span>Dos casos de alteração voltam ao normal em até 8 semanas.</span>
+          </div>
+          <div>
+            <strong>0,08%</strong>
+            <span>De permanência acima de um ano em estudo brasileiro conduzido na USP.</span>
+          </div>
+        </div>
+
+        <h3 class="sx-h3 sx-h3-l">O que muda a conduta</h3>
+        <p class="sx-body sx-body-l">
+          A radiografia panorâmica mostra três sinais clássicos de proximidade: escurecimento da
+          raiz onde ela cruza o canal, desvio do trajeto do canal e interrupção da sua linha
+          branca. Quando qualquer um aparece, o caso vai para tomografia de feixe cônico, que
+          mostra em três dimensões se a raiz está ao lado, em cima ou abraçando o canal.
+        </p>
+        <p class="sx-body sx-body-l">
+          Em casos de contato real, existe a coronectomia: a coroa do dente é removida e a ponta da
+          raiz fica onde está, intocada, longe do nervo. É uma técnica descrita na literatura
+          brasileira de Cirurgia Bucomaxilofacial e resolve o dilema sem apostar na sorte.
+        </p>
+      </div>
+
+      <div class="sx-nervo-fig">
+        <span class="sx-fig-n sx-fig-n-l" aria-hidden="true">Fig. 05 · Relação com o canal mandibular</span>
+        <svg viewBox="0 0 360 250" role="img" aria-label="Esquema da distância entre a raiz do siso e o canal mandibular, medida em milímetros">
+          <path class="sx-n-bone" d="M0 66 Q90 60 180 64 Q270 68 360 62 L360 250 L0 250 Z" />
+          <path class="sx-n-crest" d="M0 66 Q90 60 180 64 Q270 68 360 62" />
+
+          <!-- segundo molar, em posição normal -->
+          <g class="sx-n-ctx" transform="translate(100 66) scale(1.5)">
+            <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+            <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+            <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+          </g>
+
+          <!-- siso mesioangular, com a raiz apontada para o canal -->
+          <g class="sx-n-key" transform="translate(205 82) rotate(-38) scale(1.5)">
+            <path d="M -20,1 L -20,-15 Q -20,-22 -13,-23 Q -9,-24.5 -6,-23.5 Q -3,-22.5 0,-23.5 Q 3,-24.5 6,-23.5 Q 10,-24.5 13,-23 Q 20,-22 20,-15 L 20,1 Z" />
+            <path d="M -18.5,0 C -18,12 -15.5,25 -12.5,30 Q -11,32.5 -9.5,30 C -7.5,24 -6.5,11 -6.5,0 Z" />
+            <path d="M 6.5,0 C 6.5,11 7.5,24 9.5,30 Q 11,32.5 12.5,30 C 15.5,25 18,12 18.5,0 Z" />
+          </g>
+
+          <!-- canal mandibular, desenhado como tubo -->
+          <path class="sx-n-canal" d="M0 152 Q180 144 360 156" />
+          <path class="sx-n-canal-in" d="M0 152 Q180 144 360 156" />
+          <text class="sx-n-lab" x="12" y="184">canal mandibular</text>
+
+          <!-- cota entre o ápice da raiz e o teto do canal, com linha de chamada -->
+          <line class="sx-n-ext" x1="214" y1="130" x2="258" y2="130" />
+          <line class="sx-n-ext" x1="232" y1="150" x2="258" y2="150" />
+          <line class="sx-n-dimline" x1="252" y1="130" x2="252" y2="150" />
+          <line class="sx-n-dimline" x1="246" y1="130" x2="258" y2="130" />
+          <line class="sx-n-dimline" x1="246" y1="150" x2="258" y2="150" />
+          <path class="sx-n-leader" d="M252 140 L292 108 L340 108" />
+          <text class="sx-n-dim" x="294" y="100">2,1 mm</text>
+        </svg>
+        <span class="sx-fig-cap">Esquema ilustrativo. A medida do seu caso sai da sua tomografia.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROTOCOLO ═══════════ -->
+  <section class="sx-proto" id="protocolo" aria-labelledby="proto-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>O protocolo</span>
+        <h2 id="proto-h" class="sx-h2">Quatro etapas, nessa ordem, sempre.</h2>
+        <p class="sx-lead">
+          A ordem importa. Data de cirurgia marcada antes da leitura do exame é chute com agenda.
+        </p>
+      </div>
+
+      <ol class="sx-steps">
+        <li class="sx-step">
+          <div class="sx-step-img">
+            <img src="/images/siso/consulta.jpg" alt="Avaliação clínica com explicação do caso ao paciente" width="1200" height="800" loading="lazy" />
+          </div>
+          <div class="sx-step-txt">
+            <span class="sx-step-n">01</span>
+            <h3>Avaliação e leitura do exame</h3>
+            <p>
+              Consulta para entender sintoma, histórico e rotina, seguida da leitura da sua
+              radiografia panorâmica. Aqui se define a posição de cada siso, a relação com o
+              segundo molar e se existe sinal de proximidade com o canal mandibular.
+            </p>
+          </div>
+        </li>
+
+        <li class="sx-step">
+          <div class="sx-step-img">
+            <img src="/images/siso/diagnostico.jpg" alt="Radiografia panorâmica examinada contra a luz antes do planejamento cirúrgico" width="1200" height="800" loading="lazy" />
+          </div>
+          <div class="sx-step-txt">
+            <span class="sx-step-n">02</span>
+            <h3>Tomografia e planejamento</h3>
+            <p>
+              Havendo sinal de risco, a tomografia de feixe cônico entra para medir em três
+              dimensões a distância entre a raiz e o canal. Com esse número em mãos define-se a
+              via de acesso, onde o dente será seccionado e quanto osso será desgastado. O tempo
+              estimado de cirurgia sai daqui.
+            </p>
+          </div>
+        </li>
+
+        <li class="sx-step">
+          <div class="sx-step-img">
+            <img src="/images/siso/instrumental.jpg" alt="Instrumental cirúrgico estéril organizado antes da cirurgia de siso" width="1200" height="800" loading="lazy" />
+          </div>
+          <div class="sx-step-txt">
+            <span class="sx-step-n">03</span>
+            <h3>Cirurgia</h3>
+            <p>
+              Anestesia local, com o nível de sedação que você escolheu. O dente é seccionado em
+              partes para sair pelo menor caminho possível, o que reduz desgaste de osso e encurta
+              o tempo de mesa. Tempo cirúrgico menor está associado a menos dor, menos inchaço e
+              menos dificuldade de abrir a boca no pós.
+            </p>
+          </div>
+        </li>
+
+        <li class="sx-step">
+          <div class="sx-step-img">
+            <img src="/images/siso/dia1.jpg" alt="Paciente em repouso em casa no primeiro dia após a cirurgia de siso" width="1000" height="1250" loading="lazy" />
+          </div>
+          <div class="sx-step-txt">
+            <span class="sx-step-n">04</span>
+            <h3>Pós-operatório acompanhado</h3>
+            <p>
+              Você sai com prescrição, orientação escrita, atestado e canal direto no WhatsApp.
+              Retorno entre o sétimo e o décimo dia para remoção da sutura e conferência da
+              cicatrização.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONFORTO ═══════════ -->
+  <section class="sx-conforto" aria-labelledby="conforto-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Para quem tem pavor</span>
+        <h2 id="conforto-h" class="sx-h2">Você escolhe o quanto quer estar presente.</h2>
+        <p class="sx-lead">
+          Odontofobia é condição clínica e tem manejo próprio. Diga isso na avaliação e o plano já
+          sai ajustado ao seu nível.
+        </p>
+      </div>
+
+      <div class="sx-tabela" role="table" aria-label="Níveis de conforto disponíveis">
+        <div class="sx-tr sx-tr-head" role="row">
+          <span role="columnheader">Nível</span>
+          <span role="columnheader">Como você fica</span>
+          <span role="columnheader">Onde é feito</span>
+        </div>
+        <div class="sx-tr" role="row">
+          <span role="cell"><b>Anestesia local</b></span>
+          <span role="cell">Acordado e consciente. A região fica sem sensibilidade, você sente pressão e movimento.</span>
+          <span role="cell">Consultório</span>
+        </div>
+        <div class="sx-tr" role="row">
+          <span role="cell"><b>Ansiolítico</b></span>
+          <span role="cell">Acordado e relaxado. Medicação tomada antes, para reduzir a ansiedade de chegar.</span>
+          <span role="cell">Consultório</span>
+        </div>
+        <div class="sx-tr" role="row">
+          <span role="cell"><b>Óxido nitroso</b></span>
+          <span role="cell">Acordado, com sensação de leveza e noção de tempo reduzida. Efeito passa em minutos.</span>
+          <span role="cell">Consultório</span>
+        </div>
+        <div class="sx-tr" role="row">
+          <span role="cell"><b>Sedação venosa</b></span>
+          <span role="cell">Sonolento, com pouca ou nenhuma lembrança do procedimento. Conduzida por anestesista.</span>
+          <span role="cell">Consultório ou hospital</span>
+        </div>
+        <div class="sx-tr" role="row">
+          <span role="cell"><b>Anestesia geral</b></span>
+          <span role="cell">Dormindo, sem qualquer percepção. Indicada em casos complexos, muitos dentes ou fobia severa.</span>
+          <span role="cell">Centro cirúrgico</span>
+        </div>
+      </div>
+
+      <p class="sx-note">
+        Os dois cirurgiões têm formação em ambiente hospitalar e atuação em centro cirúrgico, o que
+        mantém todos os níveis acima disponíveis dentro do mesmo acompanhamento.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ RECUPERAÇÃO ═══════════ -->
+  <section class="sx-rec" id="recuperacao" aria-labelledby="rec-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Recuperação</span>
+        <h2 id="rec-h" class="sx-h2">Quantos dias eu fico parado?</h2>
+        <p class="sx-lead">
+          O que se espera de uma extração de siso sem intercorrência. Seu caso pode andar mais
+          rápido ou mais devagar, e você recebe o cronograma do seu antes da cirurgia.
+        </p>
+      </div>
+
+      <div class="sx-timeline">
+        <div class="sx-tl-track" aria-hidden="true"></div>
+
+        <article class="sx-tl-item">
+          <span class="sx-tl-day">Dia 0</span>
+          <div class="sx-tl-img sx-tl-noimg">
+            <span class="sx-tl-hour">3h a 4h</span>
+            <em>até a anestesia passar</em>
+          </div>
+          <h3>O dia da cirurgia</h3>
+          <p>Gelo de 20 em 20 minutos, repouso com a cabeça elevada e dieta fria e líquida. A medicação começa antes de a anestesia passar, não depois.</p>
+        </article>
+
+        <article class="sx-tl-item">
+          <span class="sx-tl-day">Dia 1 a 3</span>
+          <div class="sx-tl-img">
+            <img src="/images/siso/dia1.jpg" alt="Primeiro dia de recuperação em casa, com compressa fria no rosto" width="1000" height="1250" loading="lazy" />
+          </div>
+          <h3>O pico do inchaço</h3>
+          <p>O rosto incha mais no segundo e no terceiro dia, e é justamente aí que a maioria acha que algo deu errado. É o esperado. A partir do quarto dia começa a descer.</p>
+        </article>
+
+        <article class="sx-tl-item">
+          <span class="sx-tl-day">Dia 3 a 5</span>
+          <div class="sx-tl-img">
+            <img src="/images/siso/dia3.jpg" alt="Terceiro dia de recuperação, paciente já se alimentando normalmente de comida macia" width="1000" height="1250" loading="lazy" />
+          </div>
+          <h3>A volta à rotina</h3>
+          <p>Trabalho de escritório costuma voltar aqui. Comida macia e morna liberada. Boca ainda abre menos que o normal, e isso melhora sozinho.</p>
+        </article>
+
+        <article class="sx-tl-item">
+          <span class="sx-tl-day">Dia 7 a 10</span>
+          <div class="sx-tl-img">
+            <img src="/images/siso/dia7.jpg" alt="Sétimo dia após a cirurgia, paciente recuperado e de volta à vida normal" width="1000" height="1250" loading="lazy" />
+          </div>
+          <h3>Retorno e sutura</h3>
+          <p>Remoção dos pontos e conferência da cicatrização. Atividade física e alimentação normal liberadas conforme a evolução do seu caso.</p>
+        </article>
+      </div>
+
+      <div class="sx-atestado">
+        <div>
+          <span class="sx-kicker"><i aria-hidden="true"></i>Atestado</span>
+          <h3 class="sx-h3">O papel sai no dia, com o prazo combinado antes.</h3>
+        </div>
+        <ul>
+          <li><b>2 a 3 dias</b> para trabalho de escritório e home office</li>
+          <li><b>5 dias</b> para trabalho físico, que exige esforço ou que fala o dia inteiro</li>
+          <li><b>Sob avaliação</b> para quem opera os quatro sisos de uma vez</li>
+        </ul>
+      </div>
+
+      <aside class="sx-alerta" aria-labelledby="alerta-h">
+        <div class="sx-alerta-head">
+          <span class="sx-alerta-sig" aria-hidden="true">!</span>
+          <h3 id="alerta-h">Quando você deve nos chamar na hora</h3>
+        </div>
+        <ul>
+          <li><b>Dor que aumenta</b> a partir do quarto dia, em vez de diminuir. Pode ser alveolite, que tem tratamento simples no consultório.</li>
+          <li><b>Sangramento</b> que não para depois de 30 minutos mordendo gaze.</li>
+          <li><b>Febre acima de 38&nbsp;°C</b> ou inchaço que continua crescendo depois do terceiro dia.</li>
+          <li><b>Dificuldade para engolir ou respirar</b>, em qualquer momento. Este é o único item da lista que pede pronto-socorro imediato.</li>
+          <li><b>Dormência que persiste</b> mais de 24 horas depois da cirurgia.</li>
+        </ul>
+        <p>Guarde este bloco. O canal de WhatsApp fica aberto durante toda a recuperação.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════ VALOR ═══════════ -->
+  <section class="sx-valor" aria-labelledby="valor-h">
+    <div class="sx-wrap sx-valor-in">
+      <div>
+        <span class="sx-kicker sx-kicker-l"><i aria-hidden="true"></i>Quanto custa</span>
+        <h2 id="valor-h" class="sx-h2 sx-h2-l">Ninguém publica preço de siso. Então publicamos a conta.</h2>
+        <p class="sx-lead sx-lead-l">
+          O valor de uma cirurgia de siso sai de uma conta com cinco variáveis. Estas são as cinco,
+          abertas. Você recebe o número fechado por escrito depois da leitura do exame, antes de
+          qualquer agendamento.
+        </p>
+        <a href={WA} class="sx-btn sx-btn-y sx-btn-lg" target="_blank" rel="noopener noreferrer">
+          Pedir meu orçamento
+        </a>
+      </div>
+
+      <ol class="sx-valor-list">
+        <li><span>01</span><div><b>Quantos dentes</b><p>Um siso, dois do mesmo lado ou os quatro na mesma sessão.</p></div></li>
+        <li><span>02</span><div><b>Nascido ou incluso</b><p>Dente já na boca sai rápido. Dente dentro do osso exige abrir, desgastar e seccionar.</p></div></li>
+        <li><span>03</span><div><b>Relação com o canal</b><p>Raiz próxima do nervo muda o planejamento, o tempo de mesa e a técnica.</p></div></li>
+        <li><span>04</span><div><b>Exames</b><p>Panorâmica em todos os casos. Tomografia quando há sinal de proximidade.</p></div></li>
+        <li><span>05</span><div><b>Nível de sedação</b><p>Anestesia local, sedação com anestesista ou centro cirúrgico.</p></div></li>
+      </ol>
+    </div>
+    <div class="sx-valor-nota sx-wrap">
+      <p>
+        A exodontia de terceiro molar, incluindo o incluso, consta do Rol de Procedimentos da ANS
+        como cobertura obrigatória em nível ambulatorial nos planos odontológicos. Confirme com sua
+        operadora carência, rede e cobertura de exames e de sedação.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CIRURGIÕES ═══════════ -->
+  <section class="sx-cir" id="cirurgioes" aria-labelledby="cir-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Quem opera</span>
+        <h2 id="cir-h" class="sx-h2">Seu siso pode ser extraído por qualquer dentista.</h2>
+        <p class="sx-lead">
+          Isso é verdade e está na lei: extração de siso não é ato privativo de especialista. A
+          pergunta que vale é outra. Quem você quer no caso em que a raiz está encostada no canal
+          do nervo?
+        </p>
+      </div>
+
+      <div class="sx-cir-grid">
+        <article class="sx-cir-card">
+          <div class="sx-cir-img">
+            <img src="/images/sobre-amanda.jpg" alt="Dra. Amanda Coli, cirurgiã bucomaxilofacial em São Paulo" width="1160" height="1540" loading="lazy" />
+          </div>
+          <div class="sx-cir-body">
+            <h3>Dra. Amanda Coli</h3>
+            <span class="sx-cir-cro">CRO-SP 141836</span>
+            <ul>
+              <li>Graduação pela Unicamp</li>
+              <li>Especialização em CTBMF pelo Conjunto Hospitalar do Mandaqui</li>
+              <li>Especialização em Implantodontia pela ABO</li>
+              <li>Atuação ambulatorial e hospitalar em São Paulo</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sx-cir-card">
+          <div class="sx-cir-img">
+            <img src="/images/eliezer-sobre.jpg" alt="Dr. Eliézer Andrade, cirurgião bucomaxilofacial em São Paulo" width="1543" height="2048" loading="lazy" />
+          </div>
+          <div class="sx-cir-body">
+            <h3>Dr. Eliézer Andrade</h3>
+            <span class="sx-cir-cro">CRO-SP 139423</span>
+            <ul>
+              <li>Especialização em CTBMF pelo Conjunto Hospitalar do Mandaqui</li>
+              <li>Especialização em Implantodontia</li>
+              <li>Professor de pós-graduação em Cirurgia</li>
+              <li>Atuação ambulatorial e hospitalar em São Paulo</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <figure class="sx-cir-foto">
+        <img src="/images/equipe-cirurgica.jpg" alt="Dra. Amanda Coli e Dr. Eliézer Andrade operando em centro cirúrgico hospitalar" width="1114" height="1412" loading="lazy" />
+        <figcaption>
+          <b>Onde a formação hospitalar aparece.</b>
+          Ela permite conduzir o caso simples no consultório e levar o caso complexo para o centro
+          cirúrgico sem trocar de profissional no meio do caminho.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════════ DEPOIMENTOS ═══════════ -->
+  <section class="sx-dep" aria-labelledby="dep-h">
+    <div class="sx-wrap">
+      <div class="sx-head">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Pacientes</span>
+        <h2 id="dep-h" class="sx-h2">O que diz quem já sentou nessa cadeira.</h2>
+      </div>
+
+      <div class="sx-dep-grid">
+        <blockquote class="sx-dep-card">
+          <p>
+            “Desde a primeira consulta, o que mais me chamou a atenção foi a segurança e a
+            confiança transmitida pelo Dr. Eliezer e Dra. Amanda. Eu sempre tive o sonho de
+            recuperar meu sorriso mas tinha muito medo do procedimento em si, e em todos os
+            momentos, desde o planejamento até a finalização, fui tratada com atenção, respeito e
+            total transparência, o que me deixou muito tranquila durante todo o processo.”
+          </p>
+          <footer><span>Maria</span><em>Cirurgia Ortognática</em></footer>
+        </blockquote>
+
+        <blockquote class="sx-dep-card">
+          <p>
+            “Gostaria de expressar minha profunda gratidão pelo seu trabalho maravilhoso. Os meus
+            implantes ficaram perfeitos e com uma aparência natural. Você me devolveu a confiança e
+            a alegria de sorrir sem inseguranças. Muito obrigada pelo carinho, paciência e toda sua
+            competência.”
+          </p>
+          <footer><span>Isa Moron</span><em>Implante Dental</em></footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="sx-faq" id="duvidas" aria-labelledby="faq-h">
+    <div class="sx-wrap sx-faq-in">
+      <div class="sx-faq-side">
+        <span class="sx-kicker"><i aria-hidden="true"></i>Dúvidas frequentes</span>
+        <h2 id="faq-h" class="sx-h2">As dez perguntas que todo paciente faz antes de marcar.</h2>
+        <p class="sx-lead">
+          Se a sua não estiver aqui, manda no WhatsApp. Responder dúvida antes da consulta faz
+          parte do trabalho.
+        </p>
+        <a href={WA} class="sx-btn sx-btn-dark" target="_blank" rel="noopener noreferrer">
+          Tirar minha dúvida
+        </a>
+      </div>
+
+      <div class="sx-faq-list">
+        {faq.map((item) => (
+          <details class="sx-faq-item">
+            <summary>{item.q}</summary>
+            <div class="sx-faq-a"><p>{item.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA FINAL ═══════════ -->
+  <section class="sx-cta" id="contato">
+    <div class="sx-wrap sx-cta-in">
+      <div class="sx-cta-copy">
+        <h2 class="sx-cta-h">Traga sua radiografia. Saia sabendo o que tem.</h2>
+        <p>
+          A avaliação existe para você entender a posição dos seus sisos, o risco real do seu caso
+          e o que fazer com ele. Se a conduta for acompanhar, você sai daqui sem cirurgia marcada.
+        </p>
+        <a href={WA} class="sx-btn sx-btn-y sx-btn-lg" target="_blank" rel="noopener noreferrer">
+          Agendar avaliação no WhatsApp
+        </a>
+        <span class="sx-micro sx-micro-l">
+          Av. Ver. José Diniz, 3457 · Campo Belo, São Paulo. Atendimento de segunda a sexta, sob
+          agendamento.
+        </span>
+      </div>
+      <div class="sx-cta-img">
+        <img src="/images/siso/sorriso.jpg" alt="Paciente sorrindo livremente após a recuperação da extração de siso" width="1200" height="800" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="sx-foot" role="contentinfo">
+    <div class="sx-wrap">
+      <div class="sx-foot-top">
+        <img src="/images/siso/logo-maxfocos-branco.png" alt="MaxFocos" width="728" height="171" loading="lazy" />
+        <p>
+          Conteúdo com finalidade informativa, sem promessa de resultado. Toda conduta depende de
+          avaliação clínica presencial e de exame de imagem.
+        </p>
+      </div>
+
+      <div class="sx-foot-cols">
+        <div>
+          <span>Cirurgiões</span>
+          <p>Dra. Amanda Coli · CRO-SP 141836<br />Dr. Eliézer Andrade · CRO-SP 139423<br />Cirurgia e Traumatologia Bucomaxilofacial</p>
+        </div>
+        <div>
+          <span>Onde</span>
+          <p>Av. Ver. José Diniz, 3457<br />Campo Belo, São Paulo, SP</p>
+        </div>
+        <div>
+          <span>Atendimento</span>
+          <p>De segunda a sexta<br />Sob agendamento prévio</p>
+        </div>
+        <div>
+          <span>Outras páginas</span>
+          <p><a href="/dra-amanda">Dra. Amanda Coli</a><br /><a href="/dr-eliezer">Dr. Eliézer Andrade</a></p>
+        </div>
+      </div>
+
+      <div class="sx-foot-bot">
+        <span>São Paulo, SP</span>
+        <span>© 2026 MaxFocos</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const b = document.getElementById("sx-burger");
+    const l = document.getElementById("sx-links");
+    if (b && l) {
+      b.addEventListener("click", () => {
+        const open = b.getAttribute("aria-expanded") === "true";
+        b.setAttribute("aria-expanded", String(!open));
+        l.classList.toggle("sx-open", !open);
+      });
+      l.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          b.setAttribute("aria-expanded", "false");
+          l.classList.remove("sx-open");
+        })
+      );
+    }
+  </script>
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════════════════
+     LP EXTRAÇÃO DE SISO · MaxFocos
+     Conceito: "A Medida". Precisão milimétrica como
+     linguagem visual. Régua, cota, desenho técnico.
+     ═══════════════════════════════════════════════════════ */
+
+  .sx-nav,
+  .sx-hero,
+  .sx-dados,
+  .sx-tensao,
+  .sx-pos,
+  .sx-criterio,
+  .sx-nervo,
+  .sx-proto,
+  .sx-conforto,
+  .sx-rec,
+  .sx-valor,
+  .sx-cir,
+  .sx-dep,
+  .sx-faq,
+  .sx-cta,
+  .sx-foot {
+    --ink: #1a1a1a;
+    --paper: #f4f4f2;
+    --paper2: #eceae6;
+    --night: #0e0e0e;
+    --night2: #171717;
+    --y: #fde102;
+    --line: rgba(26, 26, 26, 0.14);
+    --line-l: rgba(255, 255, 255, 0.14);
+    --t: "Neue Kaine", system-ui, sans-serif;
+    --m: "Geist Mono", "Courier New", monospace;
+    --w: 1180px;
+    --g: clamp(1.25rem, 5vw, 3rem);
+    --e: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sx-wrap {
+    max-width: var(--w);
+    margin-inline: auto;
+    padding-inline: var(--g);
+  }
+
+  /* Âncoras não param embaixo da nav fixa */
+  .sx-pos,
+  .sx-criterio,
+  .sx-nervo,
+  .sx-proto,
+  .sx-rec,
+  .sx-cir,
+  .sx-faq,
+  .sx-cta { scroll-margin-top: 72px; }
+
+  /* ───── TIPOGRAFIA ───── */
+  .sx-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.55);
+    margin-bottom: 1.25rem;
+  }
+  .sx-kicker i {
+    width: 7px;
+    height: 7px;
+    background: var(--y);
+    flex-shrink: 0;
+  }
+  .sx-kicker-l { color: rgba(255, 255, 255, 0.55); }
+
+  .sx-h1 {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(2.125rem, 4vw, 3.625rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+  }
+  /* Grifo em gradiente: evita z-index negativo e o empilhamento do fundo da seção */
+  .sx-mark {
+    white-space: nowrap;
+    padding-inline: 0.05em;
+    background-image: linear-gradient(
+      to top,
+      var(--y) 0,
+      var(--y) 0.3em,
+      transparent 0.3em
+    );
+  }
+
+  .sx-h2 {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.875rem, 3.6vw, 3.125rem);
+    line-height: 1.05;
+    letter-spacing: -0.032em;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+  .sx-h2-l { color: #fff; }
+
+  .sx-h3 {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: clamp(1.0625rem, 1.8vw, 1.375rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .sx-h3-l { color: #fff; }
+
+  .sx-lead {
+    font-family: var(--m);
+    font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+    line-height: 1.85;
+    color: rgba(26, 26, 26, 0.68);
+    max-width: 62ch;
+    margin-top: 1.25rem;
+  }
+  .sx-lead-l { color: rgba(255, 255, 255, 0.62); }
+
+  .sx-body {
+    font-family: var(--m);
+    font-size: 0.875rem;
+    line-height: 1.9;
+    color: rgba(26, 26, 26, 0.68);
+    max-width: 62ch;
+    margin-top: 1rem;
+  }
+  .sx-body-l { color: rgba(255, 255, 255, 0.58); }
+
+  .sx-micro {
+    display: block;
+    font-family: var(--m);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.45);
+    margin-top: 1.125rem;
+  }
+  .sx-micro-l { color: rgba(255, 255, 255, 0.4); }
+
+  .sx-note {
+    font-family: var(--m);
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.45);
+    max-width: 68ch;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .sx-head { margin-bottom: clamp(2.75rem, 5vw, 4.5rem); }
+
+  /* ───── BOTÕES ───── */
+  .sx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--m);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    padding: 0.9375rem 1.875rem;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    transition: background 0.2s var(--e), color 0.2s var(--e), border-color 0.2s var(--e),
+      transform 0.2s var(--e), box-shadow 0.2s var(--e);
+  }
+  .sx-btn-sm { padding: 0.6875rem 1.25rem; font-size: 0.75rem; }
+  .sx-btn-lg { padding: 1.125rem 2.25rem; font-size: 0.875rem; }
+
+  .sx-btn-y {
+    background: var(--y);
+    color: #111;
+    border-color: var(--y);
+  }
+  .sx-btn-y:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(253, 225, 18, 0.32);
+  }
+  .sx-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: rgba(26, 26, 26, 0.26);
+  }
+  .sx-btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .sx-btn-dark {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .sx-btn-dark:hover { background: #000; transform: translateY(-2px); }
+
+  /* ───── NAV ───── */
+  .sx-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244, 244, 242, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .sx-nav-in {
+    max-width: var(--w);
+    margin-inline: auto;
+    padding: 0.9375rem var(--g);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .sx-nav-logo { margin-right: auto; display: flex; flex-shrink: 0; }
+  .sx-nav-logo img { height: 24px; width: auto; }
+  .sx-nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sx-nav-links a {
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.58);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .sx-nav-links a:hover { color: var(--ink); }
+  .sx-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .sx-burger span { width: 22px; height: 1.5px; background: var(--ink); display: block; }
+
+  /* ───── HERO ───── */
+  .sx-hero {
+    position: relative;
+    background: var(--paper);
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(26, 26, 26, 0.038) 0 1px,
+      transparent 1px 84px
+    );
+    overflow: hidden;
+  }
+  .sx-hero-in {
+    max-width: var(--w);
+    margin-inline: auto;
+    padding: clamp(3rem, 6vw, 5.5rem) var(--g) 0;
+    display: grid;
+    grid-template-columns: 1fr 0.82fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: end;
+  }
+  .sx-hero-copy { padding-bottom: clamp(3rem, 6vw, 5.5rem); }
+  .sx-hero-sub {
+    font-family: var(--m);
+    font-size: clamp(0.875rem, 1.15vw, 1rem);
+    line-height: 1.85;
+    color: rgba(26, 26, 26, 0.68);
+    max-width: 52ch;
+    margin-bottom: 2.25rem;
+  }
+  .sx-hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .sx-hero-media {
+    position: relative;
+    align-self: end;
+    min-height: 300px;
+  }
+  .sx-hero-block {
+    position: absolute;
+    left: 6%;
+    right: -6%;
+    bottom: 0;
+    height: 58%;
+    background: var(--y);
+  }
+  .sx-hero-media img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 22px 48px rgba(0, 0, 0, 0.16));
+  }
+  /* Legenda de desenho técnico sobre a régua */
+  .sx-hero-legenda {
+    border-top: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .sx-hero-legenda .sx-wrap {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    flex-wrap: wrap;
+    padding-block: 0.875rem;
+  }
+  .sx-hero-legenda span {
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.45);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .sx-hero-legenda b {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ink);
+  }
+  .sx-hero-legenda em {
+    font-style: normal;
+    font-family: var(--m);
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.38);
+    margin-left: auto;
+  }
+
+  .sx-ruler {
+    height: 22px;
+    background: var(--ink);
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.34) 0 1px,
+      transparent 1px 10px
+    );
+  }
+
+  /* ───── DADOS ───── */
+  .sx-dados { background: var(--ink); color: #fff; }
+  .sx-dados-in {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding-block: 0;
+  }
+  .sx-dado {
+    padding: clamp(2rem, 3.5vw, 3rem) clamp(1.25rem, 2vw, 2rem);
+    border-right: 1px solid var(--line-l);
+  }
+  .sx-dado:first-child { padding-inline-start: 0; }
+  .sx-dado:last-child { border-right: none; padding-inline-end: 0; }
+  .sx-dado-n {
+    display: block;
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.75rem, 3vw, 2.625rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--y);
+    margin-bottom: 0.875rem;
+  }
+  .sx-dado-n em {
+    font-style: normal;
+    font-size: 0.4em;
+    font-family: var(--m);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin-inline: 0.22em;
+    letter-spacing: 0;
+  }
+  .sx-dado-n i {
+    font-style: normal;
+    font-size: 0.34em;
+    font-family: var(--m);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 0.28em;
+    letter-spacing: 0.06em;
+  }
+  .sx-dado p {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* ───── TENSÃO ───── */
+  .sx-tensao { background: var(--paper); }
+  .sx-tensao-in {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  }
+  .sx-tensao-img { position: relative; }
+  .sx-tensao-img::before {
+    content: "";
+    position: absolute;
+    inset: -1px -1px auto auto;
+    width: 46%;
+    height: 8px;
+    background: var(--y);
+    z-index: 1;
+  }
+  .sx-tensao-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%) contrast(1.04);
+  }
+  .sx-quotes {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sx-quotes li {
+    font-family: var(--t);
+    font-weight: 500;
+    font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    padding-left: 1.125rem;
+    border-left: 2px solid var(--y);
+  }
+
+  /* ───── POSIÇÕES ───── */
+  .sx-pos { background: var(--paper2); }
+  .sx-pos > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-pos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .sx-pos-card {
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s var(--e);
+  }
+  .sx-pos-card:hover { background: #fff; }
+  .sx-pos-fig {
+    position: relative;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .sx-pos-fig svg { width: 100%; height: auto; display: block; }
+
+  /* Legenda de figura técnica */
+  .sx-fig-n {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.875rem;
+    font-family: var(--m);
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.38);
+    z-index: 1;
+  }
+  .sx-fig-n-l {
+    position: static;
+    display: block;
+    color: rgba(255, 255, 255, 0.38);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line-l);
+  }
+
+  .sx-bone { fill: rgba(26, 26, 26, 0.065); }
+  .sx-crest {
+    fill: none;
+    stroke: rgba(26, 26, 26, 0.26);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+  }
+  .sx-tooth-ctx path {
+    fill: #fff;
+    stroke: rgba(26, 26, 26, 0.32);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+  }
+  .sx-tooth-key path {
+    fill: var(--y);
+    stroke: var(--ink);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+  /* Canal mandibular desenhado como tubo: contorno escuro com miolo vazado.
+     O amarelo fica reservado ao siso, que é o assunto da figura. */
+  .sx-canal {
+    fill: none;
+    stroke: rgba(26, 26, 26, 0.5);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+  .sx-canal-in {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .sx-pos-body { padding: clamp(1.25rem, 2vw, 1.75rem); }
+  .sx-pos-n {
+    display: block;
+    font-family: var(--t);
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgba(26, 26, 26, 0.18);
+    margin-bottom: 0.75rem;
+  }
+  .sx-pos-body h3 {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.625rem;
+    color: var(--ink);
+  }
+  .sx-pos-body p {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.6);
+  }
+
+  /* ───── CRITÉRIO ───── */
+  .sx-criterio { background: var(--paper); }
+  .sx-criterio > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-crit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .sx-crit-col { background: var(--paper); padding: clamp(1.75rem, 3.2vw, 2.75rem); }
+  .sx-crit-no { background: var(--paper2); }
+  .sx-crit-head {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .sx-crit-sign {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .sx-crit-yes .sx-crit-sign { background: var(--y); color: var(--ink); }
+  .sx-crit-no .sx-crit-sign {
+    background: transparent;
+    border: 1.5px solid rgba(26, 26, 26, 0.3);
+    color: rgba(26, 26, 26, 0.55);
+  }
+  .sx-crit-head h3 {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.1875rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .sx-crit-col ul { list-style: none; padding: 0; margin: 0; }
+  .sx-crit-col li {
+    font-family: var(--m);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.7);
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.07);
+    position: relative;
+  }
+  .sx-crit-col li:last-child { border-bottom: none; }
+  .sx-crit-col li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.32rem;
+    width: 8px;
+    height: 1.5px;
+    background: var(--ink);
+    opacity: 0.4;
+  }
+  .sx-crit-yes li::before { background: var(--y); opacity: 1; height: 3px; top: 1.25rem; }
+  .sx-crit-foot {
+    font-family: var(--m);
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.48);
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ───── NERVO ───── */
+  .sx-nervo { background: var(--night); }
+  .sx-nervo-in {
+    display: grid;
+    grid-template-columns: 1fr 0.78fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  }
+  .sx-nervo-nums {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line-l);
+    border: 1px solid var(--line-l);
+    margin: 2rem 0 2.5rem;
+  }
+  .sx-nervo-nums > div { background: var(--night); padding: 1.25rem; }
+  .sx-nervo-nums strong {
+    display: block;
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    letter-spacing: -0.035em;
+    color: var(--y);
+    margin-bottom: 0.5rem;
+  }
+  .sx-nervo-nums span {
+    font-family: var(--m);
+    font-size: 0.71875rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .sx-nervo-fig {
+    background: var(--night2);
+    border: 1px solid var(--line-l);
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .sx-nervo-fig svg { width: 100%; height: auto; display: block; }
+  .sx-n-bone { fill: rgba(255, 255, 255, 0.045); }
+  .sx-n-crest {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+  }
+  .sx-n-ctx path {
+    fill: rgba(255, 255, 255, 0.05);
+    stroke: rgba(255, 255, 255, 0.28);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+  }
+  .sx-n-key path {
+    fill: rgba(253, 225, 18, 0.14);
+    stroke: var(--y);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+  .sx-n-canal {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+  .sx-n-canal-in {
+    fill: none;
+    stroke: var(--night2);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+  }
+  .sx-n-lab {
+    font-family: var(--m);
+    fill: rgba(255, 255, 255, 0.42);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sx-n-dim {
+    font-family: var(--m);
+    fill: var(--y);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+  }
+  .sx-n-dimline { stroke: var(--y); stroke-width: 1.3; }
+  .sx-n-ext {
+    stroke: var(--y);
+    stroke-width: 1;
+    opacity: 0.45;
+    stroke-dasharray: 3 3;
+  }
+  .sx-n-leader {
+    fill: none;
+    stroke: var(--y);
+    stroke-width: 1.3;
+    opacity: 0.8;
+  }
+  .sx-fig-cap {
+    display: block;
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.34);
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--line-l);
+  }
+
+  /* ───── PROTOCOLO ───── */
+  .sx-proto { background: var(--paper); }
+  .sx-proto > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+  .sx-step {
+    display: grid;
+    grid-template-columns: 0.42fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    padding-block: clamp(2rem, 3.5vw, 3rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .sx-step-img { overflow: hidden; background: var(--paper2); }
+  .sx-step-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s var(--e);
+  }
+  .sx-step:hover .sx-step-img img { transform: scale(1.04); }
+  .sx-step-n {
+    display: block;
+    font-family: var(--t);
+    font-weight: 900;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--ink);
+    opacity: 0.16;
+    margin-bottom: 0.875rem;
+  }
+  .sx-step-txt h3 {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .sx-step-txt p {
+    font-family: var(--m);
+    font-size: 0.84375rem;
+    line-height: 1.9;
+    color: rgba(26, 26, 26, 0.65);
+    max-width: 68ch;
+  }
+
+  /* ───── CONFORTO ───── */
+  .sx-conforto { background: var(--paper2); }
+  .sx-conforto > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-tabela { border: 1px solid var(--line); background: var(--paper); }
+  .sx-tr {
+    display: grid;
+    grid-template-columns: 0.22fr 1fr 0.28fr;
+    gap: 1.25rem;
+    padding: 1.125rem clamp(1rem, 2vw, 1.75rem);
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .sx-tr:last-child { border-bottom: none; }
+  .sx-tr-head {
+    background: var(--ink);
+    border-bottom: none;
+  }
+  .sx-tr span {
+    font-family: var(--m);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    color: rgba(26, 26, 26, 0.65);
+  }
+  .sx-tr.sx-tr-head span {
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+  }
+  .sx-tr b {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  /* ───── RECUPERAÇÃO ───── */
+  .sx-rec { background: var(--paper); }
+  .sx-rec > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2.5vw, 2rem);
+    padding-top: 2.75rem;
+  }
+  .sx-tl-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(26, 26, 26, 0.3) 0 1px,
+      transparent 1px 9px
+    );
+    border-top: 1.5px solid var(--ink);
+  }
+  .sx-tl-item { position: relative; }
+  .sx-tl-day {
+    display: inline-block;
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--y);
+    color: var(--ink);
+    padding: 0.3125rem 0.625rem;
+    margin-bottom: 1rem;
+  }
+  .sx-tl-img { overflow: hidden; background: var(--paper2); margin-bottom: 1.125rem; }
+  .sx-tl-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+  }
+  .sx-tl-noimg {
+    aspect-ratio: 4 / 5;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    gap: 0.25rem;
+  }
+  .sx-tl-hour {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--y);
+  }
+  .sx-tl-noimg em {
+    font-style: normal;
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .sx-tl-item h3 {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.625rem;
+  }
+  .sx-tl-item p {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.6);
+  }
+
+  .sx-atestado {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    background: var(--paper2);
+    border: 1px solid var(--line);
+  }
+  .sx-atestado ul { list-style: none; padding: 0; margin: 0; }
+  .sx-atestado li {
+    font-family: var(--m);
+    font-size: 0.84375rem;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.68);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sx-atestado li:last-child { border-bottom: none; }
+  .sx-atestado b {
+    font-family: var(--t);
+    font-weight: 700;
+    color: var(--ink);
+    margin-right: 0.5rem;
+  }
+
+  /* Único bloco de amarelo sólido da página: sinal clínico, não decoração */
+  .sx-alerta {
+    background: var(--y);
+    color: var(--ink);
+    margin-top: 1.25rem;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+  .sx-alerta-head {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1.5px solid rgba(26, 26, 26, 0.22);
+  }
+  .sx-alerta-sig {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: var(--ink);
+    color: var(--y);
+    font-family: var(--t);
+    font-weight: 900;
+    font-size: 1.125rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .sx-alerta-head h3 {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.0625rem, 2vw, 1.4375rem);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .sx-alerta ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+  }
+  .sx-alerta li {
+    font-family: var(--m);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    color: rgba(26, 26, 26, 0.78);
+    padding: 0.8125rem 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.16);
+  }
+  .sx-alerta b {
+    font-family: var(--t);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .sx-alerta > p {
+    font-family: var(--m);
+    font-size: 0.75rem;
+    line-height: 1.75;
+    color: rgba(26, 26, 26, 0.6);
+    margin-top: 1.25rem;
+  }
+
+  /* ───── VALOR ───── */
+  .sx-valor { background: var(--night); }
+  .sx-valor-in {
+    display: grid;
+    grid-template-columns: 1fr 0.92fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+    padding-block: clamp(4.5rem, 8vw, 7.5rem) clamp(2rem, 3vw, 3rem);
+  }
+  .sx-valor-in .sx-btn { margin-top: 2rem; }
+  .sx-valor-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line-l);
+  }
+  .sx-valor-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line-l);
+  }
+  .sx-valor-list span {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: 0.875rem;
+    color: var(--y);
+    letter-spacing: 0.02em;
+  }
+  .sx-valor-list b {
+    display: block;
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0.375rem;
+  }
+  .sx-valor-list p {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .sx-valor-nota { padding-bottom: clamp(3rem, 5vw, 4.5rem); }
+  .sx-valor-nota p {
+    font-family: var(--m);
+    font-size: 0.75rem;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.38);
+    max-width: 80ch;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-l);
+  }
+
+  /* ───── CIRURGIÕES ───── */
+  .sx-cir { background: var(--paper); }
+  .sx-cir > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-cir-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .sx-cir-card { background: var(--paper); display: grid; grid-template-columns: 0.62fr 1fr; }
+  .sx-cir-img { overflow: hidden; background: var(--paper2); }
+  .sx-cir-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .sx-cir-body { padding: clamp(1.5rem, 2.5vw, 2rem); }
+  .sx-cir-body h3 {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(1.125rem, 1.9vw, 1.4375rem);
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    margin-bottom: 0.4375rem;
+  }
+  .sx-cir-cro {
+    display: inline-block;
+    font-family: var(--m);
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.5);
+    border: 1px solid var(--line);
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .sx-cir-body ul { list-style: none; padding: 0; margin: 0; }
+  .sx-cir-body li {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.65;
+    color: rgba(26, 26, 26, 0.65);
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  }
+  .sx-cir-body li:last-child { border-bottom: none; }
+
+  .sx-cir-foto {
+    margin: clamp(2rem, 4vw, 3rem) 0 0;
+    display: grid;
+    grid-template-columns: 0.52fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    background: var(--ink);
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .sx-cir-foto img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+  }
+  .sx-cir-foto figcaption {
+    font-family: var(--m);
+    font-size: 0.84375rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.58);
+    max-width: 58ch;
+  }
+  .sx-cir-foto b {
+    display: block;
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: clamp(1.0625rem, 1.9vw, 1.375rem);
+    letter-spacing: -0.025em;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ───── DEPOIMENTOS ───── */
+  .sx-dep { background: var(--paper2); }
+  .sx-dep > .sx-wrap { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
+  .sx-dep-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .sx-dep-card {
+    margin: 0;
+    background: var(--paper);
+    padding: clamp(1.75rem, 3.2vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .sx-dep-card p {
+    font-family: var(--m);
+    font-size: 0.84375rem;
+    line-height: 1.9;
+    color: rgba(26, 26, 26, 0.7);
+    flex: 1;
+  }
+  .sx-dep-card footer { display: flex; flex-direction: column; gap: 0.5rem; }
+  .sx-dep-card footer span {
+    font-family: var(--t);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--ink);
+  }
+  .sx-dep-card footer em {
+    font-style: normal;
+    font-family: var(--m);
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.5);
+    border-left: 2px solid var(--y);
+    padding-left: 0.5rem;
+    width: fit-content;
+  }
+
+  /* ───── FAQ ───── */
+  .sx-faq { background: var(--paper); border-top: 1px solid var(--line); }
+  .sx-faq-in {
+    display: grid;
+    grid-template-columns: 0.72fr 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  }
+  .sx-faq-side { position: sticky; top: calc(64px + 2rem); }
+  .sx-faq-side .sx-btn { margin-top: 2rem; }
+  .sx-faq-list { border-top: 1px solid var(--line); }
+  .sx-faq-item { border-bottom: 1px solid var(--line); }
+  .sx-faq-item summary {
+    font-family: var(--t);
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    padding: 1.375rem 2.5rem 1.375rem 0;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+  }
+  .sx-faq-item summary::-webkit-details-marker { display: none; }
+  .sx-faq-item summary::after {
+    content: "";
+    position: absolute;
+    right: 0.375rem;
+    top: 50%;
+    width: 13px;
+    height: 1.5px;
+    background: var(--ink);
+    transform: translateY(-50%);
+  }
+  .sx-faq-item summary::before {
+    content: "";
+    position: absolute;
+    right: 0.375rem;
+    top: 50%;
+    width: 13px;
+    height: 1.5px;
+    background: var(--ink);
+    transform: translateY(-50%) rotate(90deg);
+    transition: transform 0.25s var(--e), opacity 0.25s var(--e);
+  }
+  .sx-faq-item[open] summary::before { transform: translateY(-50%) rotate(0deg); opacity: 0; }
+  .sx-faq-a { padding-bottom: 1.625rem; max-width: 66ch; }
+  .sx-faq-a p {
+    font-family: var(--m);
+    font-size: 0.84375rem;
+    line-height: 1.95;
+    color: rgba(26, 26, 26, 0.65);
+  }
+
+  /* ───── CTA ───── */
+  .sx-cta { background: var(--night); }
+  .sx-cta-in {
+    display: grid;
+    grid-template-columns: 1fr 0.78fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+    padding-block: clamp(4.5rem, 8vw, 7rem);
+  }
+  .sx-cta-h {
+    font-family: var(--t);
+    font-weight: 800;
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    max-width: 16ch;
+  }
+  .sx-cta-copy p {
+    font-family: var(--m);
+    font-size: 0.9375rem;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 52ch;
+    margin-bottom: 2.25rem;
+  }
+  .sx-cta-img { position: relative; }
+  .sx-cta-img::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 42%;
+    height: 8px;
+    background: var(--y);
+    z-index: 1;
+  }
+  .sx-cta-img img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+
+  /* ───── FOOTER ───── */
+  .sx-foot { background: #080808; padding-block: clamp(3rem, 6vw, 4.5rem) 1.75rem; }
+  .sx-foot-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--line-l);
+  }
+  .sx-foot-top img { height: 22px; width: auto; opacity: 0.9; }
+  .sx-foot-top p {
+    font-family: var(--m);
+    font-size: 0.71875rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.34);
+    max-width: 46ch;
+    text-align: right;
+  }
+  .sx-foot-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line-l);
+  }
+  .sx-foot-cols span {
+    display: block;
+    font-family: var(--m);
+    font-size: 0.625rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--y);
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+  }
+  .sx-foot-cols p {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .sx-foot-cols a { color: rgba(255, 255, 255, 0.5); text-decoration: none; }
+  .sx-foot-cols a:hover { color: var(--y); }
+  .sx-foot-bot {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--m);
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.24);
+  }
+
+  /* ═══════════ RESPONSIVO ═══════════ */
+  @media (max-width: 1080px) {
+    /* backdrop-filter cria bloco de contenção e prenderia o menu fixo dentro da nav */
+    .sx-nav {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: var(--paper);
+    }
+    .sx-nav-links { display: none; }
+    .sx-burger { display: flex; margin-left: auto; }
+    .sx-nav-cta { display: none; }
+    .sx-nav-links.sx-open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      inset: 62px 0 0;
+      background: var(--paper);
+      padding: 2.5rem var(--g);
+      gap: 1.5rem;
+      z-index: 99;
+      overflow-y: auto;
+    }
+    .sx-nav-links.sx-open a { font-size: 1.125rem; letter-spacing: 0.02em; text-transform: none; }
+
+    .sx-pos-grid { grid-template-columns: 1fr 1fr; }
+    .sx-dados-in { grid-template-columns: 1fr 1fr; }
+    .sx-dado { border-right: none; padding-inline: 0 !important; }
+    .sx-dado:nth-child(odd) { padding-right: clamp(1rem, 3vw, 2rem) !important; }
+    .sx-dado:nth-child(even) { padding-left: clamp(1rem, 3vw, 2rem) !important; border-left: 1px solid var(--line-l); }
+    .sx-timeline { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
+    .sx-faq-side { position: static; }
+  }
+
+  @media (max-width: 860px) {
+    .sx-hero-in { grid-template-columns: 1fr; padding-top: clamp(2.5rem, 6vw, 4rem); }
+    .sx-hero-copy { padding-bottom: 2.5rem; }
+    .sx-hero-media { max-width: 460px; margin-inline: auto; width: 100%; }
+    .sx-hero-tag { position: static; margin-top: -1px; }
+
+    .sx-tensao-in,
+    .sx-nervo-in,
+    .sx-valor-in,
+    .sx-faq-in,
+    .sx-cta-in,
+    .sx-atestado,
+    .sx-cir-foto { grid-template-columns: 1fr; }
+
+    .sx-tensao-img { order: 2; }
+    .sx-crit-grid,
+    .sx-dep-grid,
+    .sx-alerta ul,
+    .sx-cir-grid { grid-template-columns: 1fr; }
+    .sx-step { grid-template-columns: 1fr; gap: 1.5rem; }
+    .sx-step-img { order: -1; }
+    .sx-cta-img { order: -1; }
+    .sx-foot-cols { grid-template-columns: 1fr 1fr; }
+    .sx-foot-top { flex-direction: column; }
+    .sx-foot-top p { text-align: left; }
+
+    .sx-tr { grid-template-columns: 1fr; gap: 0.375rem; padding-block: 1.25rem; }
+    .sx-tr-head { display: none; }
+    .sx-tr span:last-child {
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(26, 26, 26, 0.45);
+    }
+  }
+
+  @media (max-width: 560px) {
+    /* Corpo maior para leitura confortável no celular */
+    .sx-hero-sub,
+    .sx-lead,
+    .sx-body { font-size: 0.9375rem; }
+    .sx-pos-body p,
+    .sx-tl-item p,
+    .sx-crit-col li,
+    .sx-valor-list p,
+    .sx-cir-body li,
+    .sx-dado p { font-size: 0.875rem; }
+    .sx-step-txt p,
+    .sx-faq-a p,
+    .sx-dep-card p,
+    .sx-cir-foto figcaption { font-size: 0.9375rem; }
+
+    .sx-pos-grid,
+    .sx-timeline { grid-template-columns: 1fr; }
+    .sx-dados-in { grid-template-columns: 1fr; }
+    .sx-dado:nth-child(even) { border-left: none; padding-left: 0 !important; }
+    .sx-dado:nth-child(odd) { padding-right: 0 !important; }
+    .sx-dado { border-bottom: 1px solid var(--line-l); }
+    .sx-dado:last-child { border-bottom: none; }
+    .sx-nervo-nums { grid-template-columns: 1fr; }
+    .sx-cir-card { grid-template-columns: 1fr; }
+    .sx-cir-img img { aspect-ratio: 4 / 3; }
+    .sx-hero-ctas { flex-direction: column; align-items: stretch; }
+    .sx-foot-cols { grid-template-columns: 1fr; }
+    .sx-foot-bot { flex-direction: column; gap: 0.375rem; }
+  }
+</style>

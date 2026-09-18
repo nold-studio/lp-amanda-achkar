@@ -59,11 +59,25 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </a>
 
+      <!-- Card Extração de Siso -->
+      <a href="/extracao-de-siso" class="bento-card card-siso" data-node="siso">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">Procedimento · Amanda + Eliézer</span>
+          <h2>Extração de Siso</h2>
+          <p>Captação de pacientes para cirurgia de terceiro molar planejada por tomografia.</p>
+          <div class="card-footer">
+            <span class="card-link">Acessar página</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
       <!-- Stats Card -->
       <div class="bento-card card-stats">
         <div class="stats-row">
           <div class="stat-item">
-            <span class="stat-val">3</span>
+            <span class="stat-val">4</span>
             <span class="stat-lbl">LPs Ativas</span>
           </div>
           <div class="stat-item">
@@ -427,13 +441,16 @@ body {
     { id: 'maxfocos', label: 'MAXFOCOS', url: '#', x: 400, y: 300, vx: 0, vy: 0, fx: null, fy: null, isCenter: true, r: 12 },
     { id: 'amanda', label: 'LP AMANDA (ORTOGNÁTICA)', url: '/dra-amanda', x: 300, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
     { id: 'eliezer', label: 'LP ELIEZER (CTBMF)', url: '/dr-eliezer', x: 500, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
-    { id: 'r1', label: 'PROTOCOLO R1', url: '/', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
+    { id: 'r1', label: 'PROTOCOLO R1', url: '/', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'siso', label: 'EXTRAÇÃO DE SISO', url: '/extracao-de-siso', x: 400, y: 140, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
   ];
 
   const edges: EdgeData[] = [
     { source: 'maxfocos', target: 'amanda' },
     { source: 'maxfocos', target: 'eliezer' },
-    { source: 'maxfocos', target: 'r1' }
+    { source: 'maxfocos', target: 'r1' },
+    { source: 'amanda', target: 'siso' },
+    { source: 'eliezer', target: 'siso' }
   ];
 
   const svg = document.getElementById('graphSvg') as unknown as SVGSVGElement;
