@@ -457,6 +457,11 @@ import Layout from "../layouts/Layout.astro";
       <img src="/images/r1/logo-maxfocos.png" alt="MaxFocos" height="24" />
       <span class="r1-footer-copy">© 2026 MaxFocos. Todos os direitos reservados.</span>
     </div>
+    <nav class="r1-footer-nav" aria-label="Outras páginas">
+      <a href="/dra-amanda">Dra. Amanda Coli</a>
+      <a href="/dr-eliezer">Dr. Eliézer Andrade</a>
+      <a href="/extracao-de-siso">Extração de siso</a>
+    </nav>
     <p class="r1-footer-legal">
       Dra. Amanda Coli · CRO-SP 141836 · Dr. Eliézer Andrade · CRO-SP 139423<br />
       O Protocolo R1 é um programa estratégico. Os resultados dependem da dedicação do aluno. Nenhuma aprovação é garantida de forma automática.
@@ -1436,6 +1441,22 @@ body { background: var(--r1-bg); color: var(--r1-white); font-family: var(--r1-m
   margin-bottom: 1rem;
 }
 .r1-footer-top img { opacity: 0.5; }
+.r1-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+.r1-footer-nav a {
+  font-family: var(--r1-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--r1-gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.r1-footer-nav a:hover { color: var(--r1-yellow); }
 .r1-footer-copy {
   font-family: var(--r1-mono);
   font-size: 0.6875rem;

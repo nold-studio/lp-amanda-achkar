@@ -5,7 +5,7 @@ const WA = "https://wa.me/5515997718867?text=Oi%2C%20quero%20avaliar%20a%20extra
 
 const faq = [
   {
-    q: "Extração de siso dói?",
+    q: "Tirar o dente do siso dói?",
     a: "Durante a cirurgia você não sente dor. A anestesia local bloqueia a região por completo e o que se sente é pressão e movimento. O desconforto aparece quando a anestesia passa, entre 3 e 4 horas depois, e é controlado com a medicação prescrita. O pico costuma ficar nas primeiras 48 a 72 horas e cai a partir daí.",
   },
   {
@@ -88,33 +88,77 @@ const procedureSchema = {
 const clinicSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
+  "@id": "https://maxfocos.com.br/extracao-de-siso#clinica",
   name: "MaxFocos · Cirurgia Bucomaxilofacial",
   description:
     "Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Extração de siso planejada por tomografia, com atuação ambulatorial e hospitalar.",
+  url: "https://maxfocos.com.br/extracao-de-siso",
+  image: "https://maxfocos.com.br/images/r1/founders-2.jpg",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Ver. José Diniz, 3457",
     addressLocality: "São Paulo",
     addressRegion: "SP",
+    postalCode: "04604-004",
     addressCountry: "BR",
   },
-  areaServed: "São Paulo, SP",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -23.6242,
+    longitude: -46.6742,
+  },
+  areaServed: [
+    "Campo Belo",
+    "Moema",
+    "Brooklin",
+    "Itaim Bibi",
+    "Vila Olímpia",
+    "Santo Amaro",
+    "Zona Sul de São Paulo",
+    "São Paulo, SP",
+  ],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
   medicalSpecialty: "Oral and Maxillofacial Surgery",
   availableService: {
     "@type": "MedicalProcedure",
     name: "Extração de siso",
   },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "MaxFocos",
+      item: "https://maxfocos.com.br/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Extração de siso",
+      item: "https://maxfocos.com.br/extracao-de-siso",
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Extração de Siso em São Paulo | Cirurgiões Bucomaxilofaciais"
-  description="Extração de siso planejada por tomografia, em São Paulo. Dra. Amanda Coli e Dr. Eliézer Andrade, especialistas em Cirurgia e Traumatologia Bucomaxilofacial com formação hospitalar. Entenda seu caso antes de agendar."
+  title="Extração de Siso em São Paulo | Planejada por Tomografia"
+  description="Entenda seu caso antes de agendar. Extração de siso em São Paulo com dois cirurgiões bucomaxilofaciais e planejamento por tomografia. Avalie no WhatsApp."
   image="/images/r1/founders-2.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(procedureSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(clinicSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- ═══════════ NAV ═══════════ -->
   <header class="sx-nav" role="banner">
@@ -149,12 +193,12 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>Extração de siso · São Paulo</span>
 
         <h1 class="sx-h1">
-          Seu siso é medido em <span class="sx-mark">milímetros</span> antes de ser operado.
+          Tire o siso de uma vez e volte à rotina em <span class="sx-mark">3 a 5 dias</span>.
         </h1>
 
         <p class="sx-hero-sub">
           Extração de siso planejada por tomografia, com dois cirurgiões bucomaxilofaciais
-          formados em ambiente hospitalar.
+          formados em ambiente hospitalar. Você sabe o que vai acontecer antes de marcar.
         </p>
 
         <div class="sx-hero-ctas">
@@ -214,37 +258,16 @@ const clinicSchema = {
   <!-- ═══════════ A TENSÃO ═══════════ -->
   <section class="sx-tensao" aria-labelledby="tensao-h">
     <div class="sx-wrap sx-tensao-in">
-      <div class="sx-tensao-img">
-        <img
-          src="/images/siso/dor.jpg"
-          alt="Paciente com a mão no ângulo da mandíbula, sentindo pressão causada pelo siso"
-          width="1200"
-          height="800"
-          loading="lazy"
-        />
-      </div>
-      <div class="sx-tensao-copy">
+      <div>
         <span class="sx-kicker"><i aria-hidden="true"></i>O que trava você</span>
         <h2 id="tensao-h" class="sx-h2">O que assusta é entrar na sala sem saber o que vai acontecer.</h2>
-
-        <p class="sx-lead">
-          Quem chega aqui já leu tudo na internet e saiu pior. As frases se repetem em todo
-          consultório do país:
-        </p>
-
-        <ul class="sx-quotes">
-          <li>“Tô muito nervosa porque vou tirar o siso.”</li>
-          <li>“E se eu ficar com o lábio dormente pra sempre?”</li>
-          <li>“Ouvi falar que o dentista quebrou o dente e deixou a raiz.”</li>
-          <li>“Trabalho de pé o dia inteiro. Quantos dias vou ficar parada?”</li>
-          <li>“Não tenho dor nenhuma. Preciso mesmo tirar?”</li>
-        </ul>
-
-        <p class="sx-body">
-          Toda pergunta dessa lista tem resposta objetiva e está respondida nesta página, com
-          número e com fonte. Você não precisa agendar nada para descobrir o que te espera.
-        </p>
       </div>
+      <ul class="sx-quotes">
+        <li>“E se eu ficar com o lábio dormente pra sempre?”</li>
+        <li>“Trabalho de pé o dia inteiro. Quantos dias vou ficar parada?”</li>
+        <li>“Não tenho dor nenhuma. Preciso mesmo tirar?”</li>
+        <li class="sx-quotes-ans">As três têm resposta com número e fonte nesta página.</li>
+      </ul>
     </div>
   </section>
 
@@ -255,10 +278,9 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>Leia seu próprio raio-x</span>
         <h2 id="pos-h" class="sx-h2">Siso incluso, deitado ou nascido: qual é o seu?</h2>
         <p class="sx-lead">
-          A posição do terceiro molar define a dificuldade da cirurgia, o tempo de mesa e o tempo
-          de recuperação. Pegue sua radiografia panorâmica e compare. Nos desenhos, o dente amarelo
-          é o siso, o dente branco ao lado é o segundo molar e o tubo que atravessa o osso embaixo
-          é o canal por onde passa o nervo.
+          A posição do dente do siso define a dificuldade da cirurgia e o tempo de recuperação.
+          Pegue sua panorâmica e compare: o dente amarelo é o siso, o branco é o segundo molar e o
+          tubo embaixo é o canal do nervo.
         </p>
       </div>
 
@@ -376,6 +398,8 @@ const clinicSchema = {
         </article>
       </div>
 
+      <p class="sx-swipe">Arraste para ver as quatro</p>
+
       <p class="sx-note">
         Nenhum desenho substitui exame. A posição real do seu siso só é definida na radiografia
         panorâmica e, quando há sinal de proximidade com o canal, na tomografia.
@@ -390,10 +414,11 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>A conversa honesta</span>
         <h2 id="criterio-h" class="sx-h2">Preciso tirar o siso mesmo sem dor?</h2>
         <p class="sx-lead">
-          Existe revisão sistemática Cochrane que não encontrou evidência suficiente para apoiar a
-          remoção preventiva de sisos inclusos sem sintoma e sem sinal de doença. A diretriz
-          britânica do NICE recomenda reservar a extração para casos com patologia. Você vai ouvir
-          isso aqui quando for o seu caso, e vai sair da consulta sem cirurgia marcada.
+          A <a href="https://www.cochrane.org/pt/CD003879/remocao-cirurgica-versus-retencao-para-o-tratamento-de-dentes-do-siso-impactados-assintomaticos" class="sx-ref" target="_blank" rel="noopener noreferrer">revisão Cochrane</a>
+          não encontrou evidência para apoiar a remoção preventiva de sisos inclusos sem sintoma, e
+          a <a href="https://www.nice.org.uk/guidance/ta1/chapter/1-Recommendations" class="sx-ref" target="_blank" rel="noopener noreferrer">diretriz do NICE</a>
+          reserva a extração para casos com patologia. Quando for o seu caso, você sai daqui sem
+          cirurgia marcada.
         </p>
       </div>
 
@@ -442,9 +467,8 @@ const clinicSchema = {
         <h2 id="nervo-h" class="sx-h2 sx-h2-l">“E se eu ficar com o lábio dormente?”</h2>
 
         <p class="sx-lead sx-lead-l">
-          Abaixo das raízes dos sisos inferiores passa o canal mandibular, e dentro dele o nervo
-          alveolar inferior, responsável pela sensibilidade do lábio e do queixo. Quando a raiz
-          encosta nesse canal, a extração deixa de ser rotina.
+          Abaixo das raízes dos sisos inferiores passa o nervo que dá sensibilidade ao lábio e ao
+          queixo. Quando a raiz encosta nele, a extração deixa de ser rotina.
         </p>
 
         <div class="sx-nervo-nums">
@@ -458,7 +482,7 @@ const clinicSchema = {
           </div>
           <div>
             <strong>0,08%</strong>
-            <span>De permanência acima de um ano em estudo brasileiro conduzido na USP.</span>
+            <span>De permanência acima de um ano em <a href="https://teses.usp.br/teses/disponiveis/23/23143/tde-27012005-150407/pt-br.php" class="sx-ref sx-ref-l" target="_blank" rel="noopener noreferrer">estudo conduzido na USP</a>.</span>
           </div>
         </div>
 
@@ -522,7 +546,7 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>O protocolo</span>
         <h2 id="proto-h" class="sx-h2">Como funciona a extração de siso, em quatro etapas.</h2>
         <p class="sx-lead">
-          A ordem importa. Data de cirurgia marcada antes da leitura do exame é chute com agenda.
+          Data de cirurgia marcada antes da leitura do exame é chute com agenda.
         </p>
       </div>
 
@@ -576,7 +600,7 @@ const clinicSchema = {
 
         <li class="sx-step">
           <div class="sx-step-img">
-            <img src="/images/siso/dia1.jpg" alt="Paciente em repouso em casa no primeiro dia após a cirurgia de siso" width="1000" height="1250" loading="lazy" />
+            <img src="/images/siso/consulta.jpg" alt="Acompanhamento do pós-operatório da extração de siso" width="1200" height="800" loading="lazy" />
           </div>
           <div class="sx-step-txt">
             <span class="sx-step-n">04</span>
@@ -599,8 +623,7 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>Para quem tem pavor</span>
         <h2 id="conforto-h" class="sx-h2">Extração de siso com sedação: você escolhe o nível.</h2>
         <p class="sx-lead">
-          Odontofobia é condição clínica e tem manejo próprio. Diga isso na avaliação e o plano já
-          sai ajustado ao seu nível.
+          Odontofobia tem manejo próprio. Diga isso na avaliação e o plano já sai ajustado.
         </p>
       </div>
 
@@ -651,8 +674,8 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>Recuperação</span>
         <h2 id="rec-h" class="sx-h2">Quantos dias eu fico parado depois de tirar o siso?</h2>
         <p class="sx-lead">
-          O que se espera de uma extração de siso sem intercorrência. Seu caso pode andar mais
-          rápido ou mais devagar, e você recebe o cronograma do seu antes da cirurgia.
+          O esperado numa extração sem intercorrência. Você recebe o cronograma do seu caso antes
+          da cirurgia.
         </p>
       </div>
 
@@ -697,6 +720,8 @@ const clinicSchema = {
         </article>
       </div>
 
+      <p class="sx-swipe">Arraste para ver o cronograma</p>
+
       <div class="sx-atestado">
         <div>
           <span class="sx-kicker"><i aria-hidden="true"></i>Atestado</span>
@@ -733,9 +758,8 @@ const clinicSchema = {
         <span class="sx-kicker sx-kicker-l"><i aria-hidden="true"></i>Quanto custa</span>
         <h2 id="valor-h" class="sx-h2 sx-h2-l">Quanto custa tirar o siso? Ninguém publica. Nós publicamos a conta.</h2>
         <p class="sx-lead sx-lead-l">
-          O valor de uma cirurgia de siso sai de uma conta com cinco variáveis. Estas são as cinco,
-          abertas. Você recebe o número fechado por escrito depois da leitura do exame, antes de
-          qualquer agendamento.
+          O valor sai de uma conta com cinco variáveis. Estas são as cinco, abertas. O número
+          fechado sai por escrito depois da leitura do exame.
         </p>
         <a href={WA} class="sx-btn sx-btn-y sx-btn-lg" target="_blank" rel="noopener noreferrer">
           Pedir meu orçamento
@@ -752,7 +776,8 @@ const clinicSchema = {
     </div>
     <div class="sx-valor-nota sx-wrap">
       <p>
-        A exodontia de terceiro molar, incluindo o incluso, consta do Rol de Procedimentos da ANS
+        A exodontia de terceiro molar, incluindo o incluso, consta do
+        <a href="https://website.cfo.org.br/ans-atualiza-rol-de-procedimentos-odontologicos-e-eventos-em-saude-e-reitera-cobertura-obrigatoria/" class="sx-ref sx-ref-l" target="_blank" rel="noopener noreferrer">Rol de Procedimentos da ANS</a>
         como cobertura obrigatória em nível ambulatorial nos planos odontológicos. Confirme com sua
         operadora carência, rede e cobertura de exames e de sedação.
       </p>
@@ -766,9 +791,8 @@ const clinicSchema = {
         <span class="sx-kicker"><i aria-hidden="true"></i>Quem opera</span>
         <h2 id="cir-h" class="sx-h2">Seu siso pode ser extraído por qualquer dentista.</h2>
         <p class="sx-lead">
-          Isso é verdade e está na lei: extração de siso não é ato privativo de especialista. A
-          pergunta que vale é outra. Quem você quer no caso em que a raiz está encostada no canal
-          do nervo?
+          Isso está na lei: extração de siso não é ato privativo de especialista. A pergunta que
+          vale é outra. Quem você quer no caso em que a raiz encosta no nervo?
         </p>
       </div>
 
@@ -828,21 +852,17 @@ const clinicSchema = {
       <div class="sx-dep-grid">
         <blockquote class="sx-dep-card">
           <p>
-            “Desde a primeira consulta, o que mais me chamou a atenção foi a segurança e a
-            confiança transmitida pelo Dr. Eliezer e Dra. Amanda. Eu sempre tive o sonho de
-            recuperar meu sorriso mas tinha muito medo do procedimento em si, e em todos os
-            momentos, desde o planejamento até a finalização, fui tratada com atenção, respeito e
-            total transparência, o que me deixou muito tranquila durante todo o processo.”
+            “Eu tinha muito medo do procedimento. Do planejamento à finalização fui tratada com
+            atenção, respeito e total transparência, o que me deixou tranquila durante todo o
+            processo.”
           </p>
           <footer><span>Maria</span><em>Cirurgia Ortognática</em></footer>
         </blockquote>
 
         <blockquote class="sx-dep-card">
           <p>
-            “Gostaria de expressar minha profunda gratidão pelo seu trabalho maravilhoso. Os meus
-            implantes ficaram perfeitos e com uma aparência natural. Você me devolveu a confiança e
-            a alegria de sorrir sem inseguranças. Muito obrigada pelo carinho, paciência e toda sua
-            competência.”
+            “Ficou perfeito e com aparência natural. Você me devolveu a confiança e a alegria de
+            sorrir sem inseguranças. Obrigada pelo carinho, paciência e competência.”
           </p>
           <footer><span>Isa Moron</span><em>Implante Dental</em></footer>
         </blockquote>
@@ -1101,6 +1121,16 @@ const clinicSchema = {
     margin-top: 1.125rem;
   }
   .sx-micro-l { color: rgba(255, 255, 255, 0.4); }
+
+  .sx-ref {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.3);
+    transition: border-color 0.2s var(--e);
+  }
+  .sx-ref:hover { border-bottom-color: var(--ink); }
+  .sx-ref-l { border-bottom-color: rgba(255, 255, 255, 0.35); }
+  .sx-ref-l:hover { border-bottom-color: var(--y); }
 
   .sx-note {
     font-family: var(--m);
@@ -1364,44 +1394,37 @@ const clinicSchema = {
   .sx-tensao { background: var(--paper); }
   .sx-tensao-in {
     display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: clamp(2.5rem, 5vw, 5rem);
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
-    padding-block: clamp(4.5rem, 8vw, 7.5rem);
-  }
-  .sx-tensao-img { position: relative; }
-  .sx-tensao-img::before {
-    content: "";
-    position: absolute;
-    inset: -1px -1px auto auto;
-    width: 46%;
-    height: 8px;
-    background: var(--y);
-    z-index: 1;
-  }
-  .sx-tensao-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%) contrast(1.04);
+    padding-block: clamp(3rem, 6vw, 5rem);
   }
   .sx-quotes {
     list-style: none;
     padding: 0;
-    margin: 1.75rem 0 1.5rem;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.625rem;
   }
   .sx-quotes li {
     font-family: var(--t);
     font-weight: 500;
-    font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+    font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
     line-height: 1.45;
     letter-spacing: -0.015em;
     color: var(--ink);
-    padding-left: 1.125rem;
+    padding-left: 1rem;
     border-left: 2px solid var(--y);
+  }
+  .sx-quotes .sx-quotes-ans {
+    font-family: var(--m);
+    font-size: 0.78125rem;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.5);
+    border-left-color: transparent;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
   }
 
   /* ───── POSIÇÕES ───── */
@@ -2342,14 +2365,17 @@ const clinicSchema = {
     .sx-cta-in,
     .sx-atestado,
     .sx-cir-foto { grid-template-columns: 1fr; }
+    .sx-cir-foto img { aspect-ratio: 3 / 2; }
 
     .sx-tensao-img { order: 2; }
     .sx-crit-grid,
     .sx-dep-grid,
     .sx-alerta ul,
     .sx-cir-grid { grid-template-columns: 1fr; }
-    .sx-step { grid-template-columns: 1fr; gap: 1.5rem; }
+    /* etapa fica lado a lado no celular: foto pequena + texto */
+    .sx-step { grid-template-columns: 34% 1fr; gap: 1.125rem; align-items: start; }
     .sx-step-img { order: -1; }
+    .sx-step-n { font-size: 1.5rem; margin-bottom: 0.5rem; }
     .sx-cta-img { order: -1; }
     .sx-foot-cols { grid-template-columns: 1fr 1fr; }
     .sx-foot-top { flex-direction: column; }
@@ -2364,6 +2390,46 @@ const clinicSchema = {
       color: rgba(26, 26, 26, 0.45);
     }
   }
+
+  /* Grades de 4 itens viram trilho horizontal no celular.
+     Empilhadas elas sozinhas custavam ~5 telas de rolagem. */
+  @media (max-width: 720px) {
+    .sx-pos-grid,
+    .sx-timeline {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 78%;
+      grid-template-columns: none;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: var(--g);
+      gap: 1px;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sx-pos-card,
+    .sx-tl-item { scroll-snap-align: start; }
+    .sx-timeline { gap: 1rem; padding-top: 2.25rem; }
+    .sx-swipe {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--m);
+      font-size: 0.6875rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(26, 26, 26, 0.4);
+      margin-top: 1rem;
+    }
+    .sx-swipe::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(26,26,26,0.25), transparent);
+    }
+  }
+  .sx-swipe { display: none; }
 
   @media (max-width: 560px) {
     /* Corpo maior para leitura confortável no celular */
@@ -2389,8 +2455,8 @@ const clinicSchema = {
     .sx-dado { border-bottom: 1px solid var(--line-l); }
     .sx-dado:last-child { border-bottom: none; }
     .sx-nervo-nums { grid-template-columns: 1fr; }
-    .sx-cir-card { grid-template-columns: 1fr; }
-    .sx-cir-img img { aspect-ratio: 4 / 3; }
+    .sx-cir-card { grid-template-columns: 38% 1fr; }
+    .sx-cir-img img { aspect-ratio: 3 / 4; }
     .sx-hero-ctas { flex-direction: column; align-items: stretch; }
     .sx-foot-cols { grid-template-columns: 1fr; }
     .sx-foot-bot { flex-direction: column; gap: 0.375rem; }
