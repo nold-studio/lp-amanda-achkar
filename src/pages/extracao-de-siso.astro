@@ -10,7 +10,7 @@ const faq = [
   },
   {
     q: "Quanto tempo demora a cirurgia de siso?",
-    a: "Depende da posição do dente. Um siso já nascido pode sair em 10 minutos. Um siso incluso e deitado no osso costuma levar de 30 a 45 minutos. Na avaliação você recebe a estimativa do seu caso, calculada em cima da sua tomografia.",
+    a: "Depende da posição do dente. Um siso já nascido pode sair em 10 minutos. Um siso incluso e deitado no osso costuma levar de 30 a 45 minutos. Na avaliação você recebe a estimativa do seu caso, calculada em cima do seu exame.",
   },
   {
     q: "Posso tirar os 4 sisos de uma vez?",
@@ -18,7 +18,7 @@ const faq = [
   },
   {
     q: "Existe risco de ficar com o lábio dormente?",
-    a: "Existe e não escondemos isso. A literatura registra alteração de sensibilidade do nervo alveolar inferior em algo entre 0,6% e 6% dos casos, com a maioria voltando ao normal em até 8 semanas. Um estudo brasileiro da USP encontrou 0,62% de alteração e 0,08% de permanência acima de um ano. É justamente por causa desse risco que a tomografia vem antes e que, em casos de raiz colada no canal, existe a opção da coronectomia.",
+    a: "Existe e não escondemos isso. A literatura registra alteração de sensibilidade do nervo alveolar inferior em algo entre 0,6% e 6% dos casos, com a maioria voltando ao normal em até 8 semanas. Um estudo brasileiro da USP encontrou 0,62% de alteração e 0,08% de permanência acima de um ano. É por causa desse risco que o estudo radiográfico vem antes de qualquer data, que em casos selecionados pedimos tomografia, e que em raiz colada no canal existe a opção da coronectomia.",
   },
   {
     q: "Quantos dias de atestado preciso para tirar o siso?",
@@ -38,7 +38,7 @@ const faq = [
   },
   {
     q: "Qual a diferença entre tirar o siso com um dentista clínico e com um cirurgião bucomaxilofacial?",
-    a: "Qualquer cirurgião-dentista pode extrair siso, isso não é ato privativo. A diferença está na formação. O cirurgião bucomaxilofacial tem especialização com atuação hospitalar registrada no CFO, lê tomografia de feixe cônico e os sinais de proximidade com o canal mandibular, domina osteotomia e odontossecção, executa coronectomia quando o risco de nervo é alto e conduz o caso em centro cirúrgico quando há indicação.",
+    a: "Qualquer cirurgião-dentista pode extrair siso, isso não é ato privativo. A diferença está na formação. O cirurgião bucomaxilofacial tem especialização com atuação hospitalar registrada no CFO, lê os sinais de proximidade com o canal mandibular na radiografia e sabe quando a tomografia muda a conduta, domina osteotomia e odontossecção, executa coronectomia quando o risco de nervo é alto e conduz o caso em centro cirúrgico quando há indicação.",
   },
   {
     q: "Quanto custa tirar o siso em São Paulo?",
@@ -64,9 +64,9 @@ const procedureSchema = {
   procedureType: "https://schema.org/SurgicalProcedure",
   bodyLocation: "Mandíbula e maxila",
   howPerformed:
-    "Avaliação clínica, tomografia computadorizada de feixe cônico, planejamento da odontossecção e da osteotomia, cirurgia sob anestesia local ou sedação e acompanhamento do pós-operatório.",
+    "Avaliação clínica, estudo radiográfico, planejamento da odontossecção e da osteotomia, cirurgia sob anestesia local ou sedação e acompanhamento do pós-operatório.",
   preparation:
-    "Tomografia computadorizada de feixe cônico, avaliação de saúde geral e medicação pré-operatória quando indicada.",
+    "Radiografia panorâmica, avaliação de saúde geral e medicação pré-operatória quando indicada. Tomografia em casos selecionados.",
   followup:
     "Retorno para remoção de sutura entre o sétimo e o décimo dia, com acompanhamento do edema e da cicatrização.",
   provider: [
@@ -91,7 +91,7 @@ const clinicSchema = {
   "@id": "https://maxfocos.com.br/extracao-de-siso#clinica",
   name: "MaxFocos · Cirurgia Bucomaxilofacial",
   description:
-    "Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Extração de siso planejada por tomografia, com atuação ambulatorial e hospitalar.",
+    "Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Extração de siso com estudo radiográfico e planejamento, com atuação ambulatorial e hospitalar.",
   url: "https://maxfocos.com.br/extracao-de-siso",
   image: "https://maxfocos.com.br/images/r1/founders-2.jpg",
   address: {
@@ -151,8 +151,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Extração de Siso em São Paulo | Planejada por Tomografia"
-  description="Entenda seu caso antes de agendar. Extração de siso em São Paulo com dois cirurgiões bucomaxilofaciais e planejamento por tomografia. Avalie no WhatsApp."
+  title="Extração de Siso em São Paulo | Volta à Rotina em 3 a 5 Dias"
+  description="Entenda seu caso antes de agendar. Extração de siso em São Paulo com dois cirurgiões bucomaxilofaciais e estudo do seu exame antes da cirurgia."
   image="/images/r1/founders-2.jpg"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
@@ -197,8 +197,8 @@ const breadcrumbSchema = {
         </h1>
 
         <p class="sx-hero-sub">
-          Extração de siso planejada por tomografia, com dois cirurgiões bucomaxilofaciais
-          formados em ambiente hospitalar. Você sabe o que vai acontecer antes de marcar.
+          Extração de siso com dois cirurgiões bucomaxilofaciais formados em ambiente hospitalar.
+          Seu exame é estudado antes de qualquer data ser marcada.
         </p>
 
         <div class="sx-hero-ctas">
@@ -250,7 +250,7 @@ const breadcrumbSchema = {
       </div>
       <div class="sx-dado">
         <span class="sx-dado-n">100<i>%</i></span>
-        <p>Dos casos operados aqui passam por tomografia e planejamento antes da data ser marcada.</p>
+        <p>Dos casos operados aqui passam por estudo radiográfico e planejamento antes da data ser marcada.</p>
       </div>
     </div>
   </section>
@@ -402,7 +402,7 @@ const breadcrumbSchema = {
 
       <p class="sx-note">
         Nenhum desenho substitui exame. A posição real do seu siso só é definida na radiografia
-        panorâmica e, quando há sinal de proximidade com o canal, na tomografia.
+        panorâmica e, em casos selecionados, na tomografia.
       </p>
     </div>
   </section>
@@ -490,7 +490,7 @@ const breadcrumbSchema = {
         <p class="sx-body sx-body-l">
           A radiografia panorâmica mostra três sinais clássicos de proximidade: escurecimento da
           raiz onde ela cruza o canal, desvio do trajeto do canal e interrupção da sua linha
-          branca. Quando qualquer um aparece, o caso vai para tomografia de feixe cônico, que
+          branca. Quando algum deles aparece, o caso pode ir para tomografia de feixe cônico, que
           mostra em três dimensões se a raiz está ao lado, em cima ou abraçando o canal.
         </p>
         <p class="sx-body sx-body-l">
@@ -534,7 +534,7 @@ const breadcrumbSchema = {
           <path class="sx-n-leader" d="M252 140 L292 108 L340 108" />
           <text class="sx-n-dim" x="294" y="100">2,1 mm</text>
         </svg>
-        <span class="sx-fig-cap">Esquema ilustrativo. A medida do seu caso sai da sua tomografia.</span>
+        <span class="sx-fig-cap">Esquema ilustrativo. A medida do seu caso sai do seu exame.</span>
       </div>
     </div>
   </section>
@@ -572,11 +572,11 @@ const breadcrumbSchema = {
           </div>
           <div class="sx-step-txt">
             <span class="sx-step-n">02</span>
-            <h3>Tomografia e planejamento</h3>
+            <h3>Estudo do caso e planejamento</h3>
             <p>
-              Havendo sinal de risco, a tomografia de feixe cônico entra para medir em três
-              dimensões a distância entre a raiz e o canal. Com esse número em mãos define-se a
-              via de acesso, onde o dente será seccionado e quanto osso será desgastado. O tempo
+              Com o exame na mão define-se a via de acesso, onde o dente será seccionado e quanto
+              osso será desgastado. Havendo sinal de risco na panorâmica, o caso vai para
+              tomografia, que mede em três dimensões a distância entre a raiz e o canal. O tempo
               estimado de cirurgia sai daqui.
             </p>
           </div>
@@ -770,7 +770,7 @@ const breadcrumbSchema = {
         <li><span>01</span><div><b>Quantos dentes</b><p>Um siso, dois do mesmo lado ou os quatro na mesma sessão.</p></div></li>
         <li><span>02</span><div><b>Nascido ou incluso</b><p>Dente já na boca sai rápido. Dente dentro do osso exige abrir, desgastar e seccionar.</p></div></li>
         <li><span>03</span><div><b>Relação com o canal</b><p>Raiz próxima do nervo muda o planejamento, o tempo de mesa e a técnica.</p></div></li>
-        <li><span>04</span><div><b>Exames</b><p>Panorâmica em todos os casos. Tomografia quando há sinal de proximidade.</p></div></li>
+        <li><span>04</span><div><b>Exames</b><p>Panorâmica em todos os casos. Tomografia apenas quando o exame indica.</p></div></li>
         <li><span>05</span><div><b>Nível de sedação</b><p>Anestesia local, sedação com anestesista ou centro cirúrgico.</p></div></li>
       </ol>
     </div>
@@ -2398,7 +2398,7 @@ const breadcrumbSchema = {
     .sx-timeline {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: 78%;
+      grid-auto-columns: min(82%, 300px);
       grid-template-columns: none;
       overflow-x: auto;
       overscroll-behavior-x: contain;
@@ -2447,8 +2447,6 @@ const breadcrumbSchema = {
     .sx-dep-card p,
     .sx-cir-foto figcaption { font-size: 0.9375rem; }
 
-    .sx-pos-grid,
-    .sx-timeline { grid-template-columns: 1fr; }
     .sx-dados-in { grid-template-columns: 1fr; }
     .sx-dado:nth-child(even) { border-left: none; padding-left: 0 !important; }
     .sx-dado:nth-child(odd) { padding-right: 0 !important; }
