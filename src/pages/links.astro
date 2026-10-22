@@ -49,9 +49,23 @@ import Layout from "../layouts/Layout.astro";
       <a href="/" class="bento-card card-r1" data-node="r1">
         <div class="card-glow"></div>
         <div class="card-content">
-          <span class="card-tag">Mentoria ENARE 2026</span>
+          <span class="card-tag">Mentoria em CTBMF · Página principal</span>
           <h2>Protocolo R1</h2>
-          <p>Preparatório e mentoria para residência em Bucomaxilo.</p>
+          <p>Mentoria para residência em Bucomaxilo. Copy sem data, roda o ano inteiro.</p>
+          <div class="card-footer">
+            <span class="card-link">Acessar página</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card Campanha ENARE -->
+      <a href="/enare" class="bento-card card-enare" data-node="enare">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">Campanha sazonal · ENARE</span>
+          <h2>Protocolo R1 · ENARE</h2>
+          <p>Cópia da página principal com as datas do ENARE. Fora do Google, para tráfego pago na temporada.</p>
           <div class="card-footer">
             <span class="card-link">Acessar página</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -77,7 +91,7 @@ import Layout from "../layouts/Layout.astro";
       <div class="bento-card card-stats">
         <div class="stats-row">
           <div class="stat-item">
-            <span class="stat-val">4</span>
+            <span class="stat-val">5</span>
             <span class="stat-lbl">LPs Ativas</span>
           </div>
           <div class="stat-item">
@@ -442,7 +456,8 @@ body {
     { id: 'amanda', label: 'LP AMANDA (ORTOGNÁTICA)', url: '/dra-amanda', x: 300, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
     { id: 'eliezer', label: 'LP ELIEZER (CTBMF)', url: '/dr-eliezer', x: 500, y: 200, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
     { id: 'r1', label: 'PROTOCOLO R1', url: '/', x: 400, y: 420, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
-    { id: 'siso', label: 'EXTRAÇÃO DE SISO', url: '/extracao-de-siso', x: 400, y: 140, vx: 0, vy: 0, fx: null, fy: null, r: 8 }
+    { id: 'siso', label: 'EXTRAÇÃO DE SISO', url: '/extracao-de-siso', x: 400, y: 140, vx: 0, vy: 0, fx: null, fy: null, r: 8 },
+    { id: 'enare', label: 'R1 · CAMPANHA ENARE', url: '/enare', x: 560, y: 470, vx: 0, vy: 0, fx: null, fy: null, r: 7 }
   ];
 
   const edges: EdgeData[] = [
@@ -450,7 +465,8 @@ body {
     { source: 'maxfocos', target: 'eliezer' },
     { source: 'maxfocos', target: 'r1' },
     { source: 'amanda', target: 'siso' },
-    { source: 'eliezer', target: 'siso' }
+    { source: 'eliezer', target: 'siso' },
+    { source: 'r1', target: 'enare' }
   ];
 
   const svg = document.getElementById('graphSvg') as unknown as SVGSVGElement;
