@@ -5,12 +5,15 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /** Páginas de campanha que duplicam outra página ficam fora do índice. */
+  noindex?: boolean;
 }
 
 const {
   title = "Dra. Amanda Coli — Cirurgiã Bucomaxilofacial em São Paulo",
   description = "Dra. Amanda Coli, especialista em Cirurgia e Traumatologia Bucomaxilofacial em São Paulo. Cirurgia ortognática, implantes, extração de sisos e trauma facial. Agende sua avaliação.",
   image = "/images/portrait.jpg",
+  noindex = false,
 } = Astro.props;
 
 const canonical = Astro.site
@@ -39,6 +42,7 @@ const ogImage = Astro.site ? new URL(image, Astro.site).href : image;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta name="generator" content={Astro.generator} />
 

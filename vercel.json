@@ -6,5 +6,12 @@
   "redirects": [
     { "source": "/r1", "destination": "/", "permanent": true },
     { "source": "/eliezer", "destination": "/dr-eliezer", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "enare.maxfocos.com.br" }],
+      "destination": "/enare"
+    }
   ]
 }

@@ -7,5 +7,8 @@ export default defineConfig({
   // Domínio de produção: gera canonical e URLs absolutas de OG/Twitter.
   // Sem isso o og:image sai como caminho relativo e o preview no WhatsApp fica sem imagem.
   site: "https://maxfocos.com.br",
-  integrations: [sitemap()],
+  integrations: [
+    // /enare é cópia da home para campanha, fica fora do sitemap
+    sitemap({ filter: (page) => !page.includes("/enare") }),
+  ],
 });
